@@ -12,6 +12,13 @@ enum AppConfiguration {
         ProcessInfo.processInfo.arguments.contains("-seedDemo")
     }
 
+    /// UI tests and screenshot runs must not be blocked by lock/onboarding.
+    static var isAutomatedRun: Bool {
+        ProcessInfo.processInfo.arguments.contains("-uiTestService")
+            || ProcessInfo.processInfo.arguments.contains("-seedDemo")
+            || ProcessInfo.processInfo.arguments.contains("-demoService")
+    }
+
     private static func value(for flag: String) -> String? {
         let arguments = ProcessInfo.processInfo.arguments
         guard let index = arguments.firstIndex(of: flag), arguments.indices.contains(index + 1) else {
@@ -22,5 +29,6 @@ enum AppConfiguration {
     #else
     static let repositoryServiceName = KeychainTokenRepository.defaultService
     static let shouldSeedDemoTokens = false
+    static let isAutomatedRun = false
     #endif
 }

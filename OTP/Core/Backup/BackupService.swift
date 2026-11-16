@@ -136,6 +136,6 @@ struct BackupService: Sendable {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd-HHmm"
-        return "OTP-备份-\(formatter.string(from: date)).otpbackup"
+        return "OTP-备份-\(formatter.string(from: date))"
     }
 }

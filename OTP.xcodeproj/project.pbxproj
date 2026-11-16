@@ -13,6 +13,7 @@
 		19BC1B948D2769C0A62A0E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86C6F278EDF268F40B48AB47 /* Assets.xcassets */; };
 		1E0FEB682E11C348BC2FC31F /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5A7B118136457EB5B4052 /* BackupTests.swift */; };
 		1F39FD4DD65421C7AE33ACAF /* GoogleAuthenticatorImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDEFEDEC486298D3BF53060 /* GoogleAuthenticatorImport.swift */; };
+		1FD5FCC45F76799E2551188A /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEC4E1A0EC2204B0ACEB8D /* QRCodeView.swift */; };
 		226A5951FEC06FCD63148D8B /* BackupError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0B1C58AD5A3AFA129D907 /* BackupError.swift */; };
 		24E53C84F53325ABF8409F43 /* ISO8601Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8952D65BC40B0C222FC70912 /* ISO8601Value.swift */; };
 		25C78CF2D21E23E539635B06 /* HOTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F33245A3AC07B919C9B55 /* HOTPTests.swift */; };
@@ -24,26 +25,32 @@
 		45EF30B4C40F71B2493E065C /* OTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F92491164E69CAD63EEE1 /* OTPApp.swift */; };
 		47D8A3EBED63AF1D8241C92C /* AegisImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F62137E5B63522CAE98662 /* AegisImport.swift */; };
 		48298A01C47DC33A3B2E5003 /* TOTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031ACC87716CD762B03D0BF0 /* TOTPTests.swift */; };
+		4B684351B76B2F8D9A278A15 /* AppLockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E824F5FD1B727C85A0B67B1 /* AppLockController.swift */; };
 		4C308F418E8EC00FD1DDD84F /* TokenStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA801A8AF0B7348BE1C87FE /* TokenStoreTests.swift */; };
 		500169A5AE4F0C9B0BF2E5D8 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B76141BF4B5B30706850A2 /* AppConfiguration.swift */; };
 		527A3DECE293A7B91A698348 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA62954D0FD23F4CFFD2A59 /* Base32.swift */; };
+		53107D4BF981E34A311A47C2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA4FF832097C8198214F6F /* AboutView.swift */; };
 		54A9CED06FA9D44E658C4464 /* OTPAuthURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781566E3A7E2AE5630AC2591 /* OTPAuthURI.swift */; };
 		602FD9574C7CC3CA5FC48B3E /* ProtobufReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC334693EB5ECCD59EE6A92 /* ProtobufReader.swift */; };
+		630DAA582A7883A718F25C38 /* TokenListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137F150CD79102AD196A0C8 /* TokenListModelTests.swift */; };
 		63225A4FAF9E1167111D543D /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29802EC3E1B4CFD819426E4 /* TokenRepository.swift */; };
+		632565BB83429767A54F22E2 /* SyncInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D81F15C78C5C885FF2D94A4 /* SyncInfoView.swift */; };
 		632DECFC3356FD3C315A027E /* BackupCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199E348278D220ED8E66930 /* BackupCrypto.swift */; };
 		648BBCD2BDD15EE4943C8370 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03AEDCAC46719DCBA1C2EE /* RootView.swift */; };
 		65951A72CC621827A1DACEE4 /* KeychainProbeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF846D423255608E2B542BE /* KeychainProbeTests.swift */; };
 		6718F3D093164F23E16C0ADB /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81023B4E9AB0B1B4B4F9C38D /* QRScannerView.swift */; };
 		69F5EE05D154C179FA2470FC /* KeychainRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FC287AA9A7CCB5D62AE04 /* KeychainRepositoryTests.swift */; };
 		6D37A6C53382B6CAC60A808F /* OTPToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAEC4E48D1EAC7D9787DCCD /* OTPToken.swift */; };
+		6E9D29C039D640E739A692AD /* QRCodeRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C69B9BAD52F2E0D1FB048A4 /* QRCodeRendererTests.swift */; };
 		6F239C6BA065B9776C8E7DFB /* OTPAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7E1D499F3205188D9919C7 /* OTPAlgorithm.swift */; };
 		7070DABFA9956F90804D119B /* TokenEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9344A8557376820DD417EE /* TokenEditorView.swift */; };
 		739A186452344C931B6C0710 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A4D055DAD514A6A378A18A /* TokenStore.swift */; };
+		772D7F599E01BDD6E014FFE8 /* QRCodeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C393E2B9F66E4A2A9D278C1 /* QRCodeRenderer.swift */; };
 		862CFD320D62F76658EB35D5 /* CountdownRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2FF218D24F127A5536523 /* CountdownRing.swift */; };
+		8D83E3AA2AAFD22F7677E4AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1906D5433AB34AEF4411BBF /* SettingsView.swift */; };
 		98AA352775C1E1E32C72EF15 /* OTPAuthURITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A430C7035942CE14480D3D4 /* OTPAuthURITests.swift */; };
 		9E0D2D92CE72D03687864FDA /* FileImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F802F3D8FD066EA0E4B5D64 /* FileImportTests.swift */; };
 		9FCD97C9C7132DE3231B3983 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8303F606F31330B0D00AFA70 /* PrivacyInfo.xcprivacy */; };
-		A5259464DC2348AD7AC3EAFF /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065E586B6505A942E21424A4 /* SmokeTests.swift */; };
 		AAF46E55FCEA9F2ABFFE69D1 /* TokenRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E90E5C4AA257EAFB3E6112 /* TokenRowView.swift */; };
 		ABC9664A76A08CCED8DB7B2F /* TokenListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F465E1A8F604BC2A7194D32 /* TokenListModel.swift */; };
 		AE290547E833460C7009A5C3 /* KeychainTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098679A3639FD668F09A9857 /* KeychainTokenRepository.swift */; };
@@ -54,12 +61,16 @@
 		B5A53B1CBD1FFF8129EC2982 /* InMemoryTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C7A41D032D5E1A7B8365E /* InMemoryTokenRepository.swift */; };
 		C03B56422DD863E3499E261D /* OTPKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5915D56FB54C0FBC456458D0 /* OTPKind.swift */; };
 		C3C6018574A88ABF4CB92F65 /* ImportCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80008DCE66B3BFE981C83047 /* ImportCandidate.swift */; };
+		C8962D3FE027F6051C611E8F /* BackupExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F49CAAE30B6AA594997C9C /* BackupExportView.swift */; };
 		CAA33B94281A7C4C20832FE9 /* URIImportParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644EF306229469E9DF7AF5B /* URIImportParser.swift */; };
+		DB5CAD138B781CDFBEAEC2C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBA52341995EDC2125EA77 /* OnboardingView.swift */; };
 		E967BEB72B2EAE076E6D3222 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650946CA89551B2896431209 /* Clipboard.swift */; };
 		EB14B04CDE704BC91E6FFAEB /* OTPCodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD95ED0A173E4FAC3D1AFD19 /* OTPCodeFormatter.swift */; };
 		EB70811EC97B27CD6F7AD2A6 /* TokenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2E6BADDE76D77F29F74F1 /* TokenListView.swift */; };
+		EF8B71D4712553D765D06C9A /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659D909A3C044DE4F47F6CE /* ScreenshotUITests.swift */; };
 		F072653209A8856B727D66F9 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37CF683C4F1FA338CE6B6AA /* KeychainError.swift */; };
 		F817F19D63FA0E20112BB2DD /* AddTokenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23038C7987830E1D343455B4 /* AddTokenUITests.swift */; };
+		FA57BD32952457B62CCAAD31 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04F1B56E8B99CF2D3ED2DE /* LockScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,10 +92,10 @@
 
 /* Begin PBXFileReference section */
 		031ACC87716CD762B03D0BF0 /* TOTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPTests.swift; sourceTree = "<group>"; };
-		065E586B6505A942E21424A4 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		098679A3639FD668F09A9857 /* KeychainTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTokenRepository.swift; sourceTree = "<group>"; };
 		133F33245A3AC07B919C9B55 /* HOTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOTPTests.swift; sourceTree = "<group>"; };
 		133FC287AA9A7CCB5D62AE04 /* KeychainRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainRepositoryTests.swift; sourceTree = "<group>"; };
+		17F49CAAE30B6AA594997C9C /* BackupExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupExportView.swift; sourceTree = "<group>"; };
 		194C4AD1C8EB329044956904 /* OTPTokenCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTokenCodableTests.swift; sourceTree = "<group>"; };
 		23038C7987830E1D343455B4 /* AddTokenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenUITests.swift; sourceTree = "<group>"; };
 		2A4F92491164E69CAD63EEE1 /* OTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPApp.swift; sourceTree = "<group>"; };
@@ -97,10 +108,15 @@
 		4B7622B8D8708AF2C6AB8D1F /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		4E9344A8557376820DD417EE /* TokenEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEditorView.swift; sourceTree = "<group>"; };
 		5915D56FB54C0FBC456458D0 /* OTPKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPKind.swift; sourceTree = "<group>"; };
+		5C69B9BAD52F2E0D1FB048A4 /* QRCodeRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRendererTests.swift; sourceTree = "<group>"; };
 		5CA801A8AF0B7348BE1C87FE /* TokenStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStoreTests.swift; sourceTree = "<group>"; };
 		5E69AD63AD2C51E339EBBF5B /* OTPUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = OTPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6153A0CF85713BD9152887B1 /* TOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTP.swift; sourceTree = "<group>"; };
+		63EBA52341995EDC2125EA77 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		650946CA89551B2896431209 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
+		6659D909A3C044DE4F47F6CE /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
+		6E824F5FD1B727C85A0B67B1 /* AppLockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockController.swift; sourceTree = "<group>"; };
+		7137F150CD79102AD196A0C8 /* TokenListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListModelTests.swift; sourceTree = "<group>"; };
 		723DD9F9293F022BAACAEF1A /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		781566E3A7E2AE5630AC2591 /* OTPAuthURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPAuthURI.swift; sourceTree = "<group>"; };
 		79E5A7B118136457EB5B4052 /* BackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTests.swift; sourceTree = "<group>"; };
@@ -112,6 +128,8 @@
 		86C6F278EDF268F40B48AB47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86F62137E5B63522CAE98662 /* AegisImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AegisImport.swift; sourceTree = "<group>"; };
 		8952D65BC40B0C222FC70912 /* ISO8601Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO8601Value.swift; sourceTree = "<group>"; };
+		8B04F1B56E8B99CF2D3ED2DE /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
+		8D81F15C78C5C885FF2D94A4 /* SyncInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncInfoView.swift; sourceTree = "<group>"; };
 		8DD268B01C63854D501468D4 /* OTP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OTP.entitlements; sourceTree = "<group>"; };
 		8F465E1A8F604BC2A7194D32 /* TokenListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListModel.swift; sourceTree = "<group>"; };
 		91B775299B956D9E2BBBEEAB /* Base32Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base32Tests.swift; sourceTree = "<group>"; };
@@ -119,9 +137,11 @@
 		94EA2B1A9932C6770F718FEF /* OTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPError.swift; sourceTree = "<group>"; };
 		9644EF306229469E9DF7AF5B /* URIImportParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URIImportParser.swift; sourceTree = "<group>"; };
 		985A70C298D59C2508A829BF /* TwoFASImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFASImport.swift; sourceTree = "<group>"; };
+		9C393E2B9F66E4A2A9D278C1 /* QRCodeRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRenderer.swift; sourceTree = "<group>"; };
 		A6A4D055DAD514A6A378A18A /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 		A9E90E5C4AA257EAFB3E6112 /* TokenRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRowView.swift; sourceTree = "<group>"; };
 		AD95ED0A173E4FAC3D1AFD19 /* OTPCodeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeFormatter.swift; sourceTree = "<group>"; };
+		AFAA4FF832097C8198214F6F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B6D0B1C58AD5A3AFA129D907 /* BackupError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupError.swift; sourceTree = "<group>"; };
 		B9F2FF218D24F127A5536523 /* CountdownRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownRing.swift; sourceTree = "<group>"; };
 		BEDEFEDEC486298D3BF53060 /* GoogleAuthenticatorImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorImport.swift; sourceTree = "<group>"; };
@@ -131,11 +151,13 @@
 		CEC334693EB5ECCD59EE6A92 /* ProtobufReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufReader.swift; sourceTree = "<group>"; };
 		D37CF683C4F1FA338CE6B6AA /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		E0B76141BF4B5B30706850A2 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E1906D5433AB34AEF4411BBF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E29802EC3E1B4CFD819426E4 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		E62AC35B9F30EEEBCBB65ADB /* PhotoBarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBarcodeScanner.swift; sourceTree = "<group>"; };
 		EA7E1D499F3205188D9919C7 /* OTPAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPAlgorithm.swift; sourceTree = "<group>"; };
 		EACF38E8C29D46B8F01DE4CE /* OTP.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = OTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51C3BD3A60AC4C36B40FAD6 /* OTPTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = OTPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7CEC4E1A0EC2204B0ACEB8D /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		FAA62954D0FD23F4CFFD2A59 /* Base32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		FC03AEDCAC46719DCBA1C2EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +176,7 @@
 			children = (
 				650946CA89551B2896431209 /* Clipboard.swift */,
 				B9F2FF218D24F127A5536523 /* CountdownRing.swift */,
+				9C393E2B9F66E4A2A9D278C1 /* QRCodeRenderer.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -162,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				23038C7987830E1D343455B4 /* AddTokenUITests.swift */,
+				6659D909A3C044DE4F47F6CE /* ScreenshotUITests.swift */,
 			);
 			path = OTPUITests;
 			sourceTree = "<group>";
@@ -213,7 +237,10 @@
 			isa = PBXGroup;
 			children = (
 				F8A94FA6A11EB169FBA1D449 /* Import */,
+				90BFA4A0A1F2A5DC7DA22163 /* Lock */,
+				D4F1DC0ADFDD1B7821FCBFBA /* Onboarding */,
 				43B7D16CA0A2B8FF1A76F521 /* Scanner */,
+				94CC20CAC4CDC9EC6C570040 /* Settings */,
 				63E9A036B61003A1B1E36BDD /* Tokens */,
 			);
 			path = Features;
@@ -231,7 +258,8 @@
 				133FC287AA9A7CCB5D62AE04 /* KeychainRepositoryTests.swift */,
 				4A430C7035942CE14480D3D4 /* OTPAuthURITests.swift */,
 				194C4AD1C8EB329044956904 /* OTPTokenCodableTests.swift */,
-				065E586B6505A942E21424A4 /* SmokeTests.swift */,
+				5C69B9BAD52F2E0D1FB048A4 /* QRCodeRendererTests.swift */,
+				7137F150CD79102AD196A0C8 /* TokenListModelTests.swift */,
 				5CA801A8AF0B7348BE1C87FE /* TokenStoreTests.swift */,
 				031ACC87716CD762B03D0BF0 /* TOTPTests.swift */,
 			);
@@ -241,6 +269,7 @@
 		63E9A036B61003A1B1E36BDD /* Tokens */ = {
 			isa = PBXGroup;
 			children = (
+				F7CEC4E1A0EC2204B0ACEB8D /* QRCodeView.swift */,
 				4E9344A8557376820DD417EE /* TokenEditorView.swift */,
 				8F465E1A8F604BC2A7194D32 /* TokenListModel.swift */,
 				2DC2E6BADDE76D77F29F74F1 /* TokenListView.swift */,
@@ -317,6 +346,26 @@
 			path = OTP;
 			sourceTree = "<group>";
 		};
+		90BFA4A0A1F2A5DC7DA22163 /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				6E824F5FD1B727C85A0B67B1 /* AppLockController.swift */,
+				8B04F1B56E8B99CF2D3ED2DE /* LockScreenView.swift */,
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
+		94CC20CAC4CDC9EC6C570040 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AFAA4FF832097C8198214F6F /* AboutView.swift */,
+				17F49CAAE30B6AA594997C9C /* BackupExportView.swift */,
+				E1906D5433AB34AEF4411BBF /* SettingsView.swift */,
+				8D81F15C78C5C885FF2D94A4 /* SyncInfoView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		CC7A4F136B1FD2760BE92713 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +385,14 @@
 				5E69AD63AD2C51E339EBBF5B /* OTPUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D4F1DC0ADFDD1B7821FCBFBA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				63EBA52341995EDC2125EA77 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		DCA78057626698A12A14C468 /* Crypto */ = {
@@ -479,8 +536,9 @@
 				69F5EE05D154C179FA2470FC /* KeychainRepositoryTests.swift in Sources */,
 				98AA352775C1E1E32C72EF15 /* OTPAuthURITests.swift in Sources */,
 				2DFD10FC6CD5D051C5CE4DF5 /* OTPTokenCodableTests.swift in Sources */,
-				A5259464DC2348AD7AC3EAFF /* SmokeTests.swift in Sources */,
+				6E9D29C039D640E739A692AD /* QRCodeRendererTests.swift in Sources */,
 				48298A01C47DC33A3B2E5003 /* TOTPTests.swift in Sources */,
+				630DAA582A7883A718F25C38 /* TokenListModelTests.swift in Sources */,
 				4C308F418E8EC00FD1DDD84F /* TokenStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F817F19D63FA0E20112BB2DD /* AddTokenUITests.swift in Sources */,
+				EF8B71D4712553D765D06C9A /* ScreenshotUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,10 +556,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53107D4BF981E34A311A47C2 /* AboutView.swift in Sources */,
 				47D8A3EBED63AF1D8241C92C /* AegisImport.swift in Sources */,
 				500169A5AE4F0C9B0BF2E5D8 /* AppConfiguration.swift in Sources */,
+				4B684351B76B2F8D9A278A15 /* AppLockController.swift in Sources */,
 				632DECFC3356FD3C315A027E /* BackupCrypto.swift in Sources */,
 				226A5951FEC06FCD63148D8B /* BackupError.swift in Sources */,
+				C8962D3FE027F6051C611E8F /* BackupExportView.swift in Sources */,
 				1970E3C230DEDF646E51BAC3 /* BackupService.swift in Sources */,
 				527A3DECE293A7B91A698348 /* Base32.swift in Sources */,
 				E967BEB72B2EAE076E6D3222 /* Clipboard.swift in Sources */,
@@ -514,6 +576,7 @@
 				B5A53B1CBD1FFF8129EC2982 /* InMemoryTokenRepository.swift in Sources */,
 				F072653209A8856B727D66F9 /* KeychainError.swift in Sources */,
 				AE290547E833460C7009A5C3 /* KeychainTokenRepository.swift in Sources */,
+				FA57BD32952457B62CCAAD31 /* LockScreenView.swift in Sources */,
 				6F239C6BA065B9776C8E7DFB /* OTPAlgorithm.swift in Sources */,
 				45EF30B4C40F71B2493E065C /* OTPApp.swift in Sources */,
 				54A9CED06FA9D44E658C4464 /* OTPAuthURI.swift in Sources */,
@@ -522,10 +585,15 @@
 				B2DBBBF6A1751EC77ACE6666 /* OTPError.swift in Sources */,
 				C03B56422DD863E3499E261D /* OTPKind.swift in Sources */,
 				6D37A6C53382B6CAC60A808F /* OTPToken.swift in Sources */,
+				DB5CAD138B781CDFBEAEC2C5 /* OnboardingView.swift in Sources */,
 				B1FDC5F4EEC67925EC789B1A /* PhotoBarcodeScanner.swift in Sources */,
 				602FD9574C7CC3CA5FC48B3E /* ProtobufReader.swift in Sources */,
+				772D7F599E01BDD6E014FFE8 /* QRCodeRenderer.swift in Sources */,
+				1FD5FCC45F76799E2551188A /* QRCodeView.swift in Sources */,
 				6718F3D093164F23E16C0ADB /* QRScannerView.swift in Sources */,
 				648BBCD2BDD15EE4943C8370 /* RootView.swift in Sources */,
+				8D83E3AA2AAFD22F7677E4AC /* SettingsView.swift in Sources */,
+				632565BB83429767A54F22E2 /* SyncInfoView.swift in Sources */,
 				0296578A39DAB69182E9B5D4 /* TOTP.swift in Sources */,
 				7070DABFA9956F90804D119B /* TokenEditorView.swift in Sources */,
 				ABC9664A76A08CCED8DB7B2F /* TokenListModel.swift in Sources */,

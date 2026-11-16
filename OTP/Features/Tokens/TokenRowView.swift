@@ -12,9 +12,17 @@ struct TokenRowView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 14) {
             VStack(alignment: .leading, spacing: 3) {
-                Text(token.displayIssuer)
-                    .font(.headline)
-                    .lineLimit(1)
+                HStack(spacing: 4) {
+                    Text(token.displayIssuer)
+                        .font(.headline)
+                        .lineLimit(1)
+                    if token.pinned {
+                        Image(systemName: "pin.fill")
+                            .font(.caption2)
+                            .foregroundStyle(.tertiary)
+                            .accessibilityHidden(true)
+                    }
+                }
                 if !token.displayAccount.isEmpty {
                     Text(token.displayAccount)
                         .font(.subheadline)

@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 import VisionKit
 
 /// Live QR scanning via VisionKit's DataScannerViewController.
@@ -9,9 +10,12 @@ struct QRScannerView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var failureMessage: String?
+    @State private var cameraPermission = AVCaptureDevice.authorizationStatus(for: .video)
 
     private var isCameraAvailable: Bool {
-        DataScannerViewController.isSupported && DataScannerViewController.isAvailable
+        cameraPermission == .authorized
+            && DataScannerViewController.isSupported
+            && DataScannerViewController.isAvailable
     }
 
     var body: some View {
@@ -54,6 +58,11 @@ struct QRScannerView: View {
                     Button("取消") { dismiss() }
                 }
             }
+            .task {
+                guard cameraPermission == .notDetermined else { return }
+                _ = await AVCaptureDevice.requestAccess(for: .video)
+                cameraPermission = AVCaptureDevice.authorizationStatus(for: .video)
+            }
         }
     }
 
@@ -62,17 +71,36 @@ struct QRScannerView: View {
             Image(systemName: "camera.metering.unknown")
                 .font(.system(size: 44))
                 .foregroundStyle(.white.opacity(0.7))
-            Text("这台设备暂时无法使用相机扫码")
+            Text(cameraPermission == .denied || cameraPermission == .restricted
+                 ? "相机权限已关闭"
+                 : "这台设备暂时无法使用相机扫码")
                 .font(.headline)
                 .foregroundStyle(.white)
-            Text("可以返回后从相册选择二维码图片，或直接粘贴 otpauth 链接。")
+            Text(cameraPermission == .denied || cameraPermission == .restricted
+                 ? "请到系统设置里允许 OTP 使用相机，或返回改用相册图片 / 粘贴链接。"
+                 : "可以返回后从相册选择二维码图片，或直接粘贴 otpauth 链接。")
                 .font(.subheadline)
                 .foregroundStyle(.white.opacity(0.7))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 36)
-            Button("关闭") { dismiss() }
+            if cameraPermission == .denied {
+                Button("打开系统设置") {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                }
                 .buttonStyle(.borderedProminent)
                 .padding(.top, 4)
+            }
+            if cameraPermission == .denied {
+                Button("关闭") { dismiss() }
+                    .buttonStyle(.bordered)
+                    .padding(.top, 4)
+            } else {
+                Button("关闭") { dismiss() }
+                    .buttonStyle(.borderedProminent)
+                    .padding(.top, 4)
+            }
         }
     }
 }

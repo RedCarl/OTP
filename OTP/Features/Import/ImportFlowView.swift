@@ -218,6 +218,7 @@ struct ImportFlowView: View {
             }
         }
         .padding(16)
+        .background(Color(.systemGroupedBackground))
     }
 
     // MARK: - Preview

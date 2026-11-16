@@ -8,6 +8,8 @@ struct TokenListView: View {
     @State private var pendingDelete: OTPToken?
     @State private var showAddMenu = false
     @State private var importMode: ImportEntryMode?
+    @State private var showSettings = false
+    @State private var qrToken: OTPToken?
 
     var body: some View {
         NavigationStack {
@@ -20,6 +22,14 @@ struct TokenListView: View {
             }
             .navigationTitle("OTP")
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                    .accessibilityLabel("设置")
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showAddMenu = true
@@ -30,7 +40,6 @@ struct TokenListView: View {
                     .accessibilityLabel("添加令牌")
                 }
             }
-            .searchable(text: $model.searchText, prompt: "搜索名称或账号")
             .confirmationDialog("添加令牌", isPresented: $showAddMenu, titleVisibility: .visible) {
                 Button("扫码添加") { importMode = .scan }
                 Button("手动输入") { showManualEditor = true }
@@ -47,6 +56,12 @@ struct TokenListView: View {
             }
             .sheet(item: $importMode) { mode in
                 ImportFlowView(model: model, mode: mode)
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView(model: model)
+            }
+            .sheet(item: $qrToken) { token in
+                QRCodeView(token: token)
             }
             .confirmationDialog(
                 "删除这个令牌？",
@@ -114,6 +129,10 @@ struct TokenListView: View {
                     .onTapGesture {
                         Task { await model.copyCode(for: token) }
                     }
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityAction(named: "复制验证码") {
+                        Task { await model.copyCode(for: token) }
+                    }
                     .contextMenu {
                         Button {
                             editingToken = token
@@ -124,6 +143,11 @@ struct TokenListView: View {
                             Task { await model.togglePin(token) }
                         } label: {
                             Label(token.pinned ? "取消置顶" : "置顶", systemImage: token.pinned ? "pin.slash" : "pin")
+                        }
+                        Button {
+                            qrToken = token
+                        } label: {
+                            Label("显示二维码", systemImage: "qrcode")
                         }
                         Divider()
                         Button(role: .destructive) {
@@ -147,6 +171,7 @@ struct TokenListView: View {
             }
         }
         .listStyle(.insetGrouped)
+        .searchable(text: $model.searchText, prompt: "搜索名称或账号")
         .refreshable { await model.refresh() }
     }
 

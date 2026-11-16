@@ -13,6 +13,7 @@ final class TokenListModel {
     private(set) var skippedCount = 0
     private(set) var now = Date()
     private(set) var isLoading = false
+    private(set) var lastRefreshedAt: Date?
     private(set) var copiedTokenID: UUID?
     private(set) var copySignal = 0
 
@@ -83,6 +84,7 @@ final class TokenListModel {
             let result = try await store.load()
             tokens = Self.sorted(result.tokens)
             skippedCount = result.skippedCount
+            lastRefreshedAt = Date()
             recomputeCodes()
         } catch {
             errorMessage = error.localizedDescription
@@ -209,10 +211,15 @@ final class TokenListModel {
     }
 
     private func deliver(_ code: String, for token: OTPToken) {
-        Clipboard.copy(code)
+        let expiresIn = Self.clipboardExpiryEnabled ? 30.0 : nil
+        Clipboard.copy(code, expiresIn: expiresIn)
         copiedTokenID = token.id
         copySignal += 1
-        showToast("已复制 · 30 秒后自动清除剪贴板")
+        showToast(expiresIn == nil ? "已复制到剪贴板" : "已复制 · 30 秒后自动清除剪贴板")
+    }
+
+    private static var clipboardExpiryEnabled: Bool {
+        (UserDefaults.standard.object(forKey: "clipboardExpiryEnabled") as? Bool) ?? true
     }
 
     private func generateHOTP(for token: OTPToken) async {
@@ -224,7 +231,7 @@ final class TokenListModel {
         )
         guard !code.isEmpty else { return }
         codes[token.id] = code
-        Clipboard.copy(code)
+        Clipboard.copy(code, expiresIn: Self.clipboardExpiryEnabled ? 30.0 : nil)
         copiedTokenID = token.id
         copySignal += 1
         showToast("已生成并复制 \(OTPCodeFormatter.grouped(code))")

@@ -65,20 +65,5 @@
 			</dict>
 		</dict>
 	</array>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>OTP 备份文件</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.redcarl.otp.backup</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>

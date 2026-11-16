@@ -5,6 +5,32 @@ final class AddTokenUITests: XCTestCase {
         continueAfterFailure = false
     }
 
+    func testBackupExportValidation() throws {
+        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launch()
+
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
+        app.buttons["设置"].tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
+        app.buttons["导出备份"].tap()
+
+        let generate = app.buttons["生成加密备份"]
+        XCTAssertTrue(generate.waitForExistence(timeout: 10))
+        XCTAssertFalse(generate.isEnabled, "export should require matching passphrases")
+
+        let fields = app.secureTextFields
+        XCTAssertGreaterThanOrEqual(fields.count, 2)
+        fields.element(boundBy: 0).tap()
+        fields.element(boundBy: 0).typeText("correcthorse")
+        fields.element(boundBy: 1).tap()
+        fields.element(boundBy: 1).typeText("correcthorse")
+        XCTAssertTrue(generate.isEnabled)
+
+        app.buttons["取消"].tap()
+    }
+
     func testPasteLinkImport() throws {
         let service = "com.redcarl.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
