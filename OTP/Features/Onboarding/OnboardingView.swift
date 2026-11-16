@@ -49,11 +49,7 @@ struct OnboardingView: View {
                 .foregroundStyle(.tint)
             }
             .padding(.horizontal, 30)
-
-            Text("不联网、不上传、不收集数据。")
-                .font(.caption2)
-                .foregroundStyle(.tertiary)
-                .padding(.bottom, 12)
+            .padding(.bottom, 28)
         }
     }
 }
