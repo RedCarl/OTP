@@ -3,7 +3,8 @@ import SwiftUI
 struct SettingsView: View {
     let model: TokenListModel
 
-    @AppStorage("appLockEnabled") private var appLockEnabled = true
+    @AppStorage("appLockEnabled") private var appLockEnabled = false
+    @AppStorage("lockPromptShown") private var lockPromptShown = false
     @AppStorage("clipboardExpiryEnabled") private var clipboardExpiryEnabled = true
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
     @AppStorage("lastBackupAt") private var lastBackupAt: Double = 0
@@ -12,6 +13,7 @@ struct SettingsView: View {
     @State private var showImport = false
     @State private var showClearConfirmation = false
     @State private var showCopyLinksConfirmation = false
+    @State private var showDeviceAuthAlert = false
     @State private var isClearing = false
 
     var body: some View {
@@ -19,7 +21,7 @@ struct SettingsView: View {
             Form {
                 Section {
                     HStack {
-                        Label("iCloud 钥匙串", systemImage: "icloud")
+                        settingLabel("iCloud 钥匙串", systemImage: "icloud")
                         Spacer()
                         Text("\(model.tokens.count) 个令牌")
                             .foregroundStyle(.secondary)
@@ -27,17 +29,20 @@ struct SettingsView: View {
                     Button {
                         Task { await model.refresh() }
                     } label: {
-                        Label("刷新", systemImage: "arrow.clockwise")
+                        settingLabel("刷新", systemImage: "arrow.clockwise")
                     }
-                    NavigationLink {
-                        SyncInfoView()
-                    } label: {
-                        Label("同步帮助", systemImage: "questionmark.circle")
-                    }
+                    .tint(Color.primary)
                 }
 
                 Section {
-                    Toggle("Face ID 解锁", isOn: $appLockEnabled)
+                    Toggle(isOn: $appLockEnabled) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("解锁保护")
+                            Text(AppLockController.methodName)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                     Toggle("复制后清空剪贴板", isOn: $clipboardExpiryEnabled)
                     Toggle("后台隐藏内容", isOn: $hideInAppSwitcher)
                 }
@@ -46,24 +51,27 @@ struct SettingsView: View {
                     Button {
                         showBackupExport = true
                     } label: {
-                        Label("导出备份", systemImage: "square.and.arrow.up")
+                        settingLabel("导出备份", systemImage: "square.and.arrow.up")
                     }
+                    .tint(Color.primary)
                     Button {
                         showImport = true
                     } label: {
-                        Label("导入数据", systemImage: "square.and.arrow.down")
+                        settingLabel("导入数据", systemImage: "square.and.arrow.down")
                     }
+                    .tint(Color.primary)
                     Button {
                         showCopyLinksConfirmation = true
                     } label: {
-                        Label("复制令牌链接", systemImage: "doc.on.doc")
+                        settingLabel("复制令牌链接", systemImage: "doc.on.doc")
                     }
+                    .tint(Color.primary)
                     .disabled(model.tokens.isEmpty)
                     HStack {
-                        Text("上次备份")
+                        settingLabel("上次备份", systemImage: "clock.arrow.circlepath")
                         Spacer()
                         Text(lastBackupText)
-                            .foregroundStyle(lastBackupAt == 0 && model.tokens.count >= 3 ? Color.orange : Color.secondary)
+                            .foregroundStyle(.secondary)
                     }
                 }
 
@@ -74,11 +82,13 @@ struct SettingsView: View {
                         if isClearing {
                             ProgressView()
                         } else {
-                            Text("清空所有令牌")
+                            Label("清空所有令牌", systemImage: "trash")
                         }
                     }
                     .disabled(model.tokens.isEmpty || isClearing)
+                }
 
+                Section {
                     NavigationLink {
                         AboutView()
                     } label: {
@@ -93,6 +103,19 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showImport) {
                 ImportFlowView(model: model, mode: .file)
+            }
+            .onChange(of: appLockEnabled) { _, enabled in
+                guard enabled else { return }
+                lockPromptShown = true
+                if !AppLockController.canAuthenticate {
+                    appLockEnabled = false
+                    showDeviceAuthAlert = true
+                }
+            }
+            .alert("无法开启解锁保护", isPresented: $showDeviceAuthAlert) {
+                Button("好", role: .cancel) {}
+            } message: {
+                Text("请先在系统设置里为这台设备设置锁屏密码。")
             }
             .alert("复制明文链接？", isPresented: $showCopyLinksConfirmation) {
                 Button("复制") {
@@ -117,6 +140,16 @@ struct SettingsView: View {
             } message: {
                 Text("所有设备上的令牌都会被删除，无法撤销。")
             }
+        }
+    }
+
+    private func settingLabel(_ title: String, systemImage: String) -> some View {
+        Label {
+            Text(title)
+                .foregroundStyle(.primary)
+        } icon: {
+            Image(systemName: systemImage)
+                .foregroundStyle(Color.accentColor)
         }
     }
 

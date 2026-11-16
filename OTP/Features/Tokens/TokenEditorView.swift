@@ -96,8 +96,6 @@ struct TokenEditorView: View {
                             iconData = nil
                         }
                     }
-                } header: {
-                    Text("图标")
                 }
 
                 Section {
@@ -198,7 +196,7 @@ struct TokenEditorView: View {
                     iconPhotoItem = nil
                 }
             }
-            .navigationTitle(existing == nil ? "添加令牌" : "编辑令牌")
+            .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -11,6 +11,7 @@
   <img src="docs/screen-import.png" width="240" alt="粘贴导入">
   <img src="docs/screen-editor.png" width="240" alt="编辑令牌">
   <img src="docs/screen-onboarding.png" width="240" alt="首次启动">
+  <img src="docs/screen-lock-prompt.png" width="240" alt="开启解锁保护提醒">
 </p>
 
 ## 特性
@@ -22,7 +23,7 @@
 - **添加方式**：扫码、手动输入、粘贴 otpauth 链接、从相册识别二维码、导入文件。
 - **迁移**：Google Authenticator 迁移码、Aegis（未加密）、2FAS（未加密）、本 App 备份、任意 otpauth 链接。
 - **备份**：AES-256-GCM 加密的 `.otpbackup`（PBKDF2-HMAC-SHA256，210,000 次迭代），也可导出未加密 JSON 或单条二维码。
-- **保护**：Face ID 解锁、切后台遮挡、剪贴板定时过期、Face ID 不可用时自动跳过锁定。
+- **保护**：Face ID / iPhone 密码解锁（3 个令牌或使用 5 天后主动询问一次，按设备能力显示名称）、切后台遮挡、剪贴板定时过期；不可用时自动跳过锁定。
 - **无网络**：App 不发起任何请求，没有分析或第三方 SDK。
 
 ## 快速开始
@@ -118,7 +119,7 @@ value       = JSON（见下）
 - 密钥只存在钥匙串；UserDefaults 只存 UI 偏好（锁开关、上次备份时间、引导标记）。
 - 备份加密：PBKDF2-HMAC-SHA256（210,000 次、16 字节随机盐）派生 32 字节密钥，AES-256-GCM 加密并校验 tag；错误密码与文件损坏无法区分，统一报错。
 - 复制验证码时设置剪贴板过期时间（默认 30 秒，可在设置关闭）。
-- Face ID 用 `.deviceOwnerAuthentication`（支持设备密码回退）；从后台返回超过 60 秒才重新锁定。
+- 解锁使用 `.deviceOwnerAuthentication`：优先 Face ID / Touch ID，自动回退到设备密码；从后台返回超过 60 秒才重新锁定。
 - 切到后台时全屏遮挡；验证码文本标了 `.privacySensitive()`。
 
 ## 项目结构

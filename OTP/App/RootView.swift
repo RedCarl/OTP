@@ -14,9 +14,12 @@ struct RootView: View {
     @State private var showOnboarding = false
     @State private var showImportAfterOnboarding = false
     @State private var selectedTab: AppTab = .tokens
+    @State private var showLockSuggestion = false
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
+    @AppStorage("firstLaunchAt") private var firstLaunchAt: Double = 0
+    @AppStorage("lockPromptShown") private var lockPromptShown = false
 
     var body: some View {
         ZStack {
@@ -58,6 +61,9 @@ struct RootView: View {
         }
         .animation(.easeInOut(duration: 0.15), value: lock.isLocked)
         .task {
+            if firstLaunchAt == 0 {
+                firstLaunchAt = Date().timeIntervalSince1970
+            }
             await model.start()
             #if DEBUG
             if AppConfiguration.shouldSeedDemoTokens {
@@ -71,6 +77,7 @@ struct RootView: View {
             if lock.isLocked {
                 await lock.unlock()
             }
+            evaluateLockSuggestion()
         }
         .fullScreenCover(isPresented: $showOnboarding) {
             OnboardingView { wantsImport in
@@ -85,12 +92,18 @@ struct RootView: View {
         .sheet(isPresented: $showImportAfterOnboarding) {
             ImportFlowView(model: model, mode: .pick, onImported: { selectedTab = .tokens })
         }
+        .onChange(of: model.tokens.count) { _, _ in
+            evaluateLockSuggestion()
+        }
         .onChange(of: scenePhase) { _, phase in
             lock.handleScenePhase(phase)
             switch phase {
             case .active:
                 model.startTicker()
-                Task { await model.refresh() }
+                Task {
+                    await model.refresh()
+                    evaluateLockSuggestion()
+                }
                 if lock.isLocked {
                     Task { await lock.unlock() }
                 }
@@ -100,6 +113,37 @@ struct RootView: View {
                 break
             }
         }
+        .alert("给令牌加一道锁？", isPresented: $showLockSuggestion) {
+            Button("开启") {
+                enableUnlockProtection()
+            }
+            Button("以后再说", role: .cancel) {
+                lockPromptShown = true
+            }
+        } message: {
+            Text("使用 \(AppLockController.methodName) 解锁 OTP，别人拿到手机也看不到验证码。")
+        }
+    }
+
+    private func evaluateLockSuggestion() {
+        guard !AppConfiguration.isAutomatedRun else { return }
+        let stored = UserDefaults.standard.object(forKey: "appLockEnabled") as? Bool ?? false
+        guard LockSuggestion.shouldAsk(
+            tokenCount: model.tokens.count,
+            firstLaunchAt: Date(timeIntervalSince1970: firstLaunchAt),
+            now: Date(),
+            hasAsked: lockPromptShown,
+            isEnabled: stored
+        ), AppLockController.canAuthenticate else {
+            return
+        }
+        showLockSuggestion = true
+    }
+
+    private func enableUnlockProtection() {
+        lockPromptShown = true
+        UserDefaults.standard.set(true, forKey: "appLockEnabled")
+        model.showToast("已开启解锁保护")
     }
 }
 

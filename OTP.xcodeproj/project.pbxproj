@@ -55,7 +55,6 @@
 		629D8E063ED1DF8A39424601 /* brand-slack.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F81E8F192D4DC616528E15 /* brand-slack.png */; };
 		630DAA582A7883A718F25C38 /* TokenListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137F150CD79102AD196A0C8 /* TokenListModelTests.swift */; };
 		63225A4FAF9E1167111D543D /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29802EC3E1B4CFD819426E4 /* TokenRepository.swift */; };
-		632565BB83429767A54F22E2 /* SyncInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D81F15C78C5C885FF2D94A4 /* SyncInfoView.swift */; };
 		632DECFC3356FD3C315A027E /* BackupCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199E348278D220ED8E66930 /* BackupCrypto.swift */; };
 		648BBCD2BDD15EE4943C8370 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03AEDCAC46719DCBA1C2EE /* RootView.swift */; };
 		65951A72CC621827A1DACEE4 /* KeychainProbeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF846D423255608E2B542BE /* KeychainProbeTests.swift */; };
@@ -101,9 +100,11 @@
 		C0633FCC1E63F3399ADF7941 /* IconImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603716B533E8F1B67D47503B /* IconImageProcessor.swift */; };
 		C3C6018574A88ABF4CB92F65 /* ImportCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80008DCE66B3BFE981C83047 /* ImportCandidate.swift */; };
 		C41CDA0CCDBAF11F9763E8C0 /* brand-protonmail.png in Resources */ = {isa = PBXBuildFile; fileRef = 022E710B701703173A574615 /* brand-protonmail.png */; };
+		C4A4D58B0FB5DDB94B50323B /* LockSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C663E5C97CE4C4FD0301 /* LockSuggestion.swift */; };
 		C81E41F50D7F036A2EE5C563 /* brand-1password.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD0106D3A1C9BD0E45864EB /* brand-1password.png */; };
 		C8962D3FE027F6051C611E8F /* BackupExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F49CAAE30B6AA594997C9C /* BackupExportView.swift */; };
 		CAA33B94281A7C4C20832FE9 /* URIImportParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644EF306229469E9DF7AF5B /* URIImportParser.swift */; };
+		CCA22AE9838ADDD79EDC804C /* LockSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60E7F090F8D568F328BBA6 /* LockSuggestionTests.swift */; };
 		CE69FA19165A3CDB0E249E5C /* brand-discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AF0946595C3D89DB30A935F /* brand-discord.png */; };
 		D2E1526B453A685BAF8FC537 /* brand-github.png in Resources */ = {isa = PBXBuildFile; fileRef = D91DE59CE15FB798D7AFBD78 /* brand-github.png */; };
 		D724459CF5969F111BC259B1 /* brand-x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C9A1101713A0060034298EC /* brand-x.png */; };
@@ -141,6 +142,7 @@
 /* Begin PBXFileReference section */
 		022E710B701703173A574615 /* brand-protonmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-protonmail.png"; sourceTree = "<group>"; };
 		031ACC87716CD762B03D0BF0 /* TOTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPTests.swift; sourceTree = "<group>"; };
+		04E5C663E5C97CE4C4FD0301 /* LockSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSuggestion.swift; sourceTree = "<group>"; };
 		098679A3639FD668F09A9857 /* KeychainTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTokenRepository.swift; sourceTree = "<group>"; };
 		0C9A1101713A0060034298EC /* brand-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-x.png"; sourceTree = "<group>"; };
 		133F33245A3AC07B919C9B55 /* HOTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOTPTests.swift; sourceTree = "<group>"; };
@@ -201,7 +203,6 @@
 		89042963559F1314CE10D31D /* brand-railway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-railway.png"; sourceTree = "<group>"; };
 		8952D65BC40B0C222FC70912 /* ISO8601Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO8601Value.swift; sourceTree = "<group>"; };
 		8B04F1B56E8B99CF2D3ED2DE /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
-		8D81F15C78C5C885FF2D94A4 /* SyncInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncInfoView.swift; sourceTree = "<group>"; };
 		8DD268B01C63854D501468D4 /* OTP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OTP.entitlements; sourceTree = "<group>"; };
 		8F465E1A8F604BC2A7194D32 /* TokenListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListModel.swift; sourceTree = "<group>"; };
 		91B775299B956D9E2BBBEEAB /* Base32Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base32Tests.swift; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 		D37CF683C4F1FA338CE6B6AA /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		D91DE59CE15FB798D7AFBD78 /* brand-github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-github.png"; sourceTree = "<group>"; };
 		DA1090F6DBE20F46CEFEABB2 /* brand-coinbase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-coinbase.png"; sourceTree = "<group>"; };
+		DE60E7F090F8D568F328BBA6 /* LockSuggestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSuggestionTests.swift; sourceTree = "<group>"; };
 		E0B76141BF4B5B30706850A2 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		E1906D5433AB34AEF4411BBF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E29802EC3E1B4CFD819426E4 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				E7168F8A8CF10E431996115C /* IconImageProcessorTests.swift */,
 				3EF846D423255608E2B542BE /* KeychainProbeTests.swift */,
 				133FC287AA9A7CCB5D62AE04 /* KeychainRepositoryTests.swift */,
+				DE60E7F090F8D568F328BBA6 /* LockSuggestionTests.swift */,
 				4A430C7035942CE14480D3D4 /* OTPAuthURITests.swift */,
 				194C4AD1C8EB329044956904 /* OTPTokenCodableTests.swift */,
 				5C69B9BAD52F2E0D1FB048A4 /* QRCodeRendererTests.swift */,
@@ -503,6 +506,7 @@
 			children = (
 				6E824F5FD1B727C85A0B67B1 /* AppLockController.swift */,
 				8B04F1B56E8B99CF2D3ED2DE /* LockScreenView.swift */,
+				04E5C663E5C97CE4C4FD0301 /* LockSuggestion.swift */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -513,7 +517,6 @@
 				AFAA4FF832097C8198214F6F /* AboutView.swift */,
 				17F49CAAE30B6AA594997C9C /* BackupExportView.swift */,
 				E1906D5433AB34AEF4411BBF /* SettingsView.swift */,
-				8D81F15C78C5C885FF2D94A4 /* SyncInfoView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				075590BDE3B1855D184D36E3 /* IconImageProcessorTests.swift in Sources */,
 				65951A72CC621827A1DACEE4 /* KeychainProbeTests.swift in Sources */,
 				69F5EE05D154C179FA2470FC /* KeychainRepositoryTests.swift in Sources */,
+				CCA22AE9838ADDD79EDC804C /* LockSuggestionTests.swift in Sources */,
 				98AA352775C1E1E32C72EF15 /* OTPAuthURITests.swift in Sources */,
 				2DFD10FC6CD5D051C5CE4DF5 /* OTPTokenCodableTests.swift in Sources */,
 				6E9D29C039D640E739A692AD /* QRCodeRendererTests.swift in Sources */,
@@ -775,6 +779,7 @@
 				F072653209A8856B727D66F9 /* KeychainError.swift in Sources */,
 				AE290547E833460C7009A5C3 /* KeychainTokenRepository.swift in Sources */,
 				FA57BD32952457B62CCAAD31 /* LockScreenView.swift in Sources */,
+				C4A4D58B0FB5DDB94B50323B /* LockSuggestion.swift in Sources */,
 				487FC852D4D4744EA6C3A6BE /* MarqueeText.swift in Sources */,
 				6F239C6BA065B9776C8E7DFB /* OTPAlgorithm.swift in Sources */,
 				45EF30B4C40F71B2493E065C /* OTPApp.swift in Sources */,
@@ -792,7 +797,6 @@
 				6718F3D093164F23E16C0ADB /* QRScannerView.swift in Sources */,
 				648BBCD2BDD15EE4943C8370 /* RootView.swift in Sources */,
 				8D83E3AA2AAFD22F7677E4AC /* SettingsView.swift in Sources */,
-				632565BB83429767A54F22E2 /* SyncInfoView.swift in Sources */,
 				0296578A39DAB69182E9B5D4 /* TOTP.swift in Sources */,
 				7070DABFA9956F90804D119B /* TokenEditorView.swift in Sources */,
 				016E711B7B4E55A578C4FDFB /* TokenIconView.swift in Sources */,

@@ -22,8 +22,11 @@ struct LockScreenView: View {
                 Button {
                     onUnlock()
                 } label: {
-                    Label("使用 Face ID 解锁", systemImage: "faceid")
-                        .padding(.horizontal, 8)
+                    Label(
+                        "使用 \(AppLockController.methodName) 解锁",
+                        systemImage: AppLockController.methodIcon
+                    )
+                    .padding(.horizontal, 8)
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
