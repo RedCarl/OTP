@@ -1,0 +1,71 @@
+name: OTP
+options:
+  bundleIdPrefix: com.redcarl
+  deploymentTarget:
+    iOS: "18.0"
+  developmentLanguage: zh-Hans
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+targets:
+  OTP:
+    type: application
+    platform: iOS
+    sources:
+      - path: OTP
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.redcarl.otp
+        PRODUCT_NAME: OTP
+        INFOPLIST_FILE: OTP/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: OTP/OTP.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        TARGETED_DEVICE_FAMILY: "1"
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        DEVELOPMENT_TEAM: B8787NKP38
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    scheme:
+      testTargets:
+        - OTPTests
+        - OTPUITests
+      gatherCoverageData: true
+
+  OTPUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: OTPUITests
+    dependencies:
+      - target: OTP
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.redcarl.otp.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: OTP
+
+  OTPTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: OTPTests
+    dependencies:
+      - target: OTP
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.redcarl.otp.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/OTP.app/OTP"
+        BUNDLE_LOADER: "$(TEST_HOST)"
