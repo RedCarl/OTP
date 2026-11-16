@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LockScreenView: View {
+    var isAuthenticating: Bool = false
     var onUnlock: () -> Void
 
     var body: some View {
@@ -19,18 +20,25 @@ struct LockScreenView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
-                Button {
-                    onUnlock()
-                } label: {
-                    Label(
-                        "使用 \(AppLockController.methodName) 解锁",
-                        systemImage: AppLockController.methodIcon
-                    )
-                    .padding(.horizontal, 8)
+
+                if isAuthenticating {
+                    ProgressView()
+                        .controlSize(.large)
+                        .padding(.top, 4)
+                } else {
+                    Button {
+                        onUnlock()
+                    } label: {
+                        Label(
+                            "使用 \(AppLockController.methodName) 解锁",
+                            systemImage: AppLockController.methodIcon
+                        )
+                        .padding(.horizontal, 8)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .padding(.top, 4)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .padding(.top, 4)
             }
             .padding(32)
         }

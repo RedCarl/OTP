@@ -1,6 +1,6 @@
 # OTP · iOS 原生令牌管理器
 
-一款数据只放在 **iCloud 钥匙串** 里的 OTP 认证器：端到端加密、自动同步、可备份可迁移。底部三个标签页（令牌 / 添加 / 设置），点一下验证码就复制。
+一款数据只放在 **iCloud 钥匙串** 里的 OTP 认证器：端到端加密、自动同步、可备份可迁移。底部两个标签页（令牌 / 设置），添加按钮在搜索栏右侧，点一下验证码就复制。
 
 <p>
   <img src="docs/screen-list.png" width="240" alt="主列表">
@@ -23,7 +23,7 @@
 - **添加方式**：扫码、手动输入、粘贴 otpauth 链接、从相册识别二维码、导入文件。
 - **迁移**：Google Authenticator 迁移码、Aegis（未加密）、2FAS（未加密）、本 App 备份、任意 otpauth 链接。
 - **备份**：AES-256-GCM 加密的 `.otpbackup`（PBKDF2-HMAC-SHA256，210,000 次迭代），也可导出未加密 JSON 或单条二维码。
-- **保护**：Face ID / iPhone 密码解锁（3 个令牌或使用 5 天后主动询问一次，按设备能力显示名称）、切后台遮挡、剪贴板定时过期；不可用时自动跳过锁定。
+- **保护**：Face ID / iPhone 密码解锁（3 个令牌或使用 5 天后主动询问一次；开启时先完成一次验证，成功后才生效）、切后台遮挡、剪贴板定时过期；不可用时自动跳过锁定。
 - **无网络**：App 不发起任何请求，没有分析或第三方 SDK。
 
 ## 快速开始
@@ -135,7 +135,7 @@ OTP/
   Core/Backup/               备份信封、PBKDF2 + AES-GCM、FileDocument
   Core/Import/               Protobuf、Google 迁移码、Aegis、2FAS、URI 列表
   Core/Support/              ISO8601、启动配置
-  Features/Tokens/           列表、行、编辑、二维码、品牌图标、添加页
+  Features/Tokens/           列表、行、编辑、二维码、品牌图标、添加弹窗
   Features/Import/           导入流程与预览
   Features/Scanner/          VisionKit 扫码、相册识别
   Features/Settings/         设置、备份导出

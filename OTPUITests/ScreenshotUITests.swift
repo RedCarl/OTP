@@ -19,8 +19,12 @@ final class ScreenshotUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
         attach(name: "02-settings")
 
-        app.tabBars.buttons["添加"].tap()
-        XCTAssertTrue(app.navigationBars["添加"].waitForExistence(timeout: 10))
+        app.tabBars.buttons["令牌"].tap()
+        let plus = app.buttons["tokens.add"]
+        XCTAssertTrue(plus.waitForExistence(timeout: 10))
+        plus.tap()
+        XCTAssertTrue(app.navigationBars["添加令牌"].waitForExistence(timeout: 10))
+        Thread.sleep(forTimeInterval: 1.2)
         attach(name: "05-add")
         let paste = app.buttons["add.paste"]
         XCTAssertTrue(paste.waitForExistence(timeout: 10))

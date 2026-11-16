@@ -7,6 +7,7 @@ import SwiftUI
 @Observable
 final class AppLockController {
     private(set) var isLocked = false
+    private(set) var isAuthenticating = false
 
     private var backgroundedAt: Date?
     private var didPrepareLaunch = false
@@ -43,6 +44,24 @@ final class AppLockController {
         }
     }
 
+    /// Shared authentication used both for unlocking and for enabling the feature.
+    static func authenticate(reason: String) async -> Bool {
+        let context = LAContext()
+        context.localizedCancelTitle = "取消"
+        var error: NSError?
+        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
+            return false
+        }
+        do {
+            return try await context.evaluatePolicy(
+                .deviceOwnerAuthentication,
+                localizedReason: reason
+            )
+        } catch {
+            return false
+        }
+    }
+
     var isEnabled: Bool {
         if AppConfiguration.isAutomatedRun { return false }
         return UserDefaults.standard.object(forKey: "appLockEnabled") as? Bool ?? false
@@ -56,13 +75,16 @@ final class AppLockController {
     }
 
     func unlock() async {
-        guard isLocked else { return }
+        guard isLocked, !isAuthenticating else { return }
+        isAuthenticating = true
+        defer { isAuthenticating = false }
+
         let context = LAContext()
         context.localizedCancelTitle = "取消"
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
             // No biometrics / passcode configured: never trap the user.
-            isLocked = false
+            withAnimation(.easeOut(duration: 0.22)) { isLocked = false }
             return
         }
         do {
@@ -70,7 +92,9 @@ final class AppLockController {
                 .deviceOwnerAuthentication,
                 localizedReason: "解锁 OTP 令牌"
             )
-            if success { isLocked = false }
+            if success {
+                withAnimation(.easeOut(duration: 0.22)) { isLocked = false }
+            }
         } catch {
             // Cancelled or failed: keep the lock screen visible.
         }
@@ -87,7 +111,7 @@ final class AppLockController {
                 return
             }
             if let backgroundedAt, Date().timeIntervalSince(backgroundedAt) > 60 {
-                isLocked = true
+                withAnimation(.easeIn(duration: 0.2)) { isLocked = true }
             }
             backgroundedAt = nil
         default:

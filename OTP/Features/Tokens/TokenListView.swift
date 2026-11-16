@@ -11,10 +11,24 @@ struct TokenListView: View {
     var body: some View {
         VStack(spacing: 0) {
             if !model.tokens.isEmpty {
-                SearchField(text: $model.searchText)
-                    .padding(.horizontal, 16)
-                    .padding(.top, 6)
-                    .padding(.bottom, 8)
+                HStack(spacing: 10) {
+                    SearchField(text: $model.searchText)
+
+                    Button(action: onRequestAdd) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 17, weight: .semibold))
+                            .frame(width: 38, height: 38)
+                            .background(
+                                Circle().fill(Color(.tertiarySystemFill))
+                            )
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("添加令牌")
+                    .accessibilityIdentifier("tokens.add")
+                }
+                .padding(.horizontal, 16)
+                .padding(.top, 6)
+                .padding(.bottom, 8)
             }
 
             content

@@ -2,7 +2,6 @@ import SwiftUI
 
 enum AppTab: Hashable {
     case tokens
-    case add
     case settings
 }
 
@@ -15,6 +14,7 @@ struct RootView: View {
     @State private var showImportAfterOnboarding = false
     @State private var selectedTab: AppTab = .tokens
     @State private var showLockSuggestion = false
+    @State private var showAddSheet = false
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
@@ -25,20 +25,12 @@ struct RootView: View {
         ZStack {
             TabView(selection: $selectedTab) {
                 TokenListView(model: model) {
-                    selectedTab = .add
+                    showAddSheet = true
                 }
                 .tabItem {
                     Label("令牌", systemImage: "key.fill")
                 }
                 .tag(AppTab.tokens)
-
-                AddTokenTabView(model: model) {
-                    selectedTab = .tokens
-                }
-                .tabItem {
-                    Label("添加", systemImage: "plus.circle.fill")
-                }
-                .tag(AppTab.add)
 
                 SettingsView(model: model)
                     .tabItem {
@@ -48,18 +40,20 @@ struct RootView: View {
             }
 
             if lock.isLocked {
-                LockScreenView {
+                LockScreenView(isAuthenticating: lock.isAuthenticating) {
                     Task { await lock.unlock() }
                 }
-                .transition(.opacity)
+                .transition(.opacity.combined(with: .scale(scale: 1.02)))
+                .zIndex(1)
             }
 
             if scenePhase != .active && hideInAppSwitcher {
                 PrivacyShield()
                     .transition(.opacity)
+                    .zIndex(2)
             }
         }
-        .animation(.easeInOut(duration: 0.15), value: lock.isLocked)
+        .animation(.easeInOut(duration: 0.22), value: lock.isLocked)
         .task {
             if firstLaunchAt == 0 {
                 firstLaunchAt = Date().timeIntervalSince1970
@@ -73,9 +67,6 @@ struct RootView: View {
             lock.prepareForLaunch(allowLock: hasCompletedOnboarding)
             if !hasCompletedOnboarding && !AppConfiguration.isAutomatedRun {
                 showOnboarding = true
-            }
-            if lock.isLocked {
-                await lock.unlock()
             }
             evaluateLockSuggestion()
         }
@@ -92,6 +83,20 @@ struct RootView: View {
         .sheet(isPresented: $showImportAfterOnboarding) {
             ImportFlowView(model: model, mode: .pick, onImported: { selectedTab = .tokens })
         }
+        .sheet(isPresented: $showAddSheet) {
+            AddTokenSheetView(model: model) {
+                showAddSheet = false
+                selectedTab = .tokens
+            }
+        }
+        .onChange(of: lock.isLocked) { _, locked in
+            guard locked else { return }
+            Task {
+                // Let the lock screen finish appearing before the system prompt.
+                try? await Task.sleep(for: .milliseconds(350))
+                await lock.unlock()
+            }
+        }
         .onChange(of: model.tokens.count) { _, _ in
             evaluateLockSuggestion()
         }
@@ -104,9 +109,6 @@ struct RootView: View {
                     await model.refresh()
                     evaluateLockSuggestion()
                 }
-                if lock.isLocked {
-                    Task { await lock.unlock() }
-                }
             case .background:
                 model.stopTicker()
             default:
@@ -115,7 +117,13 @@ struct RootView: View {
         }
         .alert("给令牌加一道锁？", isPresented: $showLockSuggestion) {
             Button("开启") {
-                enableUnlockProtection()
+                lockPromptShown = true
+                Task {
+                    if await AppLockController.authenticate(reason: "开启 Face ID 解锁") {
+                        UserDefaults.standard.set(true, forKey: "appLockEnabled")
+                        model.showToast("已开启 Face ID")
+                    }
+                }
             }
             Button("以后再说", role: .cancel) {
                 lockPromptShown = true
@@ -138,12 +146,6 @@ struct RootView: View {
             return
         }
         showLockSuggestion = true
-    }
-
-    private func enableUnlockProtection() {
-        lockPromptShown = true
-        UserDefaults.standard.set(true, forKey: "appLockEnabled")
-        model.showToast("已开启解锁保护")
     }
 }
 

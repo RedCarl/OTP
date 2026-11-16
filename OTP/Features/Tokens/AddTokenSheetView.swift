@@ -1,9 +1,10 @@
 import SwiftUI
 
-struct AddTokenTabView: View {
+struct AddTokenSheetView: View {
     let model: TokenListModel
     var onFinished: () -> Void
 
+    @Environment(\.dismiss) private var dismiss
     @State private var showManualEditor = false
     @State private var importMode: ImportEntryMode?
     @State private var showScanner = false
@@ -44,8 +45,17 @@ struct AddTokenTabView: View {
                 }
                 .accessibilityIdentifier("add.file")
             }
-            .navigationTitle("添加")
+            .navigationTitle("添加令牌")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("取消") { dismiss() }
+                }
+            }
         }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+        .presentationBackground(Color(.systemGroupedBackground))
         .sheet(isPresented: $showManualEditor) {
             TokenEditorView(model: model, token: nil, onSaved: onFinished)
         }

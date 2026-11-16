@@ -15,6 +15,7 @@
 		075590BDE3B1855D184D36E3 /* IconImageProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7168F8A8CF10E431996115C /* IconImageProcessorTests.swift */; };
 		07F7F7B52E7B6A3634BCCD55 /* brand-railway.png in Resources */ = {isa = PBXBuildFile; fileRef = 89042963559F1314CE10D31D /* brand-railway.png */; };
 		0AB71DA48665A7AF81D47EF9 /* brand-heroku.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CE304734D26894773A3BB /* brand-heroku.png */; };
+		0B0B57D9DA9449268102B368 /* AddTokenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E085882FF0CBF2AE8DE90 /* AddTokenSheetView.swift */; };
 		0F64A72B7DC31E92A5881D22 /* brand-bilibili.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9B58C1621D49DC0FAA9693 /* brand-bilibili.png */; };
 		12F2F912CFF5D595E4A78DA6 /* brand-apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3B1316504DFA7EB0D942A /* brand-apple.png */; };
 		14262C849A003FAD650AADDA /* brand-aws.png in Resources */ = {isa = PBXBuildFile; fileRef = C705342C5D05F511165ECCB8 /* brand-aws.png */; };
@@ -25,7 +26,6 @@
 		1E0FEB682E11C348BC2FC31F /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5A7B118136457EB5B4052 /* BackupTests.swift */; };
 		1F39FD4DD65421C7AE33ACAF /* GoogleAuthenticatorImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDEFEDEC486298D3BF53060 /* GoogleAuthenticatorImport.swift */; };
 		1FD5FCC45F76799E2551188A /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEC4E1A0EC2204B0ACEB8D /* QRCodeView.swift */; };
-		224C1A6EDD0DE221F73DEDD4 /* AddTokenTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96AC64EA8D63E9B72F39BE /* AddTokenTabView.swift */; };
 		226A5951FEC06FCD63148D8B /* BackupError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0B1C58AD5A3AFA129D907 /* BackupError.swift */; };
 		24E53C84F53325ABF8409F43 /* ISO8601Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8952D65BC40B0C222FC70912 /* ISO8601Value.swift */; };
 		25C78CF2D21E23E539635B06 /* HOTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F33245A3AC07B919C9B55 /* HOTPTests.swift */; };
@@ -160,6 +160,7 @@
 		2DC2E6BADDE76D77F29F74F1 /* TokenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenListView.swift; sourceTree = "<group>"; };
 		38BFB07266A54C990A8F440E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3AF0946595C3D89DB30A935F /* brand-discord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-discord.png"; sourceTree = "<group>"; };
+		3D2E085882FF0CBF2AE8DE90 /* AddTokenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenSheetView.swift; sourceTree = "<group>"; };
 		3EF846D423255608E2B542BE /* KeychainProbeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProbeTests.swift; sourceTree = "<group>"; };
 		4199E348278D220ED8E66930 /* BackupCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupCrypto.swift; sourceTree = "<group>"; };
 		4481BDE72F771ABC8B0EABA0 /* brand-instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-instagram.png"; sourceTree = "<group>"; };
@@ -170,7 +171,6 @@
 		4A78D0F656D66DA6C8A90FFA /* brand-gitlab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-gitlab.png"; sourceTree = "<group>"; };
 		4B721FDC1A5BB275DEA3BB5B /* brand-figma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-figma.png"; sourceTree = "<group>"; };
 		4B7622B8D8708AF2C6AB8D1F /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
-		4D96AC64EA8D63E9B72F39BE /* AddTokenTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenTabView.swift; sourceTree = "<group>"; };
 		4E9344A8557376820DD417EE /* TokenEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEditorView.swift; sourceTree = "<group>"; };
 		58011D980D2F1475D7C67E3E /* brand-binance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-binance.png"; sourceTree = "<group>"; };
 		5915D56FB54C0FBC456458D0 /* OTPKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPKind.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 		63E9A036B61003A1B1E36BDD /* Tokens */ = {
 			isa = PBXGroup;
 			children = (
-				4D96AC64EA8D63E9B72F39BE /* AddTokenTabView.swift */,
+				3D2E085882FF0CBF2AE8DE90 /* AddTokenSheetView.swift */,
 				BE07BD6EB27C560B1AEB67A4 /* BrandCatalog.swift */,
 				F7CEC4E1A0EC2204B0ACEB8D /* QRCodeView.swift */,
 				4E9344A8557376820DD417EE /* TokenEditorView.swift */,
@@ -754,7 +754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				224C1A6EDD0DE221F73DEDD4 /* AddTokenTabView.swift in Sources */,
+				0B0B57D9DA9449268102B368 /* AddTokenSheetView.swift in Sources */,
 				47D8A3EBED63AF1D8241C92C /* AegisImport.swift in Sources */,
 				500169A5AE4F0C9B0BF2E5D8 /* AppConfiguration.swift in Sources */,
 				4B684351B76B2F8D9A278A15 /* AppLockController.swift in Sources */,

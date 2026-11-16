@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var showDeviceAuthAlert = false
     @State private var isClearing = false
     @State private var isRefreshing = false
+    @State private var isEnablingLock = false
 
     var body: some View {
         NavigationStack {
@@ -52,14 +53,19 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    Toggle(isOn: $appLockEnabled) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("解锁保护")
-                            Text(AppLockController.methodName)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                    Toggle(isOn: Binding(
+                        get: { appLockEnabled || isEnablingLock },
+                        set: { wantsOn in
+                            if wantsOn {
+                                Task { await enableLock() }
+                            } else {
+                                appLockEnabled = false
+                            }
                         }
+                    )) {
+                        Text(AppLockController.methodName)
                     }
+                    .disabled(isEnablingLock)
                     Toggle("复制后清空剪贴板", isOn: $clipboardExpiryEnabled)
                     Toggle("后台隐藏内容", isOn: $hideInAppSwitcher)
                 }
@@ -114,14 +120,6 @@ struct SettingsView: View {
             .sheet(isPresented: $showImport) {
                 ImportFlowView(model: model, mode: .file)
             }
-            .onChange(of: appLockEnabled) { _, enabled in
-                guard enabled else { return }
-                lockPromptShown = true
-                if !AppLockController.canAuthenticate {
-                    appLockEnabled = false
-                    showDeviceAuthAlert = true
-                }
-            }
             .alert("无法开启解锁保护", isPresented: $showDeviceAuthAlert) {
                 Button("好", role: .cancel) {}
             } message: {
@@ -151,6 +149,24 @@ struct SettingsView: View {
                 Text("所有设备上的令牌都会被删除，无法撤销。")
             }
         }
+    }
+
+    private func enableLock() async {
+        guard !isEnablingLock else { return }
+        guard AppLockController.canAuthenticate else {
+            showDeviceAuthAlert = true
+            return
+        }
+        isEnablingLock = true
+        let success = await AppLockController.authenticate(reason: "开启 Face ID 解锁")
+        isEnablingLock = false
+        guard success else {
+            model.showToast("未开启")
+            return
+        }
+        appLockEnabled = true
+        lockPromptShown = true
+        model.showToast("已开启 Face ID")
     }
 
     private func settingLabel(_ title: String, systemImage: String) -> some View {
