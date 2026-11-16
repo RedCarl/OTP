@@ -46,7 +46,6 @@
 		500169A5AE4F0C9B0BF2E5D8 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B76141BF4B5B30706850A2 /* AppConfiguration.swift */; };
 		50992952D14E1B1E5FAEF81D /* BrandCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07BD6EB27C560B1AEB67A4 /* BrandCatalog.swift */; };
 		527A3DECE293A7B91A698348 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA62954D0FD23F4CFFD2A59 /* Base32.swift */; };
-		53107D4BF981E34A311A47C2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA4FF832097C8198214F6F /* AboutView.swift */; };
 		549114BA8A5DA94AA418EB57 /* brand-linear.png in Resources */ = {isa = PBXBuildFile; fileRef = C53AF8A51D04936E0A82FFE3 /* brand-linear.png */; };
 		54A9CED06FA9D44E658C4464 /* OTPAuthURI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781566E3A7E2AE5630AC2591 /* OTPAuthURI.swift */; };
 		588B9B42EFF38C87BE57EA16 /* brand-google.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F2C3FCBFC7A2B115053DC /* brand-google.png */; };
@@ -221,7 +220,6 @@
 		A6A4D055DAD514A6A378A18A /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 		A9E90E5C4AA257EAFB3E6112 /* TokenRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRowView.swift; sourceTree = "<group>"; };
 		AD95ED0A173E4FAC3D1AFD19 /* OTPCodeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPCodeFormatter.swift; sourceTree = "<group>"; };
-		AFAA4FF832097C8198214F6F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B6D0B1C58AD5A3AFA129D907 /* BackupError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupError.swift; sourceTree = "<group>"; };
 		B84C8CCC7EFC620A84234C2E /* brand-whatsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-whatsapp.png"; sourceTree = "<group>"; };
 		B9F2FF218D24F127A5536523 /* CountdownRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownRing.swift; sourceTree = "<group>"; };
@@ -517,7 +515,6 @@
 		94CC20CAC4CDC9EC6C570040 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AFAA4FF832097C8198214F6F /* AboutView.swift */,
 				17F49CAAE30B6AA594997C9C /* BackupExportView.swift */,
 				E1906D5433AB34AEF4411BBF /* SettingsView.swift */,
 			);
@@ -642,7 +639,7 @@
 						TestTargetID = 89F07FD981F00B85E84281E9;
 					};
 					89F07FD981F00B85E84281E9 = {
-						DevelopmentTeam = B8787NKP38;
+						DevelopmentTeam = BCRZR3P4AP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -757,7 +754,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53107D4BF981E34A311A47C2 /* AboutView.swift in Sources */,
 				224C1A6EDD0DE221F73DEDD4 /* AddTokenTabView.swift in Sources */,
 				47D8A3EBED63AF1D8241C92C /* AegisImport.swift in Sources */,
 				500169A5AE4F0C9B0BF2E5D8 /* AppConfiguration.swift in Sources */,
@@ -856,7 +852,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B8787NKP38;
+				DEVELOPMENT_TEAM = BCRZR3P4AP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = OTP/Resources/Info.plist;
@@ -1040,7 +1036,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B8787NKP38;
+				DEVELOPMENT_TEAM = BCRZR3P4AP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = OTP/Resources/Info.plist;

@@ -138,7 +138,7 @@ OTP/
   Features/Tokens/           列表、行、编辑、二维码、品牌图标、添加页
   Features/Import/           导入流程与预览
   Features/Scanner/          VisionKit 扫码、相册识别
-  Features/Settings/         设置、备份导出、同步说明、关于
+  Features/Settings/         设置、备份导出
   Features/Lock/             Face ID 锁
   Features/Onboarding/       首次启动引导
   DesignSystem/              剪贴板、倒计时环、滚动文字、图标处理、二维码渲染
@@ -173,6 +173,19 @@ python3 scripts/verify-totp.py JBSWY3DPEHPK3PXP   # 与 App 同秒对比，独�
 - `-uiTestService <name>`：使用独立钥匙串 service，避免污染真实数据。
 - `-demoService <name> -seedDemo`：写入 3 个示例令牌并跳过引导，用于截图。
 - 上述任一参数会同时关闭 Face ID 锁与首次引导。
+
+### 安装到真机
+
+项目使用自动签名，把 `project.yml` 里的 `DEVELOPMENT_TEAM` 换成你自己的 Team ID，然后：
+
+```bash
+xcodebuild -project OTP.xcodeproj -scheme OTP -configuration Release \
+  -destination 'id=<设备 UDID>' -allowProvisioningUpdates build
+xcrun devicectl device install app --device <设备 UDID> \
+  <DerivedData>/Build/Products/Release-iphoneos/OTP.app
+```
+
+Release 构建不会写入任何演示数据；开发描述文件通常有效期一年，到期前用同样命令重新安装即可。
 
 ## 已知限制
 

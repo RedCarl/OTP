@@ -15,23 +15,40 @@ struct SettingsView: View {
     @State private var showCopyLinksConfirmation = false
     @State private var showDeviceAuthAlert = false
     @State private var isClearing = false
+    @State private var isRefreshing = false
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    HStack {
+                    HStack(spacing: 8) {
                         settingLabel("iCloud 钥匙串", systemImage: "icloud")
-                        Spacer()
+                        Spacer(minLength: 8)
                         Text("\(model.tokens.count) 个令牌")
                             .foregroundStyle(.secondary)
+                        Button {
+                            Task {
+                                isRefreshing = true
+                                await model.refresh()
+                                isRefreshing = false
+                            }
+                        } label: {
+                            if isRefreshing {
+                                ProgressView()
+                                    .controlSize(.small)
+                                    .frame(width: 30, height: 30)
+                            } else {
+                                Image(systemName: "arrow.clockwise")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .frame(width: 30, height: 30)
+                                    .background(Circle().fill(Color(.tertiarySystemFill)))
+                            }
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(isRefreshing)
+                        .accessibilityLabel("刷新")
+                        .accessibilityIdentifier("settings.refresh")
                     }
-                    Button {
-                        Task { await model.refresh() }
-                    } label: {
-                        settingLabel("刷新", systemImage: "arrow.clockwise")
-                    }
-                    .tint(Color.primary)
                 }
 
                 Section {
@@ -88,13 +105,6 @@ struct SettingsView: View {
                     .disabled(model.tokens.isEmpty || isClearing)
                 }
 
-                Section {
-                    NavigationLink {
-                        AboutView()
-                    } label: {
-                        Label("关于 OTP", systemImage: "info.circle")
-                    }
-                }
             }
             .navigationTitle("设置")
             .navigationBarTitleDisplayMode(.large)
