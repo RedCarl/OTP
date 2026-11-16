@@ -85,6 +85,7 @@
 		9E0D2D92CE72D03687864FDA /* FileImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F802F3D8FD066EA0E4B5D64 /* FileImportTests.swift */; };
 		9FCD97C9C7132DE3231B3983 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8303F606F31330B0D00AFA70 /* PrivacyInfo.xcprivacy */; };
 		A08CA9E372950B36F83CDA20 /* brand-instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 4481BDE72F771ABC8B0EABA0 /* brand-instagram.png */; };
+		A56943E1C1B8959837915C79 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D94E1D61E4D53F1D3063B12 /* SearchField.swift */; };
 		AAF46E55FCEA9F2ABFFE69D1 /* TokenRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E90E5C4AA257EAFB3E6112 /* TokenRowView.swift */; };
 		ABC9664A76A08CCED8DB7B2F /* TokenListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F465E1A8F604BC2A7194D32 /* TokenListModel.swift */; };
 		AC88C08023F7A11359E6B505 /* brand-paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D62C42A48C7A8ABA64F0D94 /* brand-paypal.png */; };
@@ -145,6 +146,7 @@
 		04E5C663E5C97CE4C4FD0301 /* LockSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSuggestion.swift; sourceTree = "<group>"; };
 		098679A3639FD668F09A9857 /* KeychainTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTokenRepository.swift; sourceTree = "<group>"; };
 		0C9A1101713A0060034298EC /* brand-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-x.png"; sourceTree = "<group>"; };
+		0D94E1D61E4D53F1D3063B12 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		133F33245A3AC07B919C9B55 /* HOTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOTPTests.swift; sourceTree = "<group>"; };
 		133FC287AA9A7CCB5D62AE04 /* KeychainRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainRepositoryTests.swift; sourceTree = "<group>"; };
 		17F49CAAE30B6AA594997C9C /* BackupExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupExportView.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				603716B533E8F1B67D47503B /* IconImageProcessor.swift */,
 				29BD7A4FC850A984B2D59DBB /* MarqueeText.swift */,
 				9C393E2B9F66E4A2A9D278C1 /* QRCodeRenderer.swift */,
+				0D94E1D61E4D53F1D3063B12 /* SearchField.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				1FD5FCC45F76799E2551188A /* QRCodeView.swift in Sources */,
 				6718F3D093164F23E16C0ADB /* QRScannerView.swift in Sources */,
 				648BBCD2BDD15EE4943C8370 /* RootView.swift in Sources */,
+				A56943E1C1B8959837915C79 /* SearchField.swift in Sources */,
 				8D83E3AA2AAFD22F7677E4AC /* SettingsView.swift in Sources */,
 				0296578A39DAB69182E9B5D4 /* TOTP.swift in Sources */,
 				7070DABFA9956F90804D119B /* TokenEditorView.swift in Sources */,

@@ -53,6 +53,27 @@ final class AddTokenUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.label.contains("GitHub"))
     }
 
+    func testSearchFiltersTokens() throws {
+        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launch()
+
+        let rows = app.descendants(matching: .any).matching(identifier: "token.row")
+        XCTAssertTrue(rows.firstMatch.waitForExistence(timeout: 25))
+
+        let field = app.textFields["search.field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5), "search field should be visible without tapping")
+        field.tap()
+        field.typeText("GitHub")
+
+        XCTAssertTrue(rows.element(boundBy: 1).waitForNonExistence(timeout: 5))
+        XCTAssertTrue(rows.firstMatch.label.contains("GitHub"))
+
+        app.buttons["清除搜索"].tap()
+        XCTAssertTrue(rows.element(boundBy: 1).waitForExistence(timeout: 5))
+    }
+
     func testBackupExportValidation() throws {
         let service = "com.redcarl.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()

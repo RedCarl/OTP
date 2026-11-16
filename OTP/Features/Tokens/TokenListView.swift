@@ -9,61 +9,72 @@ struct TokenListView: View {
     @State private var qrToken: OTPToken?
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if model.tokens.isEmpty {
-                    emptyState
-                } else {
-                    tokenList
-                }
+        VStack(spacing: 0) {
+            if !model.tokens.isEmpty {
+                SearchField(text: $model.searchText)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 6)
+                    .padding(.bottom, 8)
             }
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
-            .sheet(item: $editingToken) { token in
-                TokenEditorView(model: model, token: token)
+
+            content
+        }
+        .background(Color(.systemGroupedBackground))
+        .sheet(item: $editingToken) { token in
+            TokenEditorView(model: model, token: token)
+        }
+        .sheet(item: $qrToken) { token in
+            QRCodeView(token: token)
+        }
+        .confirmationDialog(
+            "删除这个令牌？",
+            isPresented: Binding(
+                get: { pendingDelete != nil },
+                set: { if !$0 { pendingDelete = nil } }
+            ),
+            titleVisibility: .visible,
+            presenting: pendingDelete
+        ) { token in
+            Button("删除 \(token.displayIssuer)", role: .destructive) {
+                pendingDelete = nil
+                Task { await model.delete(token) }
             }
-            .sheet(item: $qrToken) { token in
-                QRCodeView(token: token)
+            Button("取消", role: .cancel) { pendingDelete = nil }
+        } message: { _ in
+            Text("所有设备都会删除，无法撤销。")
+        }
+        .alert("出错了", isPresented: Binding(
+            get: { model.errorMessage != nil },
+            set: { if !$0 { model.errorMessage = nil } }
+        )) {
+            Button("好", role: .cancel) { model.errorMessage = nil }
+        } message: {
+            Text(model.errorMessage ?? "")
+        }
+        .overlay(alignment: .top) {
+            if let toast = model.toastMessage {
+                Text(toast)
+                    .font(.footnote.weight(.medium))
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 9)
+                    .background(.regularMaterial, in: Capsule())
+                    .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+                    .padding(.top, 6)
+                    .transition(.move(edge: .top).combined(with: .opacity))
             }
-            .confirmationDialog(
-                "删除这个令牌？",
-                isPresented: Binding(
-                    get: { pendingDelete != nil },
-                    set: { if !$0 { pendingDelete = nil } }
-                ),
-                titleVisibility: .visible,
-                presenting: pendingDelete
-            ) { token in
-                Button("删除 \(token.displayIssuer)", role: .destructive) {
-                    pendingDelete = nil
-                    Task { await model.delete(token) }
-                }
-                Button("取消", role: .cancel) { pendingDelete = nil }
-            } message: { _ in
-                Text("所有设备都会删除，无法撤销。")
-            }
-            .alert("出错了", isPresented: Binding(
-                get: { model.errorMessage != nil },
-                set: { if !$0 { model.errorMessage = nil } }
-            )) {
-                Button("好", role: .cancel) { model.errorMessage = nil }
-            } message: {
-                Text(model.errorMessage ?? "")
-            }
-            .overlay(alignment: .top) {
-                if let toast = model.toastMessage {
-                    Text(toast)
-                        .font(.footnote.weight(.medium))
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 9)
-                        .background(.regularMaterial, in: Capsule())
-                        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
-                        .padding(.top, 6)
-                        .transition(.move(edge: .top).combined(with: .opacity))
-                }
-            }
-            .animation(.snappy(duration: 0.25), value: model.toastMessage)
-            .sensoryFeedback(.success, trigger: model.copySignal)
+        }
+        .animation(.snappy(duration: 0.25), value: model.toastMessage)
+        .sensoryFeedback(.success, trigger: model.copySignal)
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        if model.tokens.isEmpty {
+            emptyState
+        } else if model.filteredTokens.isEmpty {
+            noResultsState
+        } else {
+            tokenList
         }
     }
 
@@ -129,11 +140,29 @@ struct TokenListView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .searchable(text: $model.searchText, prompt: "搜索名称或账号")
+        .scrollDismissesKeyboard(.immediately)
         .refreshable { await model.refresh() }
     }
 
-    // MARK: - Empty state
+    // MARK: - States
+
+    private var noResultsState: some View {
+        VStack(spacing: 10) {
+            Spacer()
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 34))
+                .foregroundStyle(.tertiary)
+            Text("没有找到令牌")
+                .font(.headline)
+            Button("清除搜索") {
+                model.searchText = ""
+            }
+            .buttonStyle(.bordered)
+            Spacer()
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+    }
 
     private var emptyState: some View {
         VStack(spacing: 14) {
