@@ -13,6 +13,8 @@ struct OTPToken: Identifiable, Hashable, Sendable {
     var period: Int
     var counter: UInt64
     var pinned: Bool
+    /// Custom icon uploaded by the user (small square JPEG), synced with the token.
+    var iconData: Data?
     var createdAt: Date
     var updatedAt: Date
 
@@ -27,6 +29,7 @@ struct OTPToken: Identifiable, Hashable, Sendable {
         period: Int = 30,
         counter: UInt64 = 0,
         pinned: Bool = false,
+        iconData: Data? = nil,
         createdAt: Date = Date(),
         updatedAt: Date = Date()
     ) {
@@ -40,6 +43,7 @@ struct OTPToken: Identifiable, Hashable, Sendable {
         self.period = period
         self.counter = counter
         self.pinned = pinned
+        self.iconData = iconData
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -85,7 +89,7 @@ struct OTPToken: Identifiable, Hashable, Sendable {
 
 extension OTPToken: Codable {
     private enum CodingKeys: String, CodingKey {
-        case v, id, issuer, account, kind, algo, digits, period, counter, secret, pinned, createdAt, updatedAt
+        case v, id, issuer, account, kind, algo, digits, period, counter, secret, pinned, icon, createdAt, updatedAt
     }
 
     init(from decoder: Decoder) throws {
@@ -102,6 +106,7 @@ extension OTPToken: Codable {
         period = try container.decodeIfPresent(Int.self, forKey: .period) ?? 30
         counter = try container.decodeIfPresent(UInt64.self, forKey: .counter) ?? 0
         pinned = try container.decodeIfPresent(Bool.self, forKey: .pinned) ?? false
+        iconData = try container.decodeIfPresent(String.self, forKey: .icon).flatMap { Data(base64Encoded: $0) }
 
         let secretString = try container.decode(String.self, forKey: .secret)
         guard let decoded = Base32.decode(secretString), !decoded.isEmpty else {
@@ -130,6 +135,9 @@ extension OTPToken: Codable {
         try container.encode(counter, forKey: .counter)
         try container.encode(Base32.encode(secret), forKey: .secret)
         try container.encode(pinned, forKey: .pinned)
+        if let iconData {
+            try container.encode(iconData.base64EncodedString(), forKey: .icon)
+        }
         try container.encode(ISO8601Value.string(from: createdAt), forKey: .createdAt)
         try container.encode(ISO8601Value.string(from: updatedAt), forKey: .updatedAt)
     }

@@ -1,5 +1,11 @@
 import SwiftUI
 
+enum AppTab: Hashable {
+    case tokens
+    case add
+    case settings
+}
+
 struct RootView: View {
     let model: TokenListModel
 
@@ -7,13 +13,36 @@ struct RootView: View {
     @State private var lock = AppLockController()
     @State private var showOnboarding = false
     @State private var showImportAfterOnboarding = false
+    @State private var selectedTab: AppTab = .tokens
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
 
     var body: some View {
         ZStack {
-            TokenListView(model: model)
+            TabView(selection: $selectedTab) {
+                TokenListView(model: model) {
+                    selectedTab = .add
+                }
+                .tabItem {
+                    Label("令牌", systemImage: "key.fill")
+                }
+                .tag(AppTab.tokens)
+
+                AddTokenTabView(model: model) {
+                    selectedTab = .tokens
+                }
+                .tabItem {
+                    Label("添加", systemImage: "plus.circle.fill")
+                }
+                .tag(AppTab.add)
+
+                SettingsView(model: model)
+                    .tabItem {
+                        Label("设置", systemImage: "gearshape.fill")
+                    }
+                    .tag(AppTab.settings)
+            }
 
             if lock.isLocked {
                 LockScreenView {
@@ -54,7 +83,7 @@ struct RootView: View {
             .interactiveDismissDisabled()
         }
         .sheet(isPresented: $showImportAfterOnboarding) {
-            ImportFlowView(model: model, mode: .pick)
+            ImportFlowView(model: model, mode: .pick, onImported: { selectedTab = .tokens })
         }
         .onChange(of: scenePhase) { _, phase in
             lock.handleScenePhase(phase)

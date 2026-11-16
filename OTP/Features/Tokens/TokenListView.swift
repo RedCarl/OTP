@@ -2,13 +2,10 @@ import SwiftUI
 
 struct TokenListView: View {
     @Bindable var model: TokenListModel
+    var onRequestAdd: () -> Void
 
-    @State private var showManualEditor = false
     @State private var editingToken: OTPToken?
     @State private var pendingDelete: OTPToken?
-    @State private var showAddMenu = false
-    @State private var importMode: ImportEntryMode?
-    @State private var showSettings = false
     @State private var qrToken: OTPToken?
 
     var body: some View {
@@ -20,45 +17,10 @@ struct TokenListView: View {
                     tokenList
                 }
             }
-            .navigationTitle("OTP")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        showSettings = true
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
-                    .accessibilityLabel("设置")
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showAddMenu = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.body.weight(.semibold))
-                    }
-                    .accessibilityLabel("添加令牌")
-                }
-            }
-            .confirmationDialog("添加令牌", isPresented: $showAddMenu, titleVisibility: .visible) {
-                Button("扫码添加") { importMode = .scan }
-                Button("手动输入") { showManualEditor = true }
-                Button("粘贴链接") { importMode = .text }
-                Button("从文件导入") { importMode = .file }
-            } message: {
-                Text("选择一种添加方式")
-            }
-            .sheet(isPresented: $showManualEditor) {
-                TokenEditorView(model: model, token: nil)
-            }
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
             .sheet(item: $editingToken) { token in
                 TokenEditorView(model: model, token: token)
-            }
-            .sheet(item: $importMode) { mode in
-                ImportFlowView(model: model, mode: mode)
-            }
-            .sheet(isPresented: $showSettings) {
-                SettingsView(model: model)
             }
             .sheet(item: $qrToken) { token in
                 QRCodeView(token: token)
@@ -189,21 +151,17 @@ struct TokenListView: View {
                 .padding(.horizontal, 28)
 
             VStack(spacing: 10) {
-                Button {
-                    showAddMenu = true
-                } label: {
+                Button(action: onRequestAdd) {
                     Label("添加第一个令牌", systemImage: "plus")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
 
-                Button("从其他认证器导入") {
-                    importMode = .pick
-                }
-                .buttonStyle(.bordered)
-                .controlSize(.large)
-                .frame(maxWidth: .infinity)
+                Button("从其他认证器导入", action: onRequestAdd)
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .frame(maxWidth: .infinity)
             }
             .padding(.horizontal, 32)
             .padding(.top, 6)
@@ -213,8 +171,4 @@ struct TokenListView: View {
         }
         .frame(maxWidth: .infinity)
     }
-}
-
-#Preview {
-    TokenListView(model: TokenListModel(store: TokenStore(repository: InMemoryTokenRepository())))
 }

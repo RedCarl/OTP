@@ -1,8 +1,10 @@
 import SwiftUI
+import PhotosUI
 
 struct TokenEditorView: View {
     let model: TokenListModel
     private let existing: OTPToken?
+    private let onSaved: (() -> Void)?
 
     @Environment(\.dismiss) private var dismiss
 
@@ -17,10 +19,15 @@ struct TokenEditorView: View {
     @State private var showAdvanced: Bool
     @State private var isSaving = false
     @State private var showDeleteConfirmation = false
+    @State private var iconData: Data?
+    @State private var showIconPicker = false
+    @State private var iconPhotoItem: PhotosPickerItem?
 
-    init(model: TokenListModel, token: OTPToken?) {
+    init(model: TokenListModel, token: OTPToken?, onSaved: (() -> Void)? = nil) {
         self.model = model
         self.existing = token
+        self.onSaved = onSaved
+        _iconData = State(initialValue: token?.iconData)
         _issuer = State(initialValue: token?.issuer ?? "")
         _accountName = State(initialValue: token?.accountName ?? "")
         _secretText = State(initialValue: token.map { Base32.encode($0.secret) } ?? "")
@@ -32,6 +39,19 @@ struct TokenEditorView: View {
         _showAdvanced = State(initialValue: token.map {
             $0.algorithm != .sha1 || $0.digits != 6 || $0.kind != .totp || $0.period != 30
         } ?? false)
+    }
+
+    private var previewName: String {
+        let name = trimmedIssuer.isEmpty ? trimmedAccount : trimmedIssuer
+        return name.isEmpty ? "OTP" : name
+    }
+
+    private var iconHint: String {
+        if iconData != nil { return "已上传的图片" }
+        if let brand = BrandCatalog.brand(issuer: trimmedIssuer, account: trimmedAccount) {
+            return brand.title
+        }
+        return "使用名称首字"
     }
 
     private var trimmedIssuer: String { issuer.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -52,6 +72,34 @@ struct TokenEditorView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section {
+                    HStack(spacing: 12) {
+                        IconPreviewView(
+                            issuer: previewName,
+                            account: trimmedAccount,
+                            iconData: iconData,
+                            size: 44
+                        )
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(iconData == nil ? "自动图标" : "自定义图标")
+                            Text(iconHint)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        Button("选择图片") { showIconPicker = true }
+                            .buttonStyle(.borderless)
+                    }
+                    if iconData != nil {
+                        Button("恢复自动图标", role: .destructive) {
+                            iconData = nil
+                        }
+                    }
+                } header: {
+                    Text("图标")
+                }
+
                 Section {
                     TextField("名称，如 GitHub", text: $issuer)
                         .textInputAutocapitalization(.words)
@@ -139,6 +187,17 @@ struct TokenEditorView: View {
                     }
                 }
             }
+            .photosPicker(isPresented: $showIconPicker, selection: $iconPhotoItem, matching: .images)
+            .onChange(of: iconPhotoItem) { _, item in
+                guard let item else { return }
+                Task {
+                    if let data = try? await item.loadTransferable(type: Data.self),
+                       let jpeg = IconImageProcessor.squareJPEG(from: data) {
+                        iconData = jpeg
+                    }
+                    iconPhotoItem = nil
+                }
+            }
             .navigationTitle(existing == nil ? "添加令牌" : "编辑令牌")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -214,10 +273,12 @@ struct TokenEditorView: View {
             period: period,
             counter: counter,
             pinned: existing?.pinned ?? false,
+            iconData: iconData,
             createdAt: existing?.createdAt ?? Date(),
             updatedAt: Date()
         )
         if await model.save(token) {
+            onSaved?()
             dismiss()
         }
     }

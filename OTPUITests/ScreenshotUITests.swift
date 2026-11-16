@@ -6,7 +6,7 @@ final class ScreenshotUITests: XCTestCase {
     }
 
     func testCaptureScreens() throws {
-        let service = "com.redcarl.otp.screens.v2"
+        let service = "com.redcarl.otp.screens.v4"
         let app = XCUIApplication()
         app.launchArguments = ["-uiTestService", service, "-demoService", service, "-seedDemo"]
         app.launch()
@@ -15,20 +15,23 @@ final class ScreenshotUITests: XCTestCase {
         XCTAssertTrue(row.waitForExistence(timeout: 25))
         attach(name: "01-list")
 
-        app.buttons["设置"].tap()
+        app.tabBars.buttons["设置"].tap()
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
         attach(name: "02-settings")
-        app.buttons["完成"].tap()
 
-        XCTAssertTrue(app.buttons["添加令牌"].waitForExistence(timeout: 5))
-        app.buttons["添加令牌"].tap()
-        app.buttons["粘贴链接"].tap()
+        app.tabBars.buttons["添加"].tap()
+        XCTAssertTrue(app.navigationBars["添加"].waitForExistence(timeout: 10))
+        attach(name: "05-add")
+        let paste = app.buttons["add.paste"]
+        XCTAssertTrue(paste.waitForExistence(timeout: 10))
+        paste.tap()
         XCTAssertTrue(app.textViews.firstMatch.waitForExistence(timeout: 10))
         attach(name: "03-import")
         app.buttons["返回"].tap()
         app.buttons["取消"].tap()
 
-        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        app.tabBars.buttons["令牌"].tap()
+        XCTAssertTrue(row.waitForExistence(timeout: 10))
         row.press(forDuration: 1.2)
         if app.buttons["编辑"].waitForExistence(timeout: 5) {
             app.buttons["编辑"].tap()

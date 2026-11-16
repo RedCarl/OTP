@@ -1,22 +1,23 @@
 # OTP · iOS 原生令牌管理器
 
-一款数据只放在 **iCloud 钥匙串** 里的 OTP 认证器：端到端加密、自动同步、可备份可迁移，主界面只有一个列表——点一下就复制验证码。
+一款数据只放在 **iCloud 钥匙串** 里的 OTP 认证器：端到端加密、自动同步、可备份可迁移。底部三个标签页（令牌 / 添加 / 设置），点一下验证码就复制。
 
 <p>
   <img src="docs/screen-list.png" width="240" alt="主列表">
+  <img src="docs/screen-add.png" width="240" alt="添加">
   <img src="docs/screen-settings.png" width="240" alt="设置">
-  <img src="docs/screen-import.png" width="240" alt="粘贴导入">
 </p>
 <p>
+  <img src="docs/screen-import.png" width="240" alt="粘贴导入">
   <img src="docs/screen-editor.png" width="240" alt="编辑令牌">
-  <img src="docs/screen-empty.png" width="240" alt="空状态">
   <img src="docs/screen-onboarding.png" width="240" alt="首次启动">
 </p>
 
 ## 特性
 
 - **TOTP / HOTP**：SHA-1/256/512，6–8 位，自定义周期与计数器，符合 RFC 4226 / RFC 6238。
-- **零学习成本**：点行复制验证码（触觉反馈 + 剪贴板定时清空），长按编辑 / 置顶 / 二维码 / 删除。
+- **零学习成本**：点行复制验证码（触觉反馈 + 剪贴板定时清空），长按编辑 / 置顶 / 二维码 / 删除；验证码与倒计时环横排，秒数在环内，超长名称自动横向滚动。
+- **图标**：内置 40+ 常用品牌（GitHub、Google、Microsoft、AWS、Slack、Discord、微信、支付宝等），按名称或邮箱域名自动识别；没有匹配时用名称首字生成彩色头像，也可以从相册上传自定义图标。
 - **iCloud 同步**：每条令牌是 iCloud 钥匙串里的一条端到端加密记录，换机、重装后自动回来。
 - **添加方式**：扫码、手动输入、粘贴 otpauth 链接、从相册识别二维码、导入文件。
 - **迁移**：Google Authenticator 迁移码、Aegis（未加密）、2FAS（未加密）、本 App 备份、任意 otpauth 链接。
@@ -26,14 +27,14 @@
 
 ## 快速开始
 
-要求：Xcode 27+、iOS 18.0+、[XcodeGen](https://github.com/yonaskolb/XcodeGen)（`brew install xcodegen`）。
+要求：Xcode 27+、iOS 18.0+（已在 **iOS 27.2 模拟器** 与 iOS 18.5 上验证）、[XcodeGen](https://github.com/yonaskolb/XcodeGen)（`brew install xcodegen`）。
 
 ```bash
 scripts/bootstrap.sh      # 由 project.yml 生成 OTP.xcodeproj
 open OTP.xcodeproj        # 选择模拟器或真机运行
 ```
 
-命令行构建与测试（默认 iPhone 16 Pro / iOS 18.5 模拟器）：
+命令行构建与测试（默认 iPhone 18 Pro / iOS 27.2 模拟器）：
 
 ```bash
 scripts/build.sh
@@ -133,14 +134,15 @@ OTP/
   Core/Backup/               备份信封、PBKDF2 + AES-GCM、FileDocument
   Core/Import/               Protobuf、Google 迁移码、Aegis、2FAS、URI 列表
   Core/Support/              ISO8601、启动配置
-  Features/Tokens/           列表、行、编辑器、二维码
+  Features/Tokens/           列表、行、编辑、二维码、品牌图标、添加页
   Features/Import/           导入流程与预览
   Features/Scanner/          VisionKit 扫码、相册识别
   Features/Settings/         设置、备份导出、同步说明、关于
   Features/Lock/             Face ID 锁
   Features/Onboarding/       首次启动引导
-  DesignSystem/              剪贴板、倒计时环、二维码渲染
+  DesignSystem/              剪贴板、倒计时环、滚动文字、图标处理、二维码渲染
   Resources/                 Info.plist、隐私清单、Assets、着色
+OTP/Resources/BrandIcons/   内置品牌图标（白色字形，运行时着色）
 OTPTests/                    单元测试（Swift Testing）
 OTPUITests/                  UI 测试（XCTest）
 scripts/                     bootstrap / build / test / run / screenshot / verify-totp
@@ -156,6 +158,7 @@ scripts/                     bootstrap / build / test / run / screenshot / verif
 - Google Authenticator Protobuf（含未知字段、截断）、Aegis、2FAS、多行链接。
 - 真实钥匙串集成（synchronizable 条目增删改查、服务隔离、损坏记录跳过）。
 - 列表排序 / 去重 / 批量导入 / HOTP 计数器递增 / 二维码渲染。
+- 品牌识别（含中文与邮箱域名）、内置图标资源完整性、图标缩放压缩、自定义图标随令牌存储。
 
 UI 测试覆盖：手动添加 → 出现验证码 → 点击复制 → 重启后仍在；粘贴链接导入。
 
@@ -173,7 +176,7 @@ python3 scripts/verify-totp.py JBSWY3DPEHPK3PXP   # 与 App 同秒对比，独�
 ## 已知限制
 
 - 同步依赖系统 iCloud 钥匙串；关闭时 App 仍可本机使用，但不会跨设备同步，且无法检测状态。
-- 没有 Widget、Apple Watch、分享扩展；没有手动拖拽排序（置顶 + 字母序）。
+- 没有 Widget、Apple Watch、分享扩展；没有手动拖拽排序（置顶 + 字母序）；品牌图标为单色字形 + 品牌色底，不是官方彩色 Logo。
 - 不支持 Steam Guard、加密的 Aegis / 2FAS 备份、MD5 算法。
 - iPad 以 iPhone 兼容模式运行；界面仅简体中文。
 - 同一令牌多端并发编辑时可能出现「最后写入者胜出」，不提供合并。

@@ -59,6 +59,19 @@ struct KeychainRepositoryTests {
         #expect(try second.loadAll().tokens.map(\.issuer) == ["Second"])
     }
 
+    @Test func storesCustomIconPayload() throws {
+        let repository = makeRepository()
+        defer { try? repository.deleteAll() }
+
+        var token = makeToken()
+        token.iconData = Data((0..<6000).map { UInt8($0 % 251) })
+        try repository.upsert(token)
+
+        let loaded = try repository.loadAll()
+        #expect(loaded.tokens.count == 1)
+        #expect(loaded.tokens.first?.iconData == token.iconData)
+    }
+
     @Test func skipsCorruptPayloads() throws {
         let repository = makeRepository()
         defer { try? repository.deleteAll() }
@@ -72,7 +85,7 @@ struct KeychainRepositoryTests {
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: repository.service,
             kSecAttrAccount as String: corruptAccount,
-            kSecAttrSynchronizable as String: kCFBooleanTrue,
+            kSecAttrSynchronizable as String: true,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
             kSecValueData as String: Data("not json".utf8),
         ]

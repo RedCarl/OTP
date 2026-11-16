@@ -38,6 +38,16 @@ struct OTPTokenCodableTests {
         #expect(abs(decoded.updatedAt.timeIntervalSince(token.updatedAt)) < 0.01)
     }
 
+    @Test func roundTripsCustomIcon() throws {
+        var token = makeToken()
+        token.iconData = Data([0x01, 0x02, 0x03, 0x04, 0xFF])
+        let data = try JSONEncoder().encode(token)
+        let json = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        #expect(json["icon"] is String)
+        let decoded = try JSONDecoder().decode(OTPToken.self, from: data)
+        #expect(decoded.iconData == token.iconData)
+    }
+
     @Test func writesSchemaFields() throws {
         let data = try JSONEncoder().encode(makeToken())
         let json = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])

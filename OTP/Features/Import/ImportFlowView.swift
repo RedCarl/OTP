@@ -7,6 +7,8 @@ enum ImportEntryMode: String, Identifiable {
     case scan
     case text
     case file
+    case photo
+    case payload
 
     var id: String { rawValue }
 }
@@ -14,6 +16,8 @@ enum ImportEntryMode: String, Identifiable {
 struct ImportFlowView: View {
     let model: TokenListModel
     let mode: ImportEntryMode
+    var initialPayload: String? = nil
+    var onImported: (() -> Void)? = nil
 
     @Environment(\.dismiss) private var dismiss
 
@@ -70,9 +74,22 @@ struct ImportFlowView: View {
                 }
             }
             .task {
-                if mode == .scan { isShowingScanner = true }
-                if mode == .text { stage = .text }
-                if mode == .file { isShowingFileImporter = true }
+                switch mode {
+                case .scan:
+                    isShowingScanner = true
+                case .text:
+                    stage = .text
+                case .file:
+                    isShowingFileImporter = true
+                case .photo:
+                    isShowingPhotoPicker = true
+                case .payload:
+                    if let initialPayload {
+                        parse(text: initialPayload)
+                    }
+                case .pick:
+                    break
+                }
             }
             .fullScreenCover(isPresented: $isShowingScanner) {
                 QRScannerView { payload in
@@ -412,6 +429,7 @@ struct ImportFlowView: View {
         let count = await model.importTokens(tokens)
         if count > 0 {
             model.showToast("已导入 \(count) 个令牌")
+            onImported?()
             dismiss()
         }
     }

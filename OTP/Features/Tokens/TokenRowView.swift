@@ -7,22 +7,16 @@ struct TokenRowView: View {
     let progress: Double
     let isCopied: Bool
 
-    private var urgent: Bool { remaining <= 5 }
+    private var urgent: Bool {
+        token.kind == .totp && remaining <= 5
+    }
 
     var body: some View {
-        HStack(alignment: .center, spacing: 14) {
-            VStack(alignment: .leading, spacing: 3) {
-                HStack(spacing: 4) {
-                    Text(token.displayIssuer)
-                        .font(.headline)
-                        .lineLimit(1)
-                    if token.pinned {
-                        Image(systemName: "pin.fill")
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
-                            .accessibilityHidden(true)
-                    }
-                }
+        HStack(spacing: 12) {
+            TokenIconView(token: token, size: 36)
+
+            VStack(alignment: .leading, spacing: 1) {
+                MarqueeText(text: token.displayIssuer, font: .headline, height: 21)
                 if !token.displayAccount.isEmpty {
                     Text(token.displayAccount)
                         .font(.subheadline)
@@ -34,13 +28,12 @@ struct TokenRowView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
 
-            Spacer(minLength: 8)
-
-            VStack(alignment: .trailing, spacing: 5) {
+            HStack(spacing: 8) {
                 if let code {
                     Text(OTPCodeFormatter.grouped(code))
-                        .font(.system(size: 24, weight: .semibold, design: .monospaced))
+                        .font(.system(size: 20, weight: .semibold, design: .monospaced))
                         .monospacedDigit()
                         .foregroundStyle(urgent ? Color.orange : Color.primary)
                         .contentTransition(.numericText())
@@ -52,27 +45,13 @@ struct TokenRowView: View {
                 }
 
                 if token.kind == .totp {
-                    HStack(spacing: 5) {
-                        CountdownRing(progress: progress, urgent: urgent)
-                        Text("\(remaining)s")
-                            .font(.caption2)
-                            .monospacedDigit()
-                            .foregroundStyle(.tertiary)
-                            .frame(width: 22, alignment: .leading)
-                    }
+                    CountdownRing(progress: progress, urgent: urgent, seconds: remaining, size: 30)
                 }
             }
+            .fixedSize()
         }
-        .padding(.vertical, 6)
+        .padding(.vertical, 7)
         .contentShape(Rectangle())
-        .overlay(alignment: .trailing) {
-            if isCopied {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
-                    .symbolEffect(.bounce, value: isCopied)
-                    .offset(x: 26)
-            }
-        }
         .accessibilityElement(children: .ignore)
         .accessibilityIdentifier("token.row")
         .accessibilityLabel(accessibilityLabel)

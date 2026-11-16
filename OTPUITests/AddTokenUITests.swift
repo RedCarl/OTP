@@ -5,6 +5,54 @@ final class AddTokenUITests: XCTestCase {
         continueAfterFailure = false
     }
 
+    func testAddTokenCopiesCodeAndPersists() throws {
+        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
+
+        app.tabBars.buttons["添加"].tap()
+        XCTAssertTrue(app.navigationBars["添加"].waitForExistence(timeout: 10))
+        let manual = app.buttons["add.manual"]
+        XCTAssertTrue(manual.waitForExistence(timeout: 10))
+        manual.tap()
+
+        let issuerField = app.textFields["editor.issuer"]
+        XCTAssertTrue(issuerField.waitForExistence(timeout: 10))
+        issuerField.tap()
+        issuerField.typeText("GitHub")
+
+        let accountField = app.textFields["editor.account"]
+        accountField.tap()
+        accountField.typeText("alice")
+
+        let secretField = app.textFields["editor.secret"]
+        secretField.tap()
+        secretField.typeText("JBSWY3DPEHPK3PXP")
+
+        let saveButton = app.buttons["editor.save"]
+        XCTAssertTrue(saveButton.isEnabled)
+        saveButton.tap()
+
+        let row = app.descendants(matching: .any)["token.row"].firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 10))
+
+        let label = row.label
+        let codePattern = try NSRegularExpression(pattern: "\\d{3} \\d{3}")
+        let range = NSRange(label.startIndex..<label.endIndex, in: label)
+        XCTAssertNotNil(codePattern.firstMatch(in: label, range: range), "row label should contain a TOTP code: \(label)")
+
+        row.tap()
+        XCTAssertTrue(app.staticTexts["已复制 · 30 秒后清除"].waitForExistence(timeout: 5))
+
+        app.terminate()
+        app.launch()
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 20))
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.label.contains("GitHub"))
+    }
+
     func testBackupExportValidation() throws {
         let service = "com.redcarl.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
@@ -12,7 +60,8 @@ final class AddTokenUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
-        app.buttons["设置"].tap()
+
+        app.tabBars.buttons["设置"].tap()
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
         app.buttons["导出备份"].tap()
 
@@ -38,8 +87,10 @@ final class AddTokenUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
-        app.buttons["添加令牌"].tap()
-        app.buttons["粘贴链接"].tap()
+        app.tabBars.buttons["添加"].tap()
+        let paste = app.buttons["add.paste"]
+        XCTAssertTrue(paste.waitForExistence(timeout: 10))
+        paste.tap()
 
         let editor = app.textViews.firstMatch
         XCTAssertTrue(editor.waitForExistence(timeout: 10))
@@ -52,53 +103,8 @@ final class AddTokenUITests: XCTestCase {
         XCTAssertTrue(importButton.waitForExistence(timeout: 10))
         importButton.tap()
 
-        let row = app.descendants(matching: .any)["token.row"]
+        let row = app.descendants(matching: .any)["token.row"].firstMatch
         XCTAssertTrue(row.waitForExistence(timeout: 10))
         XCTAssertTrue(row.label.contains("GitHub"))
-    }
-
-    func testAddTokenCopiesCodeAndPersists() throws {
-        let service = "com.redcarl.otp.uitest." + UUID().uuidString
-        let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service]
-        app.launch()
-
-        XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
-
-        app.buttons["添加第一个令牌"].tap()
-        app.buttons["手动输入"].tap()
-
-        let issuerField = app.textFields["editor.issuer"]
-        XCTAssertTrue(issuerField.waitForExistence(timeout: 10))
-        issuerField.tap()
-        issuerField.typeText("GitHub")
-
-        let accountField = app.textFields["editor.account"]
-        accountField.tap()
-        accountField.typeText("alice")
-
-        let secretField = app.textFields["editor.secret"]
-        secretField.tap()
-        secretField.typeText("JBSWY3DPEHPK3PXP")
-
-        let saveButton = app.buttons["editor.save"]
-        XCTAssertTrue(saveButton.isEnabled)
-        saveButton.tap()
-
-        let row = app.descendants(matching: .any)["token.row"]
-        XCTAssertTrue(row.waitForExistence(timeout: 10))
-
-        let label = row.label
-        let codePattern = try NSRegularExpression(pattern: "\\d{3} \\d{3}")
-        let range = NSRange(label.startIndex..<label.endIndex, in: label)
-        XCTAssertNotNil(codePattern.firstMatch(in: label, range: range), "row label should contain a TOTP code: \(label)")
-
-        row.tap()
-        XCTAssertTrue(app.staticTexts["已复制 · 30 秒后清除"].waitForExistence(timeout: 5))
-
-        app.terminate()
-        app.launch()
-        XCTAssertTrue(app.descendants(matching: .any)["token.row"].waitForExistence(timeout: 20))
-        XCTAssertTrue(app.descendants(matching: .any)["token.row"].label.contains("GitHub"))
     }
 }

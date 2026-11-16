@@ -3,7 +3,6 @@ import SwiftUI
 struct SettingsView: View {
     let model: TokenListModel
 
-    @Environment(\.dismiss) private var dismiss
     @AppStorage("appLockEnabled") private var appLockEnabled = true
     @AppStorage("clipboardExpiryEnabled") private var clipboardExpiryEnabled = true
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
@@ -35,17 +34,15 @@ struct SettingsView: View {
                     } label: {
                         Label("同步帮助", systemImage: "questionmark.circle")
                     }
-                } header: {
-                    Text("iCloud").textCase(nil)
                 }
 
-                Section("安全") {
+                Section {
                     Toggle("Face ID 解锁", isOn: $appLockEnabled)
                     Toggle("复制后清空剪贴板", isOn: $clipboardExpiryEnabled)
                     Toggle("后台隐藏内容", isOn: $hideInAppSwitcher)
                 }
 
-                Section("备份") {
+                Section {
                     Button {
                         showBackupExport = true
                     } label: {
@@ -91,11 +88,6 @@ struct SettingsView: View {
             }
             .navigationTitle("设置")
             .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("完成") { dismiss() }
-                }
-            }
             .sheet(isPresented: $showBackupExport) {
                 BackupExportView(model: model)
             }

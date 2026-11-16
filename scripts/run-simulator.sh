@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-DEVICE="${1:-iPhone 16 Pro}"
+DEVICE="${1:-iPhone 18 Pro}"
 DEST="platform=iOS Simulator,name=$DEVICE"
 xcodegen generate >/dev/null
 xcrun simctl boot "$DEVICE" 2>/dev/null || true

@@ -257,6 +257,8 @@ final class TokenListModel {
             OTPToken(issuer: "GitHub", accountName: "alice@example.com", secret: Base32.decode("JBSWY3DPEHPK3PXP") ?? Data()),
             OTPToken(issuer: "Google", accountName: "alice@gmail.com", secret: Base32.decode("GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ") ?? Data(), pinned: true),
             OTPToken(issuer: "AWS", accountName: "admin", secret: Base32.decode("MFRGGZDFMZTWQ2LKNNWG23TP") ?? Data(), kind: .hotp, digits: 6),
+            OTPToken(issuer: "内网服务", accountName: "ops@intra", secret: Base32.decode("MZXW6YTBOI") ?? Data()),
+            OTPToken(issuer: "企业单点登录", accountName: "long.name@example.com", secret: Base32.decode("GEZDGNBVGY3TQOJQ") ?? Data()),
         ]
         for sample in samples {
             try? await store.save(sample)
