@@ -27,9 +27,7 @@ struct BackupExportView: View {
                 Section {
                     Toggle("使用密码加密", isOn: $useEncryption)
                 } footer: {
-                    Text(useEncryption
-                         ? "推荐开启。密码只用于加密这一步，不会保存，忘记后备份无法恢复。"
-                         : "未加密的备份文件包含明文密钥，请只保存到你信任的位置。")
+                    Text(useEncryption ? "忘记密码将无法恢复。" : "备份文件包含明文密钥。")
                 }
 
                 if useEncryption {
@@ -61,7 +59,7 @@ struct BackupExportView: View {
                     }
                     .disabled(!canExport)
                 } footer: {
-                    Text("生成后会打开系统文件面板，可以存到 iCloud Drive、AirDrop 到其他设备，或发给自己的微信。")
+                    Text("可保存到 iCloud Drive 或分享。")
                 }
             }
             .navigationTitle("导出备份")

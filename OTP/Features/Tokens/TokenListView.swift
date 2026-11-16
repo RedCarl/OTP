@@ -78,7 +78,7 @@ struct TokenListView: View {
                 }
                 Button("取消", role: .cancel) { pendingDelete = nil }
             } message: { _ in
-                Text("删除后会同步到所有登录同一 Apple ID 的设备，此操作无法撤销。")
+                Text("所有设备都会删除，无法撤销。")
             }
             .alert("出错了", isPresented: Binding(
                 get: { model.errorMessage != nil },
@@ -111,7 +111,7 @@ struct TokenListView: View {
         List {
             if model.skippedCount > 0 {
                 Section {
-                    Label("有 \(model.skippedCount) 个令牌来自更新版本或已损坏，暂时无法显示。", systemImage: "exclamationmark.triangle")
+                    Label("\(model.skippedCount) 个令牌无法显示", systemImage: "exclamationmark.triangle")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -164,10 +164,6 @@ struct TokenListView: View {
                         }
                     }
                 }
-            } footer: {
-                if model.skippedCount == 0 {
-                    Text("轻点一行即可复制验证码，长按可编辑或置顶。")
-                }
             }
         }
         .listStyle(.insetGrouped)
@@ -186,7 +182,7 @@ struct TokenListView: View {
                 .padding(.bottom, 4)
             Text("还没有令牌")
                 .font(.title3.weight(.semibold))
-            Text("这里保存你所有的动态验证码，开启 iCloud 钥匙串后会自动同步到其他设备。")
+            Text("验证码会自动同步到你的其他设备。")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

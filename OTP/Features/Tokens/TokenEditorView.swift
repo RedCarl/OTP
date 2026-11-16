@@ -65,7 +65,7 @@ struct TokenEditorView: View {
                     Text("名称与账号")
                 } footer: {
                     if trimmedIssuer.isEmpty && trimmedAccount.isEmpty {
-                        Text("至少填写名称或账号中的一项。")
+                        Text("填写名称或账号。")
                             .foregroundStyle(.red)
                     }
                 }
@@ -98,13 +98,9 @@ struct TokenEditorView: View {
                 } header: {
                     Text("密钥")
                 } footer: {
-                    if secretText.isEmpty {
-                        Text("通常是一串 A-Z 与 2-7 组成的 16-32 位字符。")
-                    } else if secretData == nil {
-                        Text("密钥不是合法的 Base32 字符串。")
+                    if secretData == nil && !secretText.isEmpty {
+                        Text("密钥格式不正确。")
                             .foregroundStyle(.red)
-                    } else {
-                        Text("密钥只保存在 iCloud 钥匙串中，不会上传到任何服务器。")
                     }
                 }
 
@@ -167,7 +163,7 @@ struct TokenEditorView: View {
                 }
                 Button("取消", role: .cancel) {}
             } message: {
-                Text("删除后会同步到所有登录同一 Apple ID 的设备，此操作无法撤销。")
+                Text("所有设备都会删除，无法撤销。")
             }
         }
     }

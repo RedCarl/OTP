@@ -215,7 +215,7 @@ final class TokenListModel {
         Clipboard.copy(code, expiresIn: expiresIn)
         copiedTokenID = token.id
         copySignal += 1
-        showToast(expiresIn == nil ? "已复制到剪贴板" : "已复制 · 30 秒后自动清除剪贴板")
+        showToast(expiresIn == nil ? "已复制" : "已复制 · 30 秒后清除")
     }
 
     private static var clipboardExpiryEnabled: Bool {

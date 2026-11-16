@@ -111,7 +111,7 @@ struct ImportFlowView: View {
                 Button("解密看看") { retryPendingFile() }
                 Button("取消", role: .cancel) { pendingData = nil; passphrase = "" }
             } message: {
-                Text("请输入导出备份时设置的密码。")
+                Text("输入备份密码。")
             }
         }
     }
@@ -132,25 +132,25 @@ struct ImportFlowView: View {
                 Button {
                     isShowingScanner = true
                 } label: {
-                    optionRow(icon: "qrcode.viewfinder", title: "扫描二维码", subtitle: "扫码添加，或导入 Google Authenticator 迁移码")
+                    optionRow(icon: "qrcode.viewfinder", title: "扫描二维码", subtitle: "扫码或迁移码")
                 }
                 Button {
                     isShowingPhotoPicker = true
                 } label: {
-                    optionRow(icon: "photo", title: "从相册识别", subtitle: "选择包含二维码的图片")
+                    optionRow(icon: "photo", title: "从相册识别", subtitle: "选一张二维码图片")
                 }
                 Button {
                     stage = .text
                 } label: {
-                    optionRow(icon: "text.cursor", title: "粘贴链接", subtitle: "支持 otpauth:// 与 otpauth-migration://")
+                    optionRow(icon: "text.cursor", title: "粘贴链接", subtitle: "otpauth 链接")
                 }
                 Button {
                     isShowingFileImporter = true
                 } label: {
-                    optionRow(icon: "doc", title: "选择文件", subtitle: "OTP 备份、Aegis、2FAS 或文本文件")
+                    optionRow(icon: "doc", title: "选择文件", subtitle: "备份、Aegis、2FAS")
                 }
             } footer: {
-                Text("所有解析都是在本机完成，不会上传任何内容。加密的 Aegis / 2FAS 备份请先在原 App 中导出未加密版本。")
+                Text("加密备份请先导出未加密版本。")
             }
         }
     }
@@ -188,7 +188,7 @@ struct ImportFlowView: View {
                 .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .overlay(alignment: .topLeading) {
                     if text.isEmpty {
-                        Text("把 otpauth:// 链接粘贴到这里，每行一条")
+                        Text("粘贴 otpauth 链接，每行一条")
                             .font(.footnote)
                             .foregroundStyle(.tertiary)
                             .padding(.horizontal, 15)
@@ -238,7 +238,7 @@ struct ImportFlowView: View {
                             Text(outcome.warnings.joined(separator: "\n"))
                                 .foregroundStyle(.secondary)
                         } else {
-                            Text("取消勾选的条目不会被导入；已存在的相同令牌默认不勾选。")
+                            Text("已存在的项默认不勾选。")
                         }
                     }
                 }
@@ -348,11 +348,11 @@ struct ImportFlowView: View {
     private func handlePhoto(_ item: PhotosPickerItem) async {
         defer { photoItem = nil }
         guard let data = try? await item.loadTransferable(type: Data.self) else {
-            errorMessage = "无法读取这张图片"
+            errorMessage = "无法读取图片。"
             return
         }
         guard let payload = await PhotoBarcodeScanner.firstQRPayload(in: data) else {
-            errorMessage = "这张图片里没有找到二维码"
+            errorMessage = "图片里没有二维码。"
             return
         }
         parse(text: payload)

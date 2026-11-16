@@ -15,7 +15,7 @@ struct LockScreenView: View {
                     .foregroundStyle(.tint)
                 Text("OTP 已锁定")
                     .font(.title3.weight(.semibold))
-                Text("验证码已被隐藏，解锁后即可复制。")
+                Text("解锁后查看验证码。")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)

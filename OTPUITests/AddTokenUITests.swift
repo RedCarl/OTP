@@ -94,7 +94,7 @@ final class AddTokenUITests: XCTestCase {
         XCTAssertNotNil(codePattern.firstMatch(in: label, range: range), "row label should contain a TOTP code: \(label)")
 
         row.tap()
-        XCTAssertTrue(app.staticTexts["已复制 · 30 秒后自动清除剪贴板"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["已复制 · 30 秒后清除"].waitForExistence(timeout: 5))
 
         app.terminate()
         app.launch()

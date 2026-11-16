@@ -42,7 +42,7 @@ struct QRCodeView: View {
                         }
                     }
 
-                    Text("用其他认证器扫描这个二维码即可迁移该令牌。二维码里包含密钥，请勿发送给他人。")
+                    Text("包含密钥，请勿分享。")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
