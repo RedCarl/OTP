@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     let model: TokenListModel
+    var onRequestClear: () -> Void
 
     @AppStorage("appLockEnabled") private var appLockEnabled = false
     @AppStorage("lockPromptShown") private var lockPromptShown = false
@@ -13,7 +14,6 @@ struct SettingsView: View {
     @State private var showImport = false
     @State private var showCopyLinksConfirmation = false
     @State private var showDeviceAuthAlert = false
-    @State private var showClearSheet = false
     @State private var isRefreshing = false
     @State private var isEnablingLock = false
 
@@ -111,7 +111,7 @@ struct SettingsView: View {
                 if !model.tokens.isEmpty {
                     Section {
                         Button(role: .destructive) {
-                            showClearSheet = true
+                            onRequestClear()
                         } label: {
                             Label("清空所有令牌", systemImage: "trash")
                         }
@@ -127,9 +127,6 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showImport) {
                 ImportFlowView(model: model, mode: .file)
-            }
-            .sheet(isPresented: $showClearSheet) {
-                ClearTokensSheet(model: model)
             }
             .alert("无法开启解锁保护", isPresented: $showDeviceAuthAlert) {
                 Button("好", role: .cancel) {}

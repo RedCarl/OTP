@@ -27,29 +27,18 @@ struct HoldToClearButton: View {
             }
 
             HStack(spacing: 10) {
-                Image(systemName: "trash")
-                Text(isClearing ? "正在清空…" : "清空所有令牌")
-                Spacer()
                 if isClearing {
                     ProgressView()
                         .tint(.white)
                         .controlSize(.small)
-                } else if isFull {
-                    Text("松手清空")
-                        .font(.caption.weight(.medium))
-                        .opacity(0.9)
-                } else if isPressing {
-                    Text("继续按住")
-                        .font(.caption)
-                        .opacity(0.8)
                 } else {
-                    Text("按住")
-                        .font(.caption)
-                        .opacity(0.75)
+                    Image(systemName: isFull ? "checkmark.circle.fill" : "trash")
                 }
+                Text(title)
             }
             .font(.body.weight(.medium))
             .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, alignment: .center)
             .padding(.horizontal, 16)
         }
         .frame(height: 48)
@@ -89,6 +78,13 @@ struct HoldToClearButton: View {
             isPressing = false
             isFull = false
         }
+    }
+
+    private var title: String {
+        if isClearing { return "正在清空…" }
+        if isFull { return "松手清空" }
+        if isPressing { return "继续按住" }
+        return "按住清空"
     }
 
     private func beginHold() {

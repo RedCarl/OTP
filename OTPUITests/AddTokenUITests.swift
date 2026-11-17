@@ -93,6 +93,13 @@ final class AddTokenUITests: XCTestCase {
 
         let clear = app.descendants(matching: .any)["settings.clear"].firstMatch
         XCTAssertTrue(clear.waitForExistence(timeout: 10))
+        Thread.sleep(forTimeInterval: 0.8)
+
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        attachment.name = "06-clear-sheet"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+
         clear.press(forDuration: 1.8)
 
         XCTAssertTrue(app.staticTexts["已清空"].waitForExistence(timeout: 5))

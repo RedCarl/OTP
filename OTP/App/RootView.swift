@@ -15,6 +15,7 @@ struct RootView: View {
     @State private var selectedTab: AppTab = .tokens
     @State private var showLockSuggestion = false
     @State private var showAddSheet = false
+    @State private var showClearConfirm = false
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
@@ -32,7 +33,7 @@ struct RootView: View {
                 }
                 .tag(AppTab.tokens)
 
-                SettingsView(model: model)
+                SettingsView(model: model, onRequestClear: { showClearConfirm = true })
                     .tabItem {
                         Label("设置", systemImage: "gearshape.fill")
                     }
@@ -54,22 +55,31 @@ struct RootView: View {
                 .zIndex(3)
             }
 
+            if showClearConfirm {
+                ClearTokensSheet(model: model) {
+                    showClearConfirm = false
+                }
+                .transition(.opacity)
+                .zIndex(4)
+            }
+
             if lock.isLocked {
                 LockScreenView(isAuthenticating: lock.isAuthenticating) {
                     Task { await lock.unlock() }
                 }
                 .transition(.opacity)
-                .zIndex(1)
+                .zIndex(5)
             }
 
             if scenePhase != .active && hideInAppSwitcher {
                 PrivacyShield()
                     .transition(.opacity)
-                    .zIndex(2)
+                    .zIndex(6)
             }
         }
         .animation(.easeInOut(duration: 0.25), value: scenePhase != .active)
         .animation(.snappy(duration: 0.25), value: model.toastMessage)
+        .animation(.easeInOut(duration: 0.2), value: showClearConfirm)
         .task {
             if firstLaunchAt == 0 {
                 firstLaunchAt = Date().timeIntervalSince1970
