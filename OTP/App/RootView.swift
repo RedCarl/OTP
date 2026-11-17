@@ -75,7 +75,7 @@ struct RootView: View {
             evaluateLockSuggestion()
             if lock.isLocked {
                 Task {
-                    try? await Task.sleep(for: .milliseconds(350))
+                    try? await Task.sleep(for: .milliseconds(100))
                     await lock.unlock()
                 }
             }

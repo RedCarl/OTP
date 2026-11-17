@@ -9,40 +9,42 @@ struct LockScreenView: View {
             Color(.systemBackground)
                 .ignoresSafeArea()
 
-            VStack(spacing: 16) {
-                Image(systemName: "lock.shield.fill")
-                    .font(.system(size: 46))
-                    .foregroundStyle(.tint)
-                Text("OTP 已锁定")
-                    .font(.title3.weight(.semibold))
-                Text("解锁后查看验证码。")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+            if isAuthenticating {
+                // Minimal privacy cover while Face ID is up. Keeps codes hidden
+                // without showing a full lock page for less than a second.
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 30, weight: .semibold))
+                    .foregroundStyle(.tertiary)
+                    .transition(.opacity)
+            } else {
+                VStack(spacing: 16) {
+                    Image(systemName: "lock.shield.fill")
+                        .font(.system(size: 46))
+                        .foregroundStyle(.tint)
+                    Text("OTP 已锁定")
+                        .font(.title3.weight(.semibold))
+                    Text("解锁后查看验证码。")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
 
-                Group {
-                    if isAuthenticating {
-                        ProgressView()
-                            .controlSize(.large)
-                    } else {
-                        Button {
-                            onUnlock()
-                        } label: {
-                            Label(
-                                "使用 \(AppLockController.methodName) 解锁",
-                                systemImage: AppLockController.methodIcon
-                            )
-                            .padding(.horizontal, 8)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
+                    Button {
+                        onUnlock()
+                    } label: {
+                        Label(
+                            "使用 \(AppLockController.methodName) 解锁",
+                            systemImage: AppLockController.methodIcon
+                        )
+                        .padding(.horizontal, 8)
                     }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .padding(.top, 4)
                 }
-                .padding(.top, 4)
-                .transition(.opacity.combined(with: .scale(scale: 0.96)))
-                .animation(.easeInOut(duration: 0.2), value: isAuthenticating)
+                .padding(32)
+                .transition(.opacity)
             }
-            .padding(32)
         }
+        .animation(.easeInOut(duration: 0.2), value: isAuthenticating)
     }
 }
