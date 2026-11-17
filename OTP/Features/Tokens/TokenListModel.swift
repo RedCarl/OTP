@@ -158,6 +158,17 @@ final class TokenListModel {
         }
     }
 
+    func restore(_ tokens: [OTPToken], mode: RestoreMode) async -> RestoreSummary? {
+        do {
+            let summary = try await store.restore(tokens, mode: mode)
+            await refresh()
+            return summary
+        } catch {
+            errorMessage = error.localizedDescription
+            return nil
+        }
+    }
+
     /// Imports a batch with a single refresh; returns how many were written.
     @discardableResult
     func importTokens(_ tokens: [OTPToken]) async -> Int {

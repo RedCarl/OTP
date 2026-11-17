@@ -132,6 +132,18 @@ struct BackupService: Sendable {
         }
     }
 
+    /// Automatic iCloud backups use a key stored in iCloud Keychain, so the
+    /// user can restore them with one tap on any device.
+    func exportForICloud(_ tokens: [OTPToken]) throws -> Data {
+        let key = try BackupKeyStore.loadOrCreate()
+        return try export(tokens, passphrase: key)
+    }
+
+    func parseFromICloud(_ data: Data) throws -> [OTPToken] {
+        let key = try BackupKeyStore.loadOrCreate()
+        return try parse(data, passphrase: key)
+    }
+
     func suggestedFileName(date: Date = Date()) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")

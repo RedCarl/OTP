@@ -108,6 +108,46 @@ final class AddTokenUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["没有令牌"].waitForExistence(timeout: 10))
     }
 
+    func testICloudBackupCreatesAndListsEntry() throws {
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launch()
+
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
+        app.tabBars.buttons["设置"].tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
+
+        let backupRow = app.buttons["settings.backupCenter"]
+        XCTAssertTrue(backupRow.waitForExistence(timeout: 10))
+        backupRow.tap()
+
+        XCTAssertTrue(app.navigationBars["iCloud 备份"].waitForExistence(timeout: 10))
+        app.buttons["backup.now"].tap()
+
+        let entry = app.descendants(matching: .any)["backup.row"].firstMatch
+        XCTAssertTrue(entry.waitForExistence(timeout: 20))
+
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        attachment.name = "07-backup-list"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+
+        entry.tap()
+        XCTAssertTrue(app.navigationBars["恢复备份"].waitForExistence(timeout: 10))
+        Thread.sleep(forTimeInterval: 0.6)
+
+        let restoreAttachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        restoreAttachment.name = "08-restore-options"
+        restoreAttachment.lifetime = .keepAlways
+        add(restoreAttachment)
+
+        app.buttons["恢复"].firstMatch.tap()
+        let restored = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "已恢复")).firstMatch
+        XCTAssertTrue(restored.waitForExistence(timeout: 10))
+        app.buttons["完成"].tap()
+    }
+
     func testBackupExportValidation() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()

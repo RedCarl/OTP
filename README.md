@@ -6,6 +6,7 @@
   <img src="docs/screen-list.png" width="240" alt="主列表">
   <img src="docs/screen-add.png" width="240" alt="添加">
   <img src="docs/screen-settings.png" width="240" alt="设置">
+  <img src="docs/screen-backup.png" width="240" alt="iCloud 备份">
 </p>
 <p>
   <img src="docs/screen-import.png" width="240" alt="粘贴导入">
@@ -22,7 +23,7 @@
 - **iCloud 同步**：每条令牌是 iCloud 钥匙串里的一条端到端加密记录，换机、重装后自动回来。
 - **添加方式**：扫码、手动输入、粘贴 otpauth 链接、从相册识别二维码、导入文件。
 - **迁移**：Google Authenticator 迁移码、Aegis（未加密）、2FAS（未加密）、本 App 备份、任意 otpauth 链接。
-- **备份**：AES-256-GCM 加密的 `.otpbackup`（PBKDF2-HMAC-SHA256，210,000 次迭代），也可导出未加密 JSON 或单条二维码。
+- **备份**：手动或自动备份到 iCloud Drive（`OTP/Backups`，最多 10 份），列表里一键恢复，支持增量合并、更新同项、完全替换；也可以导出 AES-256-GCM 加密的 `.otpbackup`（PBKDF2-HMAC-SHA256，210,000 次迭代）、未加密 JSON 或单条二维码。
 - **保护**：Face ID / iPhone 密码解锁（3 个令牌或使用 5 天后主动询问一次；开启时先完成一次验证，成功后才生效）、切后台遮挡、剪贴板定时过期；不可用时自动跳过锁定。
 - **无网络**：App 不发起任何请求，没有分析或第三方 SDK。
 
@@ -47,8 +48,8 @@ scripts/run-simulator.sh
 
 ## 在真机上运行
 
-1. Xcode → OTP target → Signing & Capabilities，选择你的 Team（仓库里预填了 `B8787NKP38`）。
-2. 不需要开启 iCloud / CloudKit 能力：同步走系统 iCloud 钥匙串，App 侧只需要默认的钥匙串访问组。
+1. Xcode → OTP target → Signing & Capabilities，选择你的 Team（仓库里预填了 `BCRZR3P4AP`）。
+2. iCloud 备份需要 iCloud Documents 能力：工程已经在 `OTP/OTP.entitlements` 里配置 `iCloud.com.carljoy.otp`，并在 `Info.plist` 里声明 `NSUbiquitousContainers`；同步本身仍然走 iCloud 钥匙串，不依赖 CloudKit。
 3. 免费开发者账号也能运行（签名 7 天有效期）；长期使用建议付费开发者计划。
 4. 如果需要改 Bundle ID，请同时确认 `OTP/OTP.entitlements` 里的 `keychain-access-groups` 跟着改；钥匙串 service 常量 `cn.carljoy.otp.token` 与 Bundle ID 无关，改名不会丢数据。
 
@@ -84,8 +85,13 @@ value       = JSON（见下）
 
 ## 备份与迁移
 
-「设置 → 备份」：
+「设置 → iCloud 备份」：
 
+- **立即备份 / 自动备份**：加密后保存到 iCloud Drive 的 `OTP/Backups`，最多保留 10 份；开启自动备份后，令牌有变化并切到后台时会自动补一份。
+- **列表恢复**：点备份记录 → 选择恢复方式 → 恢复。列表显示备份时间、大小和来源（iCloud / 本机）。
+  - **增量合并**：只添加当前没有的令牌，已有令牌保持不动。
+  - **更新同项**：同一条目用备份内容更新，并补充缺失的令牌。
+  - **完全替换**：先自动保存一份当前状态作为安全副本，再删除当前令牌并用备份替换。
 - **导出备份**：默认用密码加密（至少 8 位）。生成后通过系统文件面板保存到 iCloud Drive、AirDrop 出去或发给自己的微信。
 - **导入备份**：选择文件 → 自动识别格式 → 预览 → 勾选后导入；已存在的相同令牌默认不勾选。
 - **复制令牌链接**：把 `otpauth://` 明文列表放进剪贴板（60 秒后过期），适合粘贴到其他认证器。
@@ -118,6 +124,7 @@ value       = JSON（见下）
 
 - 密钥只存在钥匙串；UserDefaults 只存 UI 偏好（锁开关、上次备份时间、引导标记）。
 - 备份加密：PBKDF2-HMAC-SHA256（210,000 次、16 字节随机盐）派生 32 字节密钥，AES-256-GCM 加密并校验 tag；错误密码与文件损坏无法区分，统一报错。
+- iCloud 备份使用保存在 iCloud 钥匙串中的随机 32 字节密钥（随 Apple ID 同步），恢复时无需输入密码；导出的 `.otpbackup` 仍使用你设置的密码。
 - 复制验证码时设置剪贴板过期时间（默认 30 秒，可在设置关闭）。
 - 解锁使用 `.deviceOwnerAuthentication`：优先 Face ID / Touch ID，自动回退到设备密码；从后台返回超过 60 秒才重新锁定。
 - 切到后台时全屏遮挡；验证码文本标了 `.privacySensitive()`。
@@ -132,13 +139,13 @@ OTP/
   Core/Crypto/               Base32、HOTP、TOTP、验证码分组
   Core/URI/                  otpauth:// 解析与生成
   Core/Storage/              钥匙串仓库、TokenStore actor、内存实现
-  Core/Backup/               备份信封、PBKDF2 + AES-GCM、FileDocument
+  Core/Backup/               备份信封、PBKDF2 + AES-GCM、iCloud 文件存储、恢复模式
   Core/Import/               Protobuf、Google 迁移码、Aegis、2FAS、URI 列表
   Core/Support/              ISO8601、启动配置
   Features/Tokens/           列表、行、编辑、二维码、品牌图标、添加弹窗
   Features/Import/           导入流程与预览
   Features/Scanner/          VisionKit 扫码、相册识别
-  Features/Settings/         设置、备份导出
+  Features/Settings/         设置、iCloud 备份列表、恢复、导出
   Features/Lock/             Face ID 锁
   Features/Onboarding/       首次启动引导
   DesignSystem/              剪贴板、倒计时环、滚动文字、图标处理、二维码渲染
@@ -161,7 +168,7 @@ scripts/                     bootstrap / build / test / run / screenshot / verif
 - 列表排序 / 去重 / 批量导入 / HOTP 计数器递增 / 二维码渲染。
 - 品牌识别（含中文与邮箱域名）、内置图标资源完整性、图标缩放压缩、自定义图标随令牌存储。
 
-UI 测试覆盖：手动添加 → 出现验证码 → 点击复制 → 重启后仍在；粘贴链接导入。
+UI 测试覆盖：手动添加 → 出现验证码 → 点击复制 → 重启后仍在；粘贴链接导入；长按清空；iCloud 备份列表与恢复流程。
 
 ```bash
 scripts/test.sh
@@ -176,7 +183,7 @@ python3 scripts/verify-totp.py JBSWY3DPEHPK3PXP   # 与 App 同秒对比，独�
 
 ### 数据存在哪里
 
-令牌是 **iCloud 钥匙串** 里的同步条目（service `cn.carljoy.otp.token`），端到端加密。它们**不会**出现在 iCloud 云盘、iCloud 设置或「密码」App 的第三方条目列表中——这是 Apple 对第三方钥匙串项的限制，不是没有同步。在两台登录同一 Apple ID 且开启 iCloud 钥匙串的设备上打开 OTP，即可看到同步结果；也可以随时用「导出备份」把加密文件保存到 iCloud Drive。
+令牌是 **iCloud 钥匙串** 里的同步条目（service `cn.carljoy.otp.token`），端到端加密。它们**不会**出现在 iCloud 云盘、iCloud 设置或「密码」App 的第三方条目列表中——这是 Apple 对第三方钥匙串项的限制，不是没有同步。在两台登录同一 Apple ID 且开启 iCloud 钥匙串的设备上打开 OTP，即可看到同步结果；备份文件会出现在 iCloud 云盘 → OTP → Backups；令牌本身不会。
 
 ### 安装到真机
 

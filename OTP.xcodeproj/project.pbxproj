@@ -18,11 +18,13 @@
 		0B0B57D9DA9449268102B368 /* AddTokenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E085882FF0CBF2AE8DE90 /* AddTokenSheetView.swift */; };
 		0F64A72B7DC31E92A5881D22 /* brand-bilibili.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9B58C1621D49DC0FAA9693 /* brand-bilibili.png */; };
 		12F2F912CFF5D595E4A78DA6 /* brand-apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3B1316504DFA7EB0D942A /* brand-apple.png */; };
+		13EB339CC4473AD9354BC85C /* BackupStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EBB78F4765187F1A09E9D0 /* BackupStore.swift */; };
 		14262C849A003FAD650AADDA /* brand-aws.png in Resources */ = {isa = PBXBuildFile; fileRef = C705342C5D05F511165ECCB8 /* brand-aws.png */; };
 		149BE6E9F310F8FA793665DA /* brand-figma.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B721FDC1A5BB275DEA3BB5B /* brand-figma.png */; };
 		157A1994A73F118718011A4B /* brand-notion.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DD4CA0F9B51745679123DA /* brand-notion.png */; };
 		1970E3C230DEDF646E51BAC3 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7622B8D8708AF2C6AB8D1F /* BackupService.swift */; };
 		19BC1B948D2769C0A62A0E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86C6F278EDF268F40B48AB47 /* Assets.xcassets */; };
+		1BDA87931E2D9C249AFF287F /* BackupStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DDA6DC567C957CF0DF0B37 /* BackupStoreTests.swift */; };
 		1E0FEB682E11C348BC2FC31F /* BackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E5A7B118136457EB5B4052 /* BackupTests.swift */; };
 		1F39FD4DD65421C7AE33ACAF /* GoogleAuthenticatorImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDEFEDEC486298D3BF53060 /* GoogleAuthenticatorImport.swift */; };
 		1FD5FCC45F76799E2551188A /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CEC4E1A0EC2204B0ACEB8D /* QRCodeView.swift */; };
@@ -31,6 +33,7 @@
 		25C78CF2D21E23E539635B06 /* HOTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F33245A3AC07B919C9B55 /* HOTPTests.swift */; };
 		2D61F325E9283287F40E5438 /* TwoFASImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985A70C298D59C2508A829BF /* TwoFASImport.swift */; };
 		2DFD10FC6CD5D051C5CE4DF5 /* OTPTokenCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194C4AD1C8EB329044956904 /* OTPTokenCodableTests.swift */; };
+		3126266E1926C9DD5D3E894B /* BackupCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6B6282E70B0A1C53B2E04 /* BackupCenterView.swift */; };
 		3A32A0821FCC05601B092ED7 /* ImportFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8593D5CBAB23F846C5D1DAD /* ImportFlowView.swift */; };
 		3BE54D46D404D5F748F19976 /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B775299B956D9E2BBBEEAB /* Base32Tests.swift */; };
 		3CF19CC1D12A3763F0642E43 /* HOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FE3E048DE7CA51F8CE175E /* HOTP.swift */; };
@@ -85,6 +88,7 @@
 		9E0D2D92CE72D03687864FDA /* FileImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F802F3D8FD066EA0E4B5D64 /* FileImportTests.swift */; };
 		9FCD97C9C7132DE3231B3983 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8303F606F31330B0D00AFA70 /* PrivacyInfo.xcprivacy */; };
 		A08CA9E372950B36F83CDA20 /* brand-instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 4481BDE72F771ABC8B0EABA0 /* brand-instagram.png */; };
+		A4011988C21289F969885852 /* RestoreMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C46F70FBBD88B426236B5 /* RestoreMode.swift */; };
 		A56943E1C1B8959837915C79 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D94E1D61E4D53F1D3063B12 /* SearchField.swift */; };
 		AAF46E55FCEA9F2ABFFE69D1 /* TokenRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E90E5C4AA257EAFB3E6112 /* TokenRowView.swift */; };
 		ABC9664A76A08CCED8DB7B2F /* TokenListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F465E1A8F604BC2A7194D32 /* TokenListModel.swift */; };
@@ -102,6 +106,7 @@
 		C3C6018574A88ABF4CB92F65 /* ImportCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80008DCE66B3BFE981C83047 /* ImportCandidate.swift */; };
 		C41CDA0CCDBAF11F9763E8C0 /* brand-protonmail.png in Resources */ = {isa = PBXBuildFile; fileRef = 022E710B701703173A574615 /* brand-protonmail.png */; };
 		C4A4D58B0FB5DDB94B50323B /* LockSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5C663E5C97CE4C4FD0301 /* LockSuggestion.swift */; };
+		C593B9E9E8E4006B1064DF88 /* BackupKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497ADDA533C7884697305BAF /* BackupKeyStore.swift */; };
 		C81E41F50D7F036A2EE5C563 /* brand-1password.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD0106D3A1C9BD0E45864EB /* brand-1password.png */; };
 		C8962D3FE027F6051C611E8F /* BackupExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F49CAAE30B6AA594997C9C /* BackupExportView.swift */; };
 		CAA33B94281A7C4C20832FE9 /* URIImportParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644EF306229469E9DF7AF5B /* URIImportParser.swift */; };
@@ -115,6 +120,7 @@
 		E967BEB72B2EAE076E6D3222 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650946CA89551B2896431209 /* Clipboard.swift */; };
 		EB14B04CDE704BC91E6FFAEB /* OTPCodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD95ED0A173E4FAC3D1AFD19 /* OTPCodeFormatter.swift */; };
 		EB70811EC97B27CD6F7AD2A6 /* TokenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2E6BADDE76D77F29F74F1 /* TokenListView.swift */; };
+		ED0A2A1DFB8A29FBA01C4C98 /* BackupAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3ECDAAA300591FD7EF58E /* BackupAutomation.swift */; };
 		EF8B71D4712553D765D06C9A /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659D909A3C044DE4F47F6CE /* ScreenshotUITests.swift */; };
 		F072653209A8856B727D66F9 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37CF683C4F1FA338CE6B6AA /* KeychainError.swift */; };
 		F817F19D63FA0E20112BB2DD /* AddTokenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23038C7987830E1D343455B4 /* AddTokenUITests.swift */; };
@@ -144,6 +150,7 @@
 /* Begin PBXFileReference section */
 		022E710B701703173A574615 /* brand-protonmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-protonmail.png"; sourceTree = "<group>"; };
 		031ACC87716CD762B03D0BF0 /* TOTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTPTests.swift; sourceTree = "<group>"; };
+		049C46F70FBBD88B426236B5 /* RestoreMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreMode.swift; sourceTree = "<group>"; };
 		04E5C663E5C97CE4C4FD0301 /* LockSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSuggestion.swift; sourceTree = "<group>"; };
 		098679A3639FD668F09A9857 /* KeychainTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTokenRepository.swift; sourceTree = "<group>"; };
 		0A33C0FFC48043FC610DFDFC /* HoldToClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldToClearButton.swift; sourceTree = "<group>"; };
@@ -167,15 +174,18 @@
 		3D2E085882FF0CBF2AE8DE90 /* AddTokenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenSheetView.swift; sourceTree = "<group>"; };
 		3EF846D423255608E2B542BE /* KeychainProbeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainProbeTests.swift; sourceTree = "<group>"; };
 		4199E348278D220ED8E66930 /* BackupCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupCrypto.swift; sourceTree = "<group>"; };
+		43DDA6DC567C957CF0DF0B37 /* BackupStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoreTests.swift; sourceTree = "<group>"; };
 		4481BDE72F771ABC8B0EABA0 /* brand-instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-instagram.png"; sourceTree = "<group>"; };
 		469F2C3FCBFC7A2B115053DC /* brand-google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-google.png"; sourceTree = "<group>"; };
 		46FCA3CC9CD6391C2CA74C69 /* OTPBackupDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPBackupDocument.swift; sourceTree = "<group>"; };
 		4748DF6655450994C0082EBC /* brand-supabase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-supabase.png"; sourceTree = "<group>"; };
+		497ADDA533C7884697305BAF /* BackupKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupKeyStore.swift; sourceTree = "<group>"; };
 		4A430C7035942CE14480D3D4 /* OTPAuthURITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPAuthURITests.swift; sourceTree = "<group>"; };
 		4A78D0F656D66DA6C8A90FFA /* brand-gitlab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-gitlab.png"; sourceTree = "<group>"; };
 		4B721FDC1A5BB275DEA3BB5B /* brand-figma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-figma.png"; sourceTree = "<group>"; };
 		4B7622B8D8708AF2C6AB8D1F /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		4E9344A8557376820DD417EE /* TokenEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEditorView.swift; sourceTree = "<group>"; };
+		53EBB78F4765187F1A09E9D0 /* BackupStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStore.swift; sourceTree = "<group>"; };
 		58011D980D2F1475D7C67E3E /* brand-binance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-binance.png"; sourceTree = "<group>"; };
 		5915D56FB54C0FBC456458D0 /* OTPKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPKind.swift; sourceTree = "<group>"; };
 		5C69B9BAD52F2E0D1FB048A4 /* QRCodeRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRendererTests.swift; sourceTree = "<group>"; };
@@ -196,6 +206,7 @@
 		723DD9F9293F022BAACAEF1A /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		781566E3A7E2AE5630AC2591 /* OTPAuthURI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPAuthURI.swift; sourceTree = "<group>"; };
 		79E5A7B118136457EB5B4052 /* BackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTests.swift; sourceTree = "<group>"; };
+		7AA6B6282E70B0A1C53B2E04 /* BackupCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupCenterView.swift; sourceTree = "<group>"; };
 		7C8080BDE1BFD43E96E9FE73 /* brand-bitwarden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-bitwarden.png"; sourceTree = "<group>"; };
 		7F802F3D8FD066EA0E4B5D64 /* FileImportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImportTests.swift; sourceTree = "<group>"; };
 		80008DCE66B3BFE981C83047 /* ImportCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCandidate.swift; sourceTree = "<group>"; };
@@ -219,6 +230,7 @@
 		9A4143CD1F49592045C24124 /* brand-cloudflare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-cloudflare.png"; sourceTree = "<group>"; };
 		9B303C194C635625F2F671F9 /* brand-telegram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-telegram.png"; sourceTree = "<group>"; };
 		9C393E2B9F66E4A2A9D278C1 /* QRCodeRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRenderer.swift; sourceTree = "<group>"; };
+		9CA3ECDAAA300591FD7EF58E /* BackupAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupAutomation.swift; sourceTree = "<group>"; };
 		A435718E7B69350291989BBE /* brand-digitalocean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brand-digitalocean.png"; sourceTree = "<group>"; };
 		A4DE3F7EDAD6F6D8EC393A0E /* TokenIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIconView.swift; sourceTree = "<group>"; };
 		A6A4D055DAD514A6A378A18A /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
@@ -299,10 +311,14 @@
 		2CE466ED4CD73F6761360B1C /* Backup */ = {
 			isa = PBXGroup;
 			children = (
+				9CA3ECDAAA300591FD7EF58E /* BackupAutomation.swift */,
 				4199E348278D220ED8E66930 /* BackupCrypto.swift */,
 				B6D0B1C58AD5A3AFA129D907 /* BackupError.swift */,
+				497ADDA533C7884697305BAF /* BackupKeyStore.swift */,
 				4B7622B8D8708AF2C6AB8D1F /* BackupService.swift */,
+				53EBB78F4765187F1A09E9D0 /* BackupStore.swift */,
 				46FCA3CC9CD6391C2CA74C69 /* OTPBackupDocument.swift */,
+				049C46F70FBBD88B426236B5 /* RestoreMode.swift */,
 			);
 			path = Backup;
 			sourceTree = "<group>";
@@ -402,6 +418,7 @@
 		55C9E1191374F2804FF0038B /* OTPTests */ = {
 			isa = PBXGroup;
 			children = (
+				43DDA6DC567C957CF0DF0B37 /* BackupStoreTests.swift */,
 				79E5A7B118136457EB5B4052 /* BackupTests.swift */,
 				91B775299B956D9E2BBBEEAB /* Base32Tests.swift */,
 				84CAB45646DEAC6B420E791A /* BrandCatalogTests.swift */,
@@ -519,6 +536,7 @@
 		94CC20CAC4CDC9EC6C570040 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				7AA6B6282E70B0A1C53B2E04 /* BackupCenterView.swift */,
 				17F49CAAE30B6AA594997C9C /* BackupExportView.swift */,
 				1E8E96F10A2575EE643ADD83 /* ClearTokensSheet.swift */,
 				0A33C0FFC48043FC610DFDFC /* HoldToClearButton.swift */,
@@ -728,6 +746,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BDA87931E2D9C249AFF287F /* BackupStoreTests.swift in Sources */,
 				1E0FEB682E11C348BC2FC31F /* BackupTests.swift in Sources */,
 				3BE54D46D404D5F748F19976 /* Base32Tests.swift in Sources */,
 				E6498822B81F901A06216370 /* BrandCatalogTests.swift in Sources */,
@@ -764,10 +783,14 @@
 				47D8A3EBED63AF1D8241C92C /* AegisImport.swift in Sources */,
 				500169A5AE4F0C9B0BF2E5D8 /* AppConfiguration.swift in Sources */,
 				4B684351B76B2F8D9A278A15 /* AppLockController.swift in Sources */,
+				ED0A2A1DFB8A29FBA01C4C98 /* BackupAutomation.swift in Sources */,
+				3126266E1926C9DD5D3E894B /* BackupCenterView.swift in Sources */,
 				632DECFC3356FD3C315A027E /* BackupCrypto.swift in Sources */,
 				226A5951FEC06FCD63148D8B /* BackupError.swift in Sources */,
 				C8962D3FE027F6051C611E8F /* BackupExportView.swift in Sources */,
+				C593B9E9E8E4006B1064DF88 /* BackupKeyStore.swift in Sources */,
 				1970E3C230DEDF646E51BAC3 /* BackupService.swift in Sources */,
+				13EB339CC4473AD9354BC85C /* BackupStore.swift in Sources */,
 				527A3DECE293A7B91A698348 /* Base32.swift in Sources */,
 				50992952D14E1B1E5FAEF81D /* BrandCatalog.swift in Sources */,
 				F9A5D901FBAFE2D344EDC7E4 /* ClearTokensSheet.swift in Sources */,
@@ -802,6 +825,7 @@
 				772D7F599E01BDD6E014FFE8 /* QRCodeRenderer.swift in Sources */,
 				1FD5FCC45F76799E2551188A /* QRCodeView.swift in Sources */,
 				6718F3D093164F23E16C0ADB /* QRScannerView.swift in Sources */,
+				A4011988C21289F969885852 /* RestoreMode.swift in Sources */,
 				648BBCD2BDD15EE4943C8370 /* RootView.swift in Sources */,
 				A56943E1C1B8959837915C79 /* SearchField.swift in Sources */,
 				8D83E3AA2AAFD22F7677E4AC /* SettingsView.swift in Sources */,
@@ -859,7 +883,7 @@
 				CODE_SIGN_ENTITLEMENTS = OTP/OTP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = BCRZR3P4AP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1043,7 +1067,7 @@
 				CODE_SIGN_ENTITLEMENTS = OTP/OTP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = BCRZR3P4AP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;

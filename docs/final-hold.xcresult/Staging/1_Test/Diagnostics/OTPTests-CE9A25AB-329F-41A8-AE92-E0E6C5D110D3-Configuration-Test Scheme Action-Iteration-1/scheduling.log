@@ -1,5 +1,0 @@
-2026-11-17 02:46:12 +0000: Received worker from worker provider: <XCTHTestRunner: 0xc00db4c80, PID: 0, device: iPhone 18 Pro (F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E)>
-2026-11-17 02:46:17 +0000: Worker <XCTHTestRunner: 0xc00db4c80, PID: 46374, device: iPhone 18 Pro (F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E)> finished bootstrapping
-2026-11-17 02:46:17 +0000: Parallelization disabled; test execution driven by the test process
-2026-11-17 02:46:19 +0000: Worker <XCTHTestRunner: 0xc00db4c80, PID: 46374, device: iPhone 18 Pro (F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E)> finished successfully
-2026-11-17 02:46:19 +0000: Finished executing tests (cancelled: No)

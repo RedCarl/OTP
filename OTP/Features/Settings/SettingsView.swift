@@ -11,6 +11,7 @@ struct SettingsView: View {
     @AppStorage("lastBackupAt") private var lastBackupAt: Double = 0
 
     @State private var showBackupExport = false
+    @State private var showBackupCenter = false
     @State private var showImport = false
     @State private var showCopyLinksConfirmation = false
     @State private var showDeviceAuthAlert = false
@@ -82,6 +83,20 @@ struct SettingsView: View {
 
                 Section {
                     Button {
+                        showBackupCenter = true
+                    } label: {
+                        HStack {
+                            settingLabel("iCloud 备份", systemImage: "icloud.and.arrow.up")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
+                    .tint(Color.primary)
+                    .accessibilityIdentifier("settings.backupCenter")
+
+                    Button {
                         showBackupExport = true
                     } label: {
                         settingLabel("导出备份", systemImage: "square.and.arrow.up")
@@ -124,6 +139,9 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showBackupExport) {
                 BackupExportView(model: model)
+            }
+            .sheet(isPresented: $showBackupCenter) {
+                BackupCenterView(model: model)
             }
             .sheet(isPresented: $showImport) {
                 ImportFlowView(model: model, mode: .file)

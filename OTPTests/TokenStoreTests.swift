@@ -45,6 +45,80 @@ struct TokenStoreTests {
         #expect(Set(result.tokens.map(\.issuer)) == ["New", "New2"])
     }
 
+    @Test func restoreMergeKeepsExistingAndAddsMissing() async throws {
+        let existing = token(issuer: "GitHub", account: "alice")
+        let repository = InMemoryTokenRepository(tokens: [existing])
+        let store = TokenStore(repository: repository)
+
+        var changed = existing
+        changed.issuer = "GitHub Enterprise"
+        let added = token(issuer: "AWS", account: "root", secret: "MFRGGZDFMZTWQ2LKNNWG23TP")
+
+        let summary = try await store.restore([changed, added], mode: .merge)
+        #expect(summary.added == 1)
+        #expect(summary.updated == 0)
+        #expect(summary.skipped == 1)
+
+        let result = try await store.load()
+        #expect(result.tokens.count == 2)
+        #expect(result.tokens.first(where: { $0.id == existing.id })?.issuer == "GitHub")
+    }
+
+    @Test func restoreUpdateOverwritesMatchingToken() async throws {
+        let existing = token(issuer: "GitHub", account: "alice")
+        let repository = InMemoryTokenRepository(tokens: [existing])
+        let store = TokenStore(repository: repository)
+
+        var changed = existing
+        changed.issuer = "GitHub Enterprise"
+        changed.accountName = "alice@company.com"
+
+        let summary = try await store.restore([changed], mode: .update)
+        #expect(summary.added == 0)
+        #expect(summary.updated == 1)
+        #expect(summary.skipped == 0)
+
+        let result = try await store.load()
+        #expect(result.tokens.count == 1)
+        #expect(result.tokens.first?.id == existing.id)
+        #expect(result.tokens.first?.issuer == "GitHub Enterprise")
+        #expect(result.tokens.first?.accountName == "alice@company.com")
+    }
+
+    @Test func restoreReplaceDeletesEverythingFirst() async throws {
+        let old = token(issuer: "Old", account: "a")
+        let repository = InMemoryTokenRepository(tokens: [old, token(issuer: "Old2", account: "b")])
+        let store = TokenStore(repository: repository)
+
+        let fresh = token(issuer: "Fresh", account: "c", secret: "GEZDGNBVGY3TQOJQ")
+        let summary = try await store.restore([fresh], mode: .replace)
+        #expect(summary.added == 1)
+
+        let result = try await store.load()
+        #expect(result.tokens.count == 1)
+        #expect(result.tokens.first?.id == fresh.id)
+    }
+
+    @Test func restoreMatchesLogicalDuplicatesWithDifferentIDs() async throws {
+        let existing = token(issuer: "GitHub", account: "alice")
+        var copy = existing
+        copy.id = UUID()
+
+        let mergeRepository = InMemoryTokenRepository(tokens: [existing])
+        let mergeStore = TokenStore(repository: mergeRepository)
+        let mergeSummary = try await mergeStore.restore([copy], mode: .merge)
+        #expect(mergeSummary.skipped == 1)
+        #expect(try await mergeStore.load().tokens.count == 1)
+
+        let updateRepository = InMemoryTokenRepository(tokens: [existing])
+        let updateStore = TokenStore(repository: updateRepository)
+        let updateSummary = try await updateStore.restore([copy], mode: .update)
+        #expect(updateSummary.updated == 1)
+        let updated = try await updateStore.load().tokens
+        #expect(updated.count == 1)
+        #expect(updated.first?.id == existing.id)
+    }
+
     @Test func inMemorySortsPinnedFirst() async throws {
         let pinned = OTPToken(issuer: "Zed", accountName: "z", secret: Data([1, 2, 3]), pinned: true)
         let alpha = OTPToken(issuer: "Alpha", accountName: "a", secret: Data([4, 5, 6]))

@@ -85,6 +85,10 @@ struct RootView: View {
                 firstLaunchAt = Date().timeIntervalSince1970
             }
             await model.start()
+            if !AppConfiguration.isAutomatedRun {
+                let tokens = model.tokens
+                Task { await BackupAutomation.backupIfNeeded(tokens: tokens) }
+            }
             #if DEBUG
             if AppConfiguration.shouldSeedDemoTokens {
                 await model.seedDemoTokensIfEmpty()
@@ -143,6 +147,10 @@ struct RootView: View {
                 }
             case .background:
                 model.stopTicker()
+                let tokens = model.tokens
+                Task {
+                    await BackupAutomation.backupIfNeeded(tokens: tokens)
+                }
             default:
                 break
             }
