@@ -86,27 +86,36 @@ final class AppLockController {
     func unlock() async {
         guard isLocked, !isAuthenticating else { return }
         isAuthenticating = true
-        defer { isAuthenticating = false }
 
         let context = LAContext()
         context.localizedCancelTitle = "取消"
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
             // No biometrics / passcode configured: never trap the user.
+            isAuthenticating = false
             withAnimation(.easeOut(duration: 0.3)) { isLocked = false }
             return
         }
+
         do {
             let success = try await context.evaluatePolicy(
                 .deviceOwnerAuthentication,
                 localizedReason: "解锁 OTP 令牌"
             )
             if success {
-                withAnimation(.easeOut(duration: 0.3)) { isLocked = false }
+                // The system Face ID sheet is still dismissing here. Keep the
+                // cover for a beat, then fade it once the sheet is gone.
+                try? await Task.sleep(for: .milliseconds(550))
+                withAnimation(.easeOut(duration: 0.45)) { isLocked = false }
+                try? await Task.sleep(for: .milliseconds(400))
+                isAuthenticating = false
+                return
             }
         } catch {
             // Cancelled or failed: keep the lock screen visible.
         }
+
+        isAuthenticating = false
     }
 
     func handleScenePhase(_ phase: ScenePhase) {

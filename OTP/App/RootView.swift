@@ -56,7 +56,6 @@ struct RootView: View {
                     .zIndex(2)
             }
         }
-        .animation(.easeInOut(duration: 0.32), value: lock.isLocked)
         .animation(.easeInOut(duration: 0.25), value: scenePhase != .active)
         .task {
             if firstLaunchAt == 0 {
