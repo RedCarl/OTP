@@ -7,7 +7,7 @@ import Testing
 /// is unique per test so repeated runs never collide.
 struct KeychainRepositoryTests {
     private func makeRepository() -> KeychainTokenRepository {
-        KeychainTokenRepository(service: "com.redcarl.otp.tests.\(UUID().uuidString)")
+        KeychainTokenRepository(service: "cn.carljoy.otp.tests.\(UUID().uuidString)")
     }
 
     private func makeToken(issuer: String = "GitHub", account: String = "alice") -> OTPToken {

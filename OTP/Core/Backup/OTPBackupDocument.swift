@@ -2,7 +2,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 extension UTType {
-    static let otpBackup = UTType(exportedAs: "com.redcarl.otp.backup", conformingTo: .json)
+    static let otpBackup = UTType(exportedAs: "cn.carljoy.otp.backup", conformingTo: .json)
 }
 
 struct OTPBackupDocument: FileDocument {

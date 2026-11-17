@@ -6,7 +6,7 @@ final class AddTokenUITests: XCTestCase {
     }
 
     func testAddTokenCopiesCodeAndPersists() throws {
-        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
         app.launchArguments = ["-uiTestService", service]
         app.launch()
@@ -54,7 +54,7 @@ final class AddTokenUITests: XCTestCase {
     }
 
     func testSearchFiltersTokens() throws {
-        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
         app.launchArguments = ["-uiTestService", service, "-seedDemo"]
         app.launch()
@@ -75,7 +75,7 @@ final class AddTokenUITests: XCTestCase {
     }
 
     func testBackupExportValidation() throws {
-        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
         app.launchArguments = ["-uiTestService", service, "-seedDemo"]
         app.launch()
@@ -102,7 +102,7 @@ final class AddTokenUITests: XCTestCase {
     }
 
     func testPasteLinkImport() throws {
-        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
         app.launchArguments = ["-uiTestService", service]
         app.launch()

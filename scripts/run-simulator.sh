@@ -14,4 +14,4 @@ done
 xcodebuild -project OTP.xcodeproj -scheme OTP -destination "$DEST" build >/dev/null
 APP_PATH="$(xcodebuild -project OTP.xcodeproj -scheme OTP -destination "$DEST" -showBuildSettings 2>/dev/null | awk -F'= ' '/ BUILT_PRODUCTS_DIR /{print $2; exit}')/OTP.app"
 xcrun simctl install booted "$APP_PATH"
-xcrun simctl launch booted com.redcarl.otp
+xcrun simctl launch booted cn.carljoy.otp

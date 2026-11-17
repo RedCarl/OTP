@@ -5,7 +5,7 @@ import Testing
 
 struct KeychainProbeTests {
     @Test func probeSynchronizableSupport() {
-        let service = "com.redcarl.otp.probe.\(UUID().uuidString)"
+        let service = "cn.carljoy.otp.probe.\(UUID().uuidString)"
         let account = UUID().uuidString
         var base: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,

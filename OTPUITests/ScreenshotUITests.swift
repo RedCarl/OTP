@@ -6,7 +6,7 @@ final class ScreenshotUITests: XCTestCase {
     }
 
     func testCaptureScreens() throws {
-        let service = "com.redcarl.otp.screens.v4"
+        let service = "cn.carljoy.otp.screens.v4"
         let app = XCUIApplication()
         app.launchArguments = ["-uiTestService", service, "-demoService", service, "-seedDemo"]
         app.launch()

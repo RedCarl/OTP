@@ -50,14 +50,14 @@ scripts/run-simulator.sh
 1. Xcode → OTP target → Signing & Capabilities，选择你的 Team（仓库里预填了 `B8787NKP38`）。
 2. 不需要开启 iCloud / CloudKit 能力：同步走系统 iCloud 钥匙串，App 侧只需要默认的钥匙串访问组。
 3. 免费开发者账号也能运行（签名 7 天有效期）；长期使用建议付费开发者计划。
-4. 如果需要改 Bundle ID，请同时确认 `OTP/OTP.entitlements` 里的 `keychain-access-groups` 跟着改；钥匙串 service 常量 `com.redcarl.otp.token` 与 Bundle ID 无关，改名不会丢数据。
+4. 如果需要改 Bundle ID，请同时确认 `OTP/OTP.entitlements` 里的 `keychain-access-groups` 跟着改；钥匙串 service 常量 `cn.carljoy.otp.token` 与 Bundle ID 无关，改名不会丢数据。
 
 ## 数据是怎么同步的
 
 每个令牌 = 一条 `kSecClassGenericPassword` 记录：
 
 ```
-service     = com.redcarl.otp.token
+service     = cn.carljoy.otp.token
 account     = <令牌 UUID>
 synchronizable = true
 accessible  = kSecAttrAccessibleAfterFirstUnlock

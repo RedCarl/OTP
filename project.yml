@@ -1,6 +1,6 @@
 name: OTP
 options:
-  bundleIdPrefix: com.redcarl
+  bundleIdPrefix: cn.carljoy
   deploymentTarget:
     iOS: "18.0"
   developmentLanguage: zh-Hans
@@ -22,7 +22,7 @@ targets:
       - path: OTP
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.redcarl.otp
+        PRODUCT_BUNDLE_IDENTIFIER: cn.carljoy.otp
         PRODUCT_NAME: OTP
         INFOPLIST_FILE: OTP/Resources/Info.plist
         CODE_SIGN_ENTITLEMENTS: OTP/OTP.entitlements
@@ -52,7 +52,7 @@ targets:
       - target: OTP
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.redcarl.otp.uitests
+        PRODUCT_BUNDLE_IDENTIFIER: cn.carljoy.otp.uitests
         GENERATE_INFOPLIST_FILE: YES
         TEST_TARGET_NAME: OTP
 
@@ -65,7 +65,7 @@ targets:
       - target: OTP
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.redcarl.otp.tests
+        PRODUCT_BUNDLE_IDENTIFIER: cn.carljoy.otp.tests
         GENERATE_INFOPLIST_FILE: YES
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/OTP.app/OTP"
         BUNDLE_LOADER: "$(TEST_HOST)"

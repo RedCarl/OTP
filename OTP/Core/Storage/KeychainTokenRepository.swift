@@ -6,10 +6,10 @@ import os
 /// No local database, no plaintext on disk: the keychain is the single source
 /// of truth and iCloud Keychain performs end-to-end encrypted sync.
 struct KeychainTokenRepository: TokenRepository {
-    static let defaultService = "com.redcarl.otp.token"
+    static let defaultService = "cn.carljoy.otp.token"
 
     let service: String
-    private let logger = Logger(subsystem: "com.redcarl.otp", category: "Keychain")
+    private let logger = Logger(subsystem: "cn.carljoy.otp", category: "Keychain")
 
     init(service: String = KeychainTokenRepository.defaultService) {
         self.service = service
