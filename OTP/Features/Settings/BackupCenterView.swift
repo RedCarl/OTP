@@ -35,10 +35,6 @@ struct BackupCenterView: View {
                     .accessibilityIdentifier("backup.now")
 
                     Toggle("自动备份", isOn: $autoBackupEnabled)
-                } footer: {
-                    Text(usingICloud
-                         ? "备份保存在 iCloud Drive 的 OTP/Backups 文件夹，最多保留 10 份。"
-                         : "iCloud 暂不可用，备份保存在本机。")
                 }
 
                 Section("备份记录") {
