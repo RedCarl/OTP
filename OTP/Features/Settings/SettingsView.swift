@@ -29,21 +29,32 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
                         Button {
                             Task {
-                                isRefreshing = true
-                                await model.refresh()
-                                isRefreshing = false
+                                guard !isRefreshing else { return }
+                                withAnimation(.easeOut(duration: 0.15)) {
+                                    isRefreshing = true
+                                }
+                                async let refresh: Void = model.refresh()
+                                try? await Task.sleep(for: .milliseconds(700))
+                                await refresh
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    isRefreshing = false
+                                }
                             }
                         } label: {
-                            if isRefreshing {
-                                ProgressView()
-                                    .controlSize(.small)
-                                    .frame(width: 30, height: 30)
-                            } else {
-                                Image(systemName: "arrow.clockwise")
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .frame(width: 30, height: 30)
-                                    .background(Circle().fill(Color(.tertiarySystemFill)))
+                            ZStack {
+                                if isRefreshing {
+                                    ProgressView()
+                                        .controlSize(.small)
+                                        .transition(.opacity.combined(with: .scale(scale: 0.7)))
+                                } else {
+                                    Image(systemName: "arrow.clockwise")
+                                        .font(.system(size: 14, weight: .semibold))
+                                        .transition(.opacity.combined(with: .scale(scale: 0.7)))
+                                }
                             }
+                            .frame(width: 30, height: 30)
+                            .background(Circle().fill(Color(.tertiarySystemFill)))
+                            .animation(.easeInOut(duration: 0.2), value: isRefreshing)
                         }
                         .buttonStyle(.plain)
                         .disabled(isRefreshing)

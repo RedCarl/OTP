@@ -57,3 +57,12 @@ private struct SearchGlassBackground: ViewModifier {
         }
     }
 }
+struct GlassCircleBackground: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.glassEffect(.regular.interactive(), in: Circle())
+        } else {
+            content.background(Circle().fill(Color(.tertiarySystemFill)))
+        }
+    }
+}

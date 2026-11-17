@@ -6,8 +6,7 @@ struct LockScreenView: View {
 
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(.ultraThinMaterial)
+            Color(.systemBackground)
                 .ignoresSafeArea()
 
             VStack(spacing: 16) {
@@ -21,24 +20,27 @@ struct LockScreenView: View {
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
-                if isAuthenticating {
-                    ProgressView()
+                Group {
+                    if isAuthenticating {
+                        ProgressView()
+                            .controlSize(.large)
+                    } else {
+                        Button {
+                            onUnlock()
+                        } label: {
+                            Label(
+                                "使用 \(AppLockController.methodName) 解锁",
+                                systemImage: AppLockController.methodIcon
+                            )
+                            .padding(.horizontal, 8)
+                        }
+                        .buttonStyle(.borderedProminent)
                         .controlSize(.large)
-                        .padding(.top, 4)
-                } else {
-                    Button {
-                        onUnlock()
-                    } label: {
-                        Label(
-                            "使用 \(AppLockController.methodName) 解锁",
-                            systemImage: AppLockController.methodIcon
-                        )
-                        .padding(.horizontal, 8)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .padding(.top, 4)
                 }
+                .padding(.top, 4)
+                .transition(.opacity.combined(with: .scale(scale: 0.96)))
+                .animation(.easeInOut(duration: 0.2), value: isAuthenticating)
             }
             .padding(32)
         }

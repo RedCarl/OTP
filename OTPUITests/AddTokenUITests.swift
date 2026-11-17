@@ -13,7 +13,7 @@ final class AddTokenUITests: XCTestCase {
 
         XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
 
-        app.buttons["添加第一个令牌"].tap()
+        app.buttons["添加令牌"].tap()
         XCTAssertTrue(app.navigationBars["添加令牌"].waitForExistence(timeout: 10))
         let manual = app.buttons["add.manual"]
         XCTAssertTrue(manual.waitForExistence(timeout: 10))
@@ -108,7 +108,7 @@ final class AddTokenUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
-        app.buttons["添加第一个令牌"].tap()
+        app.buttons["添加令牌"].tap()
         XCTAssertTrue(app.navigationBars["添加令牌"].waitForExistence(timeout: 10))
         let paste = app.buttons["add.paste"]
         XCTAssertTrue(paste.waitForExistence(timeout: 10))

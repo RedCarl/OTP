@@ -15,6 +15,7 @@ struct RootView: View {
     @State private var selectedTab: AppTab = .tokens
     @State private var showLockSuggestion = false
     @State private var showAddSheet = false
+    @State private var showEmptyImport = false
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
@@ -24,9 +25,11 @@ struct RootView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                TokenListView(model: model) {
-                    showAddSheet = true
-                }
+                TokenListView(
+                    model: model,
+                    onRequestAdd: { showAddSheet = true },
+                    onRequestImport: { showEmptyImport = true }
+                )
                 .tabItem {
                     Label("令牌", systemImage: "key.fill")
                 }
@@ -43,7 +46,7 @@ struct RootView: View {
                 LockScreenView(isAuthenticating: lock.isAuthenticating) {
                     Task { await lock.unlock() }
                 }
-                .transition(.opacity.combined(with: .scale(scale: 1.02)))
+                .transition(.opacity)
                 .zIndex(1)
             }
 
@@ -53,7 +56,8 @@ struct RootView: View {
                     .zIndex(2)
             }
         }
-        .animation(.easeInOut(duration: 0.22), value: lock.isLocked)
+        .animation(.easeInOut(duration: 0.32), value: lock.isLocked)
+        .animation(.easeInOut(duration: 0.25), value: scenePhase != .active)
         .task {
             if firstLaunchAt == 0 {
                 firstLaunchAt = Date().timeIntervalSince1970
@@ -69,6 +73,12 @@ struct RootView: View {
                 showOnboarding = true
             }
             evaluateLockSuggestion()
+            if lock.isLocked {
+                Task {
+                    try? await Task.sleep(for: .milliseconds(350))
+                    await lock.unlock()
+                }
+            }
         }
         .fullScreenCover(isPresented: $showOnboarding) {
             OnboardingView { wantsImport in
@@ -88,6 +98,12 @@ struct RootView: View {
                 showAddSheet = false
                 selectedTab = .tokens
             }
+        }
+        .sheet(isPresented: $showEmptyImport) {
+            ImportFlowView(model: model, mode: .file, onImported: {
+                showEmptyImport = false
+                selectedTab = .tokens
+            })
         }
         .onChange(of: lock.isLocked) { _, locked in
             guard locked else { return }
@@ -152,8 +168,7 @@ struct RootView: View {
 private struct PrivacyShield: View {
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(.ultraThinMaterial)
+            Color(.systemBackground)
                 .ignoresSafeArea()
             Image(systemName: "lock.shield.fill")
                 .font(.system(size: 42))

@@ -174,6 +174,10 @@ python3 scripts/verify-totp.py JBSWY3DPEHPK3PXP   # 与 App 同秒对比，独�
 - `-demoService <name> -seedDemo`：写入 3 个示例令牌并跳过引导，用于截图。
 - 上述任一参数会同时关闭 Face ID 锁与首次引导。
 
+### 数据存在哪里
+
+令牌是 **iCloud 钥匙串** 里的同步条目（service `cn.carljoy.otp.token`），端到端加密。它们**不会**出现在 iCloud 云盘、iCloud 设置或「密码」App 的第三方条目列表中——这是 Apple 对第三方钥匙串项的限制，不是没有同步。在两台登录同一 Apple ID 且开启 iCloud 钥匙串的设备上打开 OTP，即可看到同步结果；也可以随时用「导出备份」把加密文件保存到 iCloud Drive。
+
 ### 安装到真机
 
 项目使用自动签名，把 `project.yml` 里的 `DEVELOPMENT_TEAM` 换成你自己的 Team ID，然后：

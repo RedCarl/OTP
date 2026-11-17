@@ -12,6 +12,15 @@ final class AppLockController {
     private var backgroundedAt: Date?
     private var didPrepareLaunch = false
 
+    init() {
+        guard !AppConfiguration.isAutomatedRun else { return }
+        let defaults = UserDefaults.standard
+        let enabled = defaults.object(forKey: "appLockEnabled") as? Bool ?? false
+        let onboarded = defaults.bool(forKey: "hasCompletedOnboarding")
+        isLocked = enabled && onboarded
+        didPrepareLaunch = true
+    }
+
     static var canAuthenticate: Bool {
         LAContext().canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
     }
@@ -84,7 +93,7 @@ final class AppLockController {
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
             // No biometrics / passcode configured: never trap the user.
-            withAnimation(.easeOut(duration: 0.22)) { isLocked = false }
+            withAnimation(.easeOut(duration: 0.3)) { isLocked = false }
             return
         }
         do {
@@ -93,7 +102,7 @@ final class AppLockController {
                 localizedReason: "解锁 OTP 令牌"
             )
             if success {
-                withAnimation(.easeOut(duration: 0.22)) { isLocked = false }
+                withAnimation(.easeOut(duration: 0.3)) { isLocked = false }
             }
         } catch {
             // Cancelled or failed: keep the lock screen visible.
@@ -111,7 +120,7 @@ final class AppLockController {
                 return
             }
             if let backgroundedAt, Date().timeIntervalSince(backgroundedAt) > 60 {
-                withAnimation(.easeIn(duration: 0.2)) { isLocked = true }
+                withAnimation(.easeIn(duration: 0.28)) { isLocked = true }
             }
             backgroundedAt = nil
         default:

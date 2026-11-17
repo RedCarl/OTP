@@ -3,6 +3,7 @@ import SwiftUI
 struct TokenListView: View {
     @Bindable var model: TokenListModel
     var onRequestAdd: () -> Void
+    var onRequestImport: () -> Void
 
     @State private var editingToken: OTPToken?
     @State private var pendingDelete: OTPToken?
@@ -18,9 +19,8 @@ struct TokenListView: View {
                         Image(systemName: "plus")
                             .font(.system(size: 17, weight: .semibold))
                             .frame(width: 38, height: 38)
-                            .background(
-                                Circle().fill(Color(.tertiarySystemFill))
-                            )
+                            .modifier(GlassCircleBackground())
+                            .contentShape(Circle())
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel("添加令牌")
@@ -179,35 +179,39 @@ struct TokenListView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: 0) {
             Spacer()
-            Image(systemName: "key.horizontal.fill")
-                .font(.system(size: 46, weight: .semibold))
-                .foregroundStyle(.tint)
-                .padding(.bottom, 4)
-            Text("还没有令牌")
-                .font(.title3.weight(.semibold))
-            Text("验证码会自动同步到你的其他设备。")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 28)
 
-            VStack(spacing: 10) {
-                Button(action: onRequestAdd) {
-                    Label("添加第一个令牌", systemImage: "plus")
-                        .frame(maxWidth: .infinity)
+            VStack(spacing: 22) {
+                VStack(spacing: 8) {
+                    Text("还没有令牌")
+                        .font(.title3.weight(.semibold))
+                    Text("扫码、粘贴链接或导入文件，验证码会自动同步。")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
 
-                Button("从其他认证器导入", action: onRequestAdd)
+                VStack(spacing: 10) {
+                    Button(action: onRequestAdd) {
+                        Label("添加令牌", systemImage: "plus")
+                            .font(.body.weight(.semibold))
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+
+                    Button(action: onRequestImport) {
+                        Label("从其他认证器导入", systemImage: "square.and.arrow.down")
+                            .font(.body.weight(.medium))
+                            .frame(maxWidth: .infinity)
+                    }
                     .buttonStyle(.bordered)
                     .controlSize(.large)
-                    .frame(maxWidth: .infinity)
+                }
+                .padding(.top, 4)
             }
             .padding(.horizontal, 32)
-            .padding(.top, 6)
 
             Spacer()
             Spacer()
