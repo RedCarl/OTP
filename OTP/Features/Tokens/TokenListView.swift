@@ -9,26 +9,11 @@ struct TokenListView: View {
     @State private var qrToken: OTPToken?
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 10) {
-                SearchField(text: $model.searchText)
-
-                Button(action: onRequestAdd) {
-                    Image(systemName: "plus")
-                        .font(.system(size: 17, weight: .semibold))
-                        .frame(width: 38, height: 38)
-                        .modifier(GlassCircleBackground())
-                        .contentShape(Circle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("添加令牌")
-                .accessibilityIdentifier("tokens.add")
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 6)
-            .padding(.bottom, 8)
-
+        ZStack(alignment: .top) {
             content
+
+            searchBar
+                .zIndex(1)
         }
         .background(Color(.systemGroupedBackground))
         .sheet(item: $editingToken) { token in
@@ -63,6 +48,25 @@ struct TokenListView: View {
             Text(model.errorMessage ?? "")
         }
         .sensoryFeedback(.success, trigger: model.copySignal)
+    }
+
+    private var searchBar: some View {
+        HStack(spacing: 10) {
+            SearchField(text: $model.searchText)
+
+            Button(action: onRequestAdd) {
+                Image(systemName: "plus")
+                    .font(.system(size: 17, weight: .semibold))
+                    .frame(width: 38, height: 38)
+                    .modifier(GlassCircleBackground())
+                    .contentShape(Circle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("添加令牌")
+            .accessibilityIdentifier("tokens.add")
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 6)
     }
 
     @ViewBuilder
@@ -138,6 +142,7 @@ struct TokenListView: View {
             }
         }
         .listStyle(.insetGrouped)
+        .contentMargins(.top, 54, for: .scrollContent)
         .scrollDismissesKeyboard(.immediately)
         .refreshable { await model.refresh() }
     }
@@ -160,6 +165,7 @@ struct TokenListView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity)
+        .padding(.top, 54)
     }
 
     private var emptyState: some View {
@@ -176,5 +182,6 @@ struct TokenListView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity)
+        .padding(.top, 54)
     }
 }
