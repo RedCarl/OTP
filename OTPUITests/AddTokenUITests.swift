@@ -11,9 +11,9 @@ final class AddTokenUITests: XCTestCase {
         app.launchArguments = ["-uiTestService", service]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
+        XCTAssertTrue(app.staticTexts["没有令牌"].waitForExistence(timeout: 20))
 
-        app.buttons["添加令牌"].tap()
+        app.buttons["tokens.add"].tap()
         XCTAssertTrue(app.navigationBars["添加令牌"].waitForExistence(timeout: 10))
         let manual = app.buttons["add.manual"]
         XCTAssertTrue(manual.waitForExistence(timeout: 10))
@@ -74,6 +74,33 @@ final class AddTokenUITests: XCTestCase {
         XCTAssertTrue(rows.element(boundBy: 1).waitForExistence(timeout: 5))
     }
 
+    func testHoldToClearRemovesAllTokens() throws {
+        let service = "com.redcarl.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launch()
+
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
+
+        app.tabBars.buttons["设置"].tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
+
+        let clearRow = app.buttons["settings.clearRow"]
+        XCTAssertTrue(clearRow.waitForExistence(timeout: 10))
+        clearRow.tap()
+
+        XCTAssertTrue(app.staticTexts["清空所有令牌？"].waitForExistence(timeout: 5))
+
+        let clear = app.descendants(matching: .any)["settings.clear"].firstMatch
+        XCTAssertTrue(clear.waitForExistence(timeout: 10))
+        clear.press(forDuration: 1.8)
+
+        XCTAssertTrue(app.staticTexts["已清空"].waitForExistence(timeout: 5))
+
+        app.tabBars.buttons["令牌"].tap()
+        XCTAssertTrue(app.staticTexts["没有令牌"].waitForExistence(timeout: 10))
+    }
+
     func testBackupExportValidation() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
@@ -107,8 +134,8 @@ final class AddTokenUITests: XCTestCase {
         app.launchArguments = ["-uiTestService", service]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["还没有令牌"].waitForExistence(timeout: 20))
-        app.buttons["添加令牌"].tap()
+        XCTAssertTrue(app.staticTexts["没有令牌"].waitForExistence(timeout: 20))
+        app.buttons["tokens.add"].tap()
         XCTAssertTrue(app.navigationBars["添加令牌"].waitForExistence(timeout: 10))
         let paste = app.buttons["add.paste"]
         XCTAssertTrue(paste.waitForExistence(timeout: 10))

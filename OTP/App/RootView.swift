@@ -15,7 +15,6 @@ struct RootView: View {
     @State private var selectedTab: AppTab = .tokens
     @State private var showLockSuggestion = false
     @State private var showAddSheet = false
-    @State private var showEmptyImport = false
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hideInAppSwitcher") private var hideInAppSwitcher = true
@@ -25,11 +24,9 @@ struct RootView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                TokenListView(
-                    model: model,
-                    onRequestAdd: { showAddSheet = true },
-                    onRequestImport: { showEmptyImport = true }
-                )
+                TokenListView(model: model) {
+                    showAddSheet = true
+                }
                 .tabItem {
                     Label("令牌", systemImage: "key.fill")
                 }
@@ -40,6 +37,21 @@ struct RootView: View {
                         Label("设置", systemImage: "gearshape.fill")
                     }
                     .tag(AppTab.settings)
+            }
+
+            if let toast = model.toastMessage {
+                VStack {
+                    Text(toast)
+                        .font(.footnote.weight(.medium))
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 9)
+                        .background(.regularMaterial, in: Capsule())
+                        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+                        .padding(.top, 6)
+                    Spacer()
+                }
+                .transition(.move(edge: .top).combined(with: .opacity))
+                .zIndex(3)
             }
 
             if lock.isLocked {
@@ -57,6 +69,7 @@ struct RootView: View {
             }
         }
         .animation(.easeInOut(duration: 0.25), value: scenePhase != .active)
+        .animation(.snappy(duration: 0.25), value: model.toastMessage)
         .task {
             if firstLaunchAt == 0 {
                 firstLaunchAt = Date().timeIntervalSince1970
@@ -97,12 +110,6 @@ struct RootView: View {
                 showAddSheet = false
                 selectedTab = .tokens
             }
-        }
-        .sheet(isPresented: $showEmptyImport) {
-            ImportFlowView(model: model, mode: .file, onImported: {
-                showEmptyImport = false
-                selectedTab = .tokens
-            })
         }
         .onChange(of: lock.isLocked) { _, locked in
             guard locked else { return }

@@ -3,7 +3,6 @@ import SwiftUI
 struct TokenListView: View {
     @Bindable var model: TokenListModel
     var onRequestAdd: () -> Void
-    var onRequestImport: () -> Void
 
     @State private var editingToken: OTPToken?
     @State private var pendingDelete: OTPToken?
@@ -11,25 +10,23 @@ struct TokenListView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            if !model.tokens.isEmpty {
-                HStack(spacing: 10) {
-                    SearchField(text: $model.searchText)
+            HStack(spacing: 10) {
+                SearchField(text: $model.searchText)
 
-                    Button(action: onRequestAdd) {
-                        Image(systemName: "plus")
-                            .font(.system(size: 17, weight: .semibold))
-                            .frame(width: 38, height: 38)
-                            .modifier(GlassCircleBackground())
-                            .contentShape(Circle())
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("添加令牌")
-                    .accessibilityIdentifier("tokens.add")
+                Button(action: onRequestAdd) {
+                    Image(systemName: "plus")
+                        .font(.system(size: 17, weight: .semibold))
+                        .frame(width: 38, height: 38)
+                        .modifier(GlassCircleBackground())
+                        .contentShape(Circle())
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 6)
-                .padding(.bottom, 8)
+                .buttonStyle(.plain)
+                .accessibilityLabel("添加令牌")
+                .accessibilityIdentifier("tokens.add")
             }
+            .padding(.horizontal, 16)
+            .padding(.top, 6)
+            .padding(.bottom, 8)
 
             content
         }
@@ -65,19 +62,6 @@ struct TokenListView: View {
         } message: {
             Text(model.errorMessage ?? "")
         }
-        .overlay(alignment: .top) {
-            if let toast = model.toastMessage {
-                Text(toast)
-                    .font(.footnote.weight(.medium))
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 9)
-                    .background(.regularMaterial, in: Capsule())
-                    .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
-                    .padding(.top, 6)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-            }
-        }
-        .animation(.snappy(duration: 0.25), value: model.toastMessage)
         .sensoryFeedback(.success, trigger: model.copySignal)
     }
 
@@ -179,40 +163,15 @@ struct TokenListView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 12) {
             Spacer()
-
-            VStack(spacing: 22) {
-                VStack(spacing: 8) {
-                    Text("还没有令牌")
-                        .font(.title3.weight(.semibold))
-                    Text("扫码、粘贴链接或导入文件，验证码会自动同步。")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-
-                VStack(spacing: 10) {
-                    Button(action: onRequestAdd) {
-                        Label("添加令牌", systemImage: "plus")
-                            .font(.body.weight(.semibold))
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-
-                    Button(action: onRequestImport) {
-                        Label("从其他认证器导入", systemImage: "square.and.arrow.down")
-                            .font(.body.weight(.medium))
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
-                }
-                .padding(.top, 4)
-            }
-            .padding(.horizontal, 32)
-
+            Image(systemName: "tray")
+                .font(.system(size: 46, weight: .light))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(.tertiary)
+            Text("没有令牌")
+                .font(.headline)
+                .foregroundStyle(.secondary)
             Spacer()
             Spacer()
         }

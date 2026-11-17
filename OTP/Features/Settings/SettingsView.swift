@@ -11,10 +11,9 @@ struct SettingsView: View {
 
     @State private var showBackupExport = false
     @State private var showImport = false
-    @State private var showClearConfirmation = false
     @State private var showCopyLinksConfirmation = false
     @State private var showDeviceAuthAlert = false
-    @State private var isClearing = false
+    @State private var showClearSheet = false
     @State private var isRefreshing = false
     @State private var isEnablingLock = false
 
@@ -109,17 +108,15 @@ struct SettingsView: View {
                     }
                 }
 
-                Section {
-                    Button(role: .destructive) {
-                        showClearConfirmation = true
-                    } label: {
-                        if isClearing {
-                            ProgressView()
-                        } else {
+                if !model.tokens.isEmpty {
+                    Section {
+                        Button(role: .destructive) {
+                            showClearSheet = true
+                        } label: {
                             Label("清空所有令牌", systemImage: "trash")
                         }
+                        .accessibilityIdentifier("settings.clearRow")
                     }
-                    .disabled(model.tokens.isEmpty || isClearing)
                 }
 
             }
@@ -130,6 +127,9 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showImport) {
                 ImportFlowView(model: model, mode: .file)
+            }
+            .sheet(isPresented: $showClearSheet) {
+                ClearTokensSheet(model: model)
             }
             .alert("无法开启解锁保护", isPresented: $showDeviceAuthAlert) {
                 Button("好", role: .cancel) {}
@@ -145,19 +145,6 @@ struct SettingsView: View {
                 Button("取消", role: .cancel) {}
             } message: {
                 Text("链接包含密钥，请谨慎粘贴。")
-            }
-            .alert("清空所有令牌？", isPresented: $showClearConfirmation) {
-                Button("清空", role: .destructive) {
-                    Task {
-                        isClearing = true
-                        await model.deleteAll()
-                        isClearing = false
-                        model.showToast("已清空")
-                    }
-                }
-                Button("取消", role: .cancel) {}
-            } message: {
-                Text("所有设备上的令牌都会被删除，无法撤销。")
             }
         }
     }

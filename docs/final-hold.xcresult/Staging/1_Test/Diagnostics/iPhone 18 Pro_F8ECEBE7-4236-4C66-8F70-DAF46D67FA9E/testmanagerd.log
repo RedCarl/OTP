@@ -1,0 +1,25 @@
+10:46:12.821 xcodebuild[46365:63401598] Sim iPhone 18 Pro: Unregistering for sim device notification with token 3
+10:46:12.821 xcodebuild[46365:63401598] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+10:46:12.823 xcodebuild[46365:63401598] Sim iPhone 18 Pro has testmanagerd socket at /private/var/tmp/com.apple.launchd.yJimZRroI9/com.apple.testmanagerd.unix-domain.socket
+10:46:12.823 xcodebuild[46365:63401598] Validating test connection socket path (/private/var/tmp/com.apple.launchd.yJimZRroI9/com.apple.testmanagerd.unix-domain.socket)
+10:46:12.823 xcodebuild[46365:63401598] Constructing transport for test connection socket
+10:46:12.823 xcodebuild[46365:63401598] Connected socket 30 to testmanagerd for Sim iPhone 18 Pro
+10:46:12.823 xcodebuild[46365:63401598] Initiating control session with IDE capabilities: <XCTCapabilities: 0xc037264a0>: {
+    "report crashes capability" = 3;
+}
+10:46:12.824 xcodebuild[46365:63401598] Got reply to control session initiation request (result:error): <XCTCapabilities: 0xc03726890>: {
+    "authorize test session capability" = 1;
+    "automation mode" = 1;
+    "initiate daemon control session capability" = 4;
+    "initiate test runner session capability" = 2;
+    "record UI interaction capability" = 2;
+    "recording events as source code" = 1;
+    "request log archive capability" = 1;
+    "structured results configuration" = 1;
+    "supports delayed attachment transfers" = 1;
+}: (null)
+10:46:12.833 xcodebuild[46365:63401598] Requesting crash report collection for process names: DTServiceHub, OTPUITests-Runner, SpringBoard, xctest, backboardd, testmanagerd, runningboardd, FrontBoard, assertiond, OTP, debugserver
+10:46:17.525 xcodebuild[46365:63401595] Requesting authorization for pid 46374
+10:46:17.526 xcodebuild[46365:63401598] Got reply to authorization request for pid 46374 (result:error): 1: (null)
+10:46:21.265 xcodebuild[46365:63401549] Requesting authorization for pid 46388
+10:46:21.266 xcodebuild[46365:63401593] Got reply to authorization request for pid 46388 (result:error): 1: (null)

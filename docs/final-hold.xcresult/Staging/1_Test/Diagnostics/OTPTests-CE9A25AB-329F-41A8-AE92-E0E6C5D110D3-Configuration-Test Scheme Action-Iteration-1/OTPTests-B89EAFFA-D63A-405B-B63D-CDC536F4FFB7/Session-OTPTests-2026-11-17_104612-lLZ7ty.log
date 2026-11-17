@@ -1,0 +1,1441 @@
+Xcode version: 27.2 (27B52)
+10:46:12.832 xcodebuild[46365:63401533] Beginning test session OTPTests-C6AAC68A-152B-4C63-A3B6-6E5A0586E732 at 2026-11-17 10:46:12.832 on target <DVTiPhoneSimulator: 0xc012a2000> {
+		SimDevice: iPhone 18 Pro (F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E, iOS 27.2, Booted)
+} (27.2 (24B8117))
+10:46:12.832 xcodebuild[46365:63401533] 	/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild
+-project
+OTP.xcodeproj
+-scheme
+OTP
+-destination
+platform=iOS Simulator,name=iPhone 18 Pro,OS=27.2
+-resultBundlePath
+docs/final-hold.xcresult
+test
+10:46:12.833 xcodebuild[46365:63401533] Test standard output and standard error is at /Users/redcarl/otp/docs/final-hold.xcresult/Staging/1_Test/Diagnostics/OTPTests-CE9A25AB-329F-41A8-AE92-E0E6C5D110D3-Configuration-Test Scheme Action-Iteration-1/OTPTests-B89EAFFA-D63A-405B-B63D-CDC536F4FFB7/StandardOutputAndStandardError.txt
+10:46:12.833 xcodebuild[46365:63401547] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> claim LaunchSessionClaim_0xc0083c600 on simulator was issued, 2 claims exist.
+10:46:12.833 xcodebuild[46365:63401533] Setting up test runner session
+10:46:12.833 xcodebuild[46365:63401547] Sim iPhone 18 Pro: Unregistering for sim device notification with token 5
+10:46:12.833 xcodebuild[46365:63401547] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+10:46:12.833 xcodebuild[46365:63401533] Registering/updating daemon-based crash report observer for process names (
+    xctest,
+    debugserver,
+    FrontBoard,
+    assertiond,
+    runningboardd,
+    SpringBoard,
+    testmanagerd,
+    backboardd,
+    DTServiceHub,
+    "OTPUITests-Runner",
+    OTP
+)
+10:46:12.835 xcodebuild[46365:63401547] Sim iPhone 18 Pro has testmanagerd socket at /private/var/tmp/com.apple.launchd.yJimZRroI9/com.apple.testmanagerd.unix-domain.socket
+10:46:12.835 xcodebuild[46365:63401547] Validating test connection socket path (/private/var/tmp/com.apple.launchd.yJimZRroI9/com.apple.testmanagerd.unix-domain.socket)
+10:46:12.835 xcodebuild[46365:63401547] Constructing transport for test connection socket
+10:46:12.835 xcodebuild[46365:63401547] Connected socket 33 to testmanagerd for Sim iPhone 18 Pro
+10:46:12.835 xcodebuild[46365:63401593] Received connection for test runner session
+10:46:12.835 xcodebuild[46365:63401593] Listening for proxy connection request from the test bundle
+10:46:12.835 xcodebuild[46365:63401533] Test runner session acquired connection.
+10:46:12.835 xcodebuild[46365:63401593] Initiating session with identifier: C6AAC68A-152B-4C63-A3B6-6E5A0586E732
+10:46:12.836 xcodebuild[46365:63401593] Got reply to session initiation request with identifier C6AAC68A-152B-4C63-A3B6-6E5A0586E732 (error: (null))
+10:46:13.030 xcodebuild[46365:63401533] Finished requesting crash reports. Continuing with testing.
+10:46:13.048 xcodebuild[46365:63401533] Launch session started.
+10:46:13.056 xcodebuild[46365:63401549] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> claim LaunchSessionClaim_0xc0083c600 on simulator was issued, 2 claims exist.
+10:46:13.063 xcodebuild[46365:63401598] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> claim LaunchSessionClaim_0xc0083c600 on simulator was issued, 2 claims exist.
+10:46:13.063 xcodebuild[46365:63401598] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Registered for sim device notification, got token 8
+10:46:13.063 xcodebuild[46365:63401547] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Unregistering for sim device notification with token 8
+10:46:13.064 xcodebuild[46365:63401547] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Installing app at path: /Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator/OTP.app and options: {
+    SkipWatchAppInstall = 1;
+}
+10:46:13.462 xcodebuild[46365:63401547] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Installed app at path: /Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator/OTP.app and options: {
+    SkipWatchAppInstall = 1;
+}
+10:46:13.470 xcodebuild[46365:63401547] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Launching app with identifier: cn.carljoy.otp and options: {
+    "activate_suspended" = 0;
+    arguments =     (
+    );
+    environment =     {
+        "APP_DISTRIBUTOR_ID_OVERRIDE" = "com.apple.AppStore";
+        "CA_ASSERT_MAIN_THREAD_TRANSACTIONS" = 0;
+        "CA_DEBUG_TRANSACTIONS" = 0;
+        "DYLD_FRAMEWORK_PATH" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks";
+        "DYLD_INSERT_LIBRARIES" = "/usr/lib/libRPAC.dylib:/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator/OTP.app/Frameworks/libXCTestBundleInject.dylib:/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.8117.0.m4KBEg/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/usr/lib/libMainThreadChecker.dylib:/usr/lib/libRPAC.dylib";
+        "DYLD_LIBRARY_PATH" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib";
+        "IDE_CHOSEN_LOGGING_METHOD" = 1;
+        "LLVM_PROFILE_FILE" = "/var/folders/2j/82bq58b15b965hh_n5c22p740000gn/T/cn.carljoy.otp/FDAA9D16-B766-4545-B5C2-090F0FB899A1-46365-000046038E234E92/55BA4CAF-FE09-4D7A-9EF0-9BFAD0310002-%p%c.profraw";
+        NSApplicationQuitWithoutSuddenTermination = YES;
+        NSUnbufferedIO = YES;
+        "OS_ACTIVITY_DT_MODE" = YES;
+        "PERFC_ENABLE_EXTENDED_DIAGNOSTIC_FORMAT" = 1;
+        "PERFC_ENABLE_PROFILE_MODE" = 1;
+        "PERFC_RESET_INSERT_LIBRARIES" = 1;
+        "PERFC_SUPPRESS_SYSTEM_REPORTS" = 1;
+        "RUN_DESTINATION_DEVICE_NAME" = "iPhone 18 Pro";
+        "RUN_DESTINATION_DEVICE_PLATFORM_IDENTIFIER" = "com.apple.platform.iphonesimulator";
+        "RUN_DESTINATION_DEVICE_UDID" = "F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E";
+        "SQLITE_ENABLE_THREAD_ASSERTIONS" = 1;
+        "SWIFT_BACKTRACE" = "enable=no";
+        TERM = dumb;
+        XCInjectBundleInto = unused;
+        "XCODE_SCHEME_NAME" = OTP;
+        XCTestBundleInjectPath = "/usr/lib/libRPAC.dylib:/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator/OTP.app/Frameworks/libXCTestBundleInject.dylib:/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.8117.0.m4KBEg/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/usr/lib/libMainThreadChecker.dylib:/usr/lib/libRPAC.dylib";
+        XCTestBundlePath = "PlugIns/OTPTests.xctest";
+        XCTestConfigurationFilePath = "";
+        XCTestSessionIdentifier = "C6AAC68A-152B-4C63-A3B6-6E5A0586E732";
+        "__XCODE_BUILT_PRODUCTS_DIR_PATHS" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator";
+        "__XPC_DYLD_FRAMEWORK_PATH" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator";
+        "__XPC_DYLD_LIBRARY_PATH" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator";
+        "__XPC_LLVM_PROFILE_FILE" = "/var/folders/2j/82bq58b15b965hh_n5c22p740000gn/T/cn.carljoy.otp/FDAA9D16-B766-4545-B5C2-090F0FB899A1-46365-000046038E234E92/55BA4CAF-FE09-4D7A-9EF0-9BFAD0310002-%p%c.profraw";
+    };
+    stderr = "/dev/ttys000";
+    stdout = "/dev/ttys000";
+    "terminate_running_process" = 1;
+    "wait_for_debugger" = 1;
+}
+10:46:13.542 xcodebuild[46365:63401547] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Launched app with identifier: cn.carljoy.otp (pid = 46374)
+10:46:13.542 xcodebuild[46365:63401547] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> tracking pid 46374
+10:46:13.543 xcodebuild[46365:63401547] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> checking to see if pid 46374 is valid: kill(pid, 0) = 0 (YES, it's still running)
+10:46:13.544 xcodebuild[46365:63401593] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Registered for sim device notification, got token 10
+10:46:13.544 xcodebuild[46365:63401595] F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E: Unregistering for sim device notification with token 10
+10:46:13.764 xcodebuild[46365:63401533] Test process runnable PID is 46374.
+10:46:13.764 xcodebuild[46365:63401593] XCTHTestOperationStateMachine: Transitioning from state Initial to AcquiredPID
+2026-11-17 10:46:17.326188+0800 OTP[46374:63401842] [XPCErrors] non-launching port is incompatible with service identifier "com.apple.PointerUI.pointeruid.default-service"
+2026-11-17 10:46:17.355643+0800 OTP[46374:63401842] [API] cannot add handler to 0 from 0 - dropping
+2026-11-17 10:46:17.402180+0800 OTP[46374:63401842] [framework] CoreUI: CUIThemeStore: No theme registered with id=0
+2026-11-17 10:46:17.402520+0800 OTP[46374:63401842] [framework] CoreUI: CUIThemeStore: No theme registered with id=0
+2026-11-17 10:46:17.474158+0800 OTP[46374:63401842] [API] cannot add handler to 0 from 0 - dropping
+10:46:17.524 xcodebuild[46365:63401593] Handling proxy channel request from test runner
+10:46:17.524 OTP[46374:63401842] Creating future for 'requesting test configuration' with timeout 600.00
+10:46:17.524 OTP[46374:63401842] Notifying test runner ready
+10:46:17.524 xcodebuild[46365:63401593] Test runner is ready with capabilities: <XCTCapabilities: 0xc03e2b760>: {
+    "delayed attachment transfer" = 1;
+    "fetch all test identifiers" = 2;
+    "supports crashlog generation progress" = 4;
+    "ubiquitous test identifiers" = 1;
+}
+10:46:17.525 xcodebuild[46365:63401533] Test runner session successfully initiated.
+10:46:17.525 xcodebuild[46365:63401533] Authorizing test process ID 46374
+10:46:17.524 OTP[46374:63401842] <XCTWaiter: 0x1072d1380> entering wait loop for 600.00s with expectations: `requesting test configuration`
+10:46:17.525 xcodebuild[46365:63401593] XCTHTestOperationStateMachine: Transitioning from state AcquiredPID to ReportedReady
+10:46:17.526 xcodebuild[46365:63401533] Got authorization response from test daemon: Success
+10:46:17.526 xcodebuild[46365:63401533] Registering/updating daemon-based crash report observer for process names (
+    xctest,
+    debugserver,
+    FrontBoard,
+    assertiond,
+    runningboardd,
+    SpringBoard,
+    testmanagerd,
+    backboardd,
+    DTServiceHub,
+    "OTPUITests-Runner",
+    OTP
+)
+10:46:17.526 xcodebuild[46365:63401533] Telling test runner to start executing tests.
+10:46:17.527 OTP[46374:63401984] Received test runner ready reply. Waiting for request to start running tests.
+10:46:17.527 OTP[46374:63401984] _IDE_startExecutingTestPlanWithProtocolVersion:36
+10:46:17.529 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1072d1380>
+10:46:17.529 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdeccc0> completed after 0.005s
+10:46:17.529 OTP[46374:63401842] cleaning up requesting test configuration
+10:46:17.529 OTP[46374:63401842] Loading test bundle at: file:///Users/redcarl/Library/Developer/CoreSimulator/Devices/F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E/data/Containers/Bundle/Application/6A6809C3-67C0-4C8D-B394-4932D41AE52A/OTP.app/PlugIns/OTPTests.xctest/
+10:46:17.529 OTP[46374:63401842] Finished loading test bundle
+10:46:17.530 OTP[46374:63401842] Interop: installing the default fallback event handler
+10:46:17.531 OTP[46374:63401842] Interop: fallback event handler installation outcome: true
+10:46:17.531 OTP[46374:63401842] Registering in-process symbolication service with image names: OTPUITests, OTP, OTPUITests-Runner, OTPTests
+10:46:17.531 OTP[46374:63401842] Running tests with active test configuration: <XCTestConfiguration: 0x1073f3a80>
+	                  testBundleURL:file:///Users/redcarl/Library/Developer/CoreSimulator/Devices/F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E/data/Containers/Bundle/Application/6A6809C3-67C0-4C8D-B394-4932D41AE52A/OTP.app/PlugIns/OTPTests.xctest/
+	         testBundleRelativePath:PlugIns/OTPTests.xctest
+	              productModuleName:OTPTests
+	                  testSelection:<XCTTestSelection: 0x10704b240>
+	            identifiersToRun:(null)
+	            identifiersToSkip:
+	            tagsToRun:(null)
+	            tagsToSkip:<XCTTagSelection: 0x107346ba0>
+	            mode:and
+	            tags:{(
+)}
+	  includeXCTests:NO
+
+
+	             reportResultsToIDE:YES
+	     resultChannelConfiguration:(null)
+	                   baseTestsURL:test://com.apple.xcode/OTP/OTPTests
+	               testsDrivenByIDE:NO
+	inProcessParallelizationEnabled:NO
+	              sessionIdentifier:C6AAC68A-152B-4C63-A3B6-6E5A0586E732
+	      disablePerformanceMetrics:NO
+	treatMissingBaselinesAsFailures:NO
+	                baselineFileURL:(null)
+	       baselineFileRelativePath:(null)
+	          targetApplicationPath:(null)
+	      targetApplicationBundleID:(null)
+	 testApplicationDependencies:
+{
+    "cn.carljoy.otp" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator/OTP.app";
+    "cn.carljoy.otp.uitests.xctrunner" = "/Users/redcarl/Library/Developer/Xcode/DerivedData/OTP-ajafcgsyzpxfiadqhylkcdligynm/Build/Products/Debug-iphonesimulator/OTPUITests-Runner.app";
+}
+	 bundleIDsForCrashReportEmphasis:
+{(
+    "cn.carljoy.otp.tests",
+    "cn.carljoy.otp.uitests",
+    "cn.carljoy.otp"
+)}
+	 testApplicationUserOverrides:(null)
+	     targetApplicationArguments:
+	   targetApplicationEnvironment:(null)
+	                  reportActivities:YES
+	          testsMustRunOnMainThread:NO
+	            initializeForUITesting:NO
+	            traceCollectionEnabled:(null)
+	 enablePerformanceTestsDiagnostics:(null)
+	 aggregateStatisticsBeforeCrash:
+{
+    XCSuiteRecordsKey =     {
+    };
+}
+	        automationFrameworkPath:/private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.8117.0.m4KBEg/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework
+	                     emitOSLogs:NO
+	       systemAttachmentLifetime:deleteOnSuccess
+	         userAttachmentLifetime:deleteOnSuccess
+	   preferredScreenCaptureFormat:screenRecording
+	   gatherLocalizableStringsData:NO
+	          testExecutionOrdering:alphabetical
+	    randomExecutionOrderingSeed:(null)
+	               repetitionPolicy:<XCTRepetitionPolicy: 0x107346e80>
+	            mode:None
+	            maximumIterations:1
+	            repeatInNewRunnerProcess:NO
+
+	       runtimeDiagnosticsPolicy:<XCTRuntimeDiagnosticsPolicy: 0x10704ac70>
+	            otherRuntimeIssuesDetectionPolicy:<XCTRuntimeIssueDetectionPolicy: 0x107346c80>
+	            detectionEnabled:YES
+	            severity:warning
+
+	            threadPerformanceCheckerRuntimeIssueDetectionPolicy:<XCTRuntimeIssueDetectionPolicy: 0x107346c80>
+	            detectionEnabled:YES
+	            severity:warning
+
+	            mainThreadCheckerDetectionPolicy:<XCTRuntimeIssueDetectionPolicy: 0x107346c80>
+	            detectionEnabled:YES
+	            severity:warning
+
+	            checkedAllocations:disabled
+
+	 isMemoryTaggingAddressSanitizerEnabled:NO
+	    deferSymbolicationToHarness:NO
+	applicationCrashDetectionPolicy:<XCTApplicationCrashDetectionPolicy: 0x103f4e800>
+	            severity:Failure
+
+	          hangDetectionPolicy:<XCTHangDetectionPolicy: detectionEnabled=NO, severity=off, durationThreshold=1.000s>
+	            testTimeoutsEnabled:NO
+	              leaksCheckingMode:off
+	                testInteropMode:limited
+	 defaultTestExecutionTimeAllowance:600
+	 maximumTestExecutionTimeAllowance:0
+	                IDECapabilities:<XCTCapabilities: 0x103effdd0>: {
+    "XCTIssue capability" = 1;
+    "delayed attachment transfer" = 1;
+    "expected failure test capability" = 1;
+    "in-process test parallelization capability" = 1;
+    "lazy test case snapshots" = 1;
+    "monitoring crash reports for additional processes" = 1;
+    "request diagnostics for specific devices" = 1;
+    "request spindump capability" = 1;
+    "runner plan" = 1;
+    "skipped suite capability" = 1;
+    "skipped test capability" = 1;
+    "sync crash reporter capability" = 1;
+    "test case run configurations" = 1;
+    "test iterations" = 3;
+    "test timeout capability" = 1;
+    traits = 1;
+    "ubiquitous test identifiers" = 1;
+    "unified issue recorded" = 1;
+}
+	        symbolicationImageNames:OTPTests, OTP, OTPUITests-Runner, OTPUITests
+	         applicationBundleInfos:(null)
+
+10:46:17.532 OTP[46374:63401842] <XCTWaiter: 0x1072d2430> entering wait loop for 600.00s with expectations: `requesting ready for testing`
+10:46:17.532 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1072d2430>
+10:46:17.532 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdec840> completed after 0.000s
+10:46:17.532 OTP[46374:63401842] cleaning up requesting ready for testing
+10:46:17.532 OTP[46374:63401842] <XCTWaiter: 0x1072d2610> entering wait loop for 600.00s with expectations: `IDE proxy`
+10:46:17.532 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1072d2610>
+10:46:17.532 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdec980> completed after 0.000s
+10:46:17.532 OTP[46374:63401842] cleaning up IDE proxy
+10:46:17.532 OTP[46374:63401842] Bypassing UI testing initialization because the test configuration does not request it.
+10:46:17.533 OTP[46374:63401842] Loading test suite...
+10:46:19.075 OTP[46374:63401842] Finished loading test suite, took 1.542s
+10:46:19.076 OTP[46374:63401842] <XCTWaiter: 0x1071bcb40> entering wait loop for 598.40s with expectations: `preparing execution worker`
+Test Suite 'All tests' started at 2026-11-17 10:46:19.181.
+Test Suite 'All tests' passed at 2026-11-17 10:46:19.181.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 2403
+↳ Target Platform: arm64-apple-ios17.0-simulator
+◇ Suite BackupTests started.
+◇ Test exportsPlainJSONBackup() started.
+✔ Test exportsPlainJSONBackup() passed after 0.001 seconds.
+◇ Test roundTripsPlainBackup() started.
+✔ Test roundTripsPlainBackup() passed after 0.001 seconds.
+◇ Test roundTripsEncryptedBackup() started.
+✔ Test roundTripsEncryptedBackup() passed after 0.008 seconds.
+◇ Test rejectsWrongPassphrase() started.
+10:46:19.173 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1071bcb40>
+10:46:19.173 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdecc00> completed after 0.097s
+10:46:19.173 OTP[46374:63401842] cleaning up preparing execution worker
+10:46:19.206 xcodebuild[46365:63401533] Test runner started executing tests.
+10:46:19.173 OTP[46374:63401842] Entering test execution event loop
+10:46:19.180 OTP[46374:63401842] Setting a new interop record handler: Optional(XCTestCore.XCTestInteropRecordHandler())
+10:46:19.206 xcodebuild[46365:63401593] XCTHTestOperationStateMachine: Transitioning from state ReportedReady to ExecutingTests
+10:46:19.180 OTP[46374:63401842] -[XCTRunnerIDESession(_XCTestObservationInternal) testBundleWillStart:]
+10:46:19.181 OTP[46374:63401842] Running suite...
+10:46:19.181 OTP[46374:63401842] -[XCTRunnerIDESession(_XCTestObservationInternal) testSuiteWillStart:]
+10:46:19.206 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["All tests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:(null)
+10:46:19.207 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.181 OTP[46374:63401842] -[XCTRunnerIDESession(_XCTestObservationInternal) testSuiteDidFinish:]
+10:46:19.207 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["All tests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:0 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0 totalDuration:0.0007890462875366211
+10:46:19.207 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.182 OTP[46374:63401842] Finished running suite.
+10:46:19.182 OTP[46374:63401842] Setting a new interop record handler: nil
+10:46:19.182 OTP[46374:63401842] <XCTWaiter: 0x1073f5890> entering indefinite wait loop for expectations: `XCTAsyncEnumerateWithWaiter(<XCTest.SwiftTestingExecutionExtension: 0x11be1d400>)`
+10:46:19.182 OTP[46374:63401978] -[XCTRuntimeIssueDetectionManager runtimeIssueDetectionEnabled] runtimeIssueDetectionEnabled based on XCTDisableRuntimeIssues and runtime diagnostics policies: YES
+10:46:19.182 OTP[46374:63401978] -[XCTRuntimeIssueDetectionManager runtimeIssueDetectionEnabled] runtimeIssueDetectionEnabled based on XCTDisableRuntimeIssues and runtime diagnostics policies: YES
+10:46:19.192 OTP[46374:63401978] Setting a new interop record handler: Optional(XCTest.SwiftTestingInteropRecordHandler(interruptTestHandler: nil))
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["BackupTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc04455110>
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "exportsPlainJSONBackup()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc012992e0>traits:<XCTTraits: 0xc04426d60>
+10:46:19.211 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "exportsPlainJSONBackup()"]>
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "exportsPlainJSONBackup()"]> didFinishWithStatus:passed duration:0.001520872116088867
+10:46:19.211 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "exportsPlainJSONBackup()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "roundTripsPlainBackup()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc012994e0>traits:<XCTTraits: 0xc04457ab0>
+10:46:19.211 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "roundTripsPlainBackup()"]>
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "roundTripsPlainBackup()"]> didFinishWithStatus:passed duration:0.00038909912109375
+10:46:19.211 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "roundTripsPlainBackup()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "roundTripsEncryptedBackup()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299620>traits:<XCTTraits: 0xc04457930>
+10:46:19.211 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "roundTripsEncryptedBackup()"]>
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "roundTripsEncryptedBackup()"]> didFinishWithStatus:passed duration:0.00881505012512207
+10:46:19.211 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "roundTripsEncryptedBackup()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.211 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsWrongPassphrase()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc012996e0>traits:<XCTTraits: 0xc044543c0>
+10:46:19.211 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "rejectsWrongPassphrase()"]>
+10:46:19.211 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.213 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.213 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.214 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.215 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.215 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test exportsPlainJSONBackup() passed after 0.001 seconds.
+
+10:46:19.217 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.218 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.218 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test roundTripsPlainBackup() passed after 0.001 seconds.
+
+10:46:19.218 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.218 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.218 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test roundTripsEncryptedBackup() passed after 0.008 seconds.
+
+10:46:19.218 xcodebuild[46365:63401533] Nothing to delete
+✔ Test rejectsWrongPassphrase() passed after 0.004 seconds.
+◇ Test rejectsTamperedCiphertext() started.
+✔ Test rejectsTamperedCiphertext() passed after 0.001 seconds.
+◇ Test rejectsMissingPassphrase() started.
+✔ Test rejectsMissingPassphrase() passed after 0.001 seconds.
+◇ Test rejectsNonBackupFile() started.
+✔ Test rejectsNonBackupFile() passed after 0.001 seconds.
+◇ Test rejectsNewerVersion() started.
+✔ Test rejectsNewerVersion() passed after 0.002 seconds.
+◇ Test rejectsShortPassphraseOnExport() started.
+✔ Test rejectsShortPassphraseOnExport() passed after 0.001 seconds.
+◇ Test pbkdf2MatchesKnownVectors() started.
+✔ Test pbkdf2MatchesKnownVectors() passed after 0.001 seconds.
+✔ Suite BackupTests passed after 0.022 seconds.
+◇ Suite Base32Tests started.
+◇ Test decodesRFC4648Vectors() started.
+✔ Test decodesRFC4648Vectors() passed after 0.001 seconds.
+◇ Test rejectsInvalidInput() started.
+✔ Test rejectsInvalidInput() passed after 0.001 seconds.
+◇ Test roundTripsArbitraryBytes() started.
+✔ Test roundTripsArbitraryBytes() passed after 0.001 seconds.
+◇ Test encodesKnownSecret() started.
+✔ Test encodesKnownSecret() passed after 0.001 seconds.
+✔ Suite Base32Tests passed after 0.003 seconds.
+◇ Suite BrandCatalogTests started.
+◇ Test matchesCommonBrands() started.
+10:46:19.219 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsWrongPassphrase()"]> didFinishWithStatus:passed duration:0.004784107208251953
+10:46:19.219 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "rejectsWrongPassphrase()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.219 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.219 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsTamperedCiphertext()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01167080>traits:<XCTTraits: 0xc04426b50>
+10:46:19.219 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "rejectsTamperedCiphertext()"]>
+10:46:19.219 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.219 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsTamperedCiphertext()"]> didFinishWithStatus:passed duration:0.0008311271667480469
+10:46:19.219 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "rejectsTamperedCiphertext()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsMissingPassphrase()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc011651c0>traits:<XCTTraits: 0xc04426fa0>
+10:46:19.220 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "rejectsMissingPassphrase()"]>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsMissingPassphrase()"]> didFinishWithStatus:passed duration:0.0002839565277099609
+10:46:19.220 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "rejectsMissingPassphrase()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsNonBackupFile()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299800>traits:<XCTTraits: 0xc0444c1e0>
+10:46:19.220 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "rejectsNonBackupFile()"]>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsNonBackupFile()"]> didFinishWithStatus:passed duration:7.390975952148438e-05
+10:46:19.220 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "rejectsNonBackupFile()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsNewerVersion()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299900>traits:<XCTTraits: 0xc0444c240>
+10:46:19.220 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "rejectsNewerVersion()"]>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsNewerVersion()"]> didFinishWithStatus:passed duration:0.002787113189697266
+10:46:19.220 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "rejectsNewerVersion()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsShortPassphraseOnExport()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc011d62a0>traits:<XCTTraits: 0xc04427660>
+10:46:19.220 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "rejectsShortPassphraseOnExport()"]>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "rejectsShortPassphraseOnExport()"]> didFinishWithStatus:passed duration:9.298324584960938e-05
+10:46:19.220 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "rejectsShortPassphraseOnExport()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "pbkdf2MatchesKnownVectors()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc011d7b20>traits:<XCTTraits: 0xc04427690>
+10:46:19.220 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BackupTests", "pbkdf2MatchesKnownVectors()"]>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BackupTests", "pbkdf2MatchesKnownVectors()"]> didFinishWithStatus:passed duration:0.0007731914520263672
+10:46:19.220 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BackupTests", "pbkdf2MatchesKnownVectors()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["BackupTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:10 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.02035140991210938 totalDuration:0.02303886413574219
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["Base32Tests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc044277b0>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "decodesRFC4648Vectors()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299240>traits:<XCTTraits: 0xc0444c1b0>
+10:46:19.220 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["Base32Tests", "decodesRFC4648Vectors()"]>
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "decodesRFC4648Vectors()"]> didFinishWithStatus:passed duration:0.0001380443572998047
+10:46:19.220 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["Base32Tests", "decodesRFC4648Vectors()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.220 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.221 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.221 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsWrongPassphrase() passed after 0.004 seconds.
+
+10:46:19.221 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.221 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.221 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsTamperedCiphertext() passed after 0.001 seconds.
+
+10:46:19.221 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.221 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.221 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsMissingPassphrase() passed after 0.001 seconds.
+
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsNonBackupFile() passed after 0.001 seconds.
+
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsNewerVersion() passed after 0.002 seconds.
+
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsShortPassphraseOnExport() passed after 0.001 seconds.
+
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test pbkdf2MatchesKnownVectors() passed after 0.001 seconds.
+
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.222 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test decodesRFC4648Vectors() passed after 0.001 seconds.
+
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "rejectsInvalidInput()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc00d9b1c0>traits:<XCTTraits: 0xc04427540>
+10:46:19.223 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["Base32Tests", "rejectsInvalidInput()"]>
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "rejectsInvalidInput()"]> didFinishWithStatus:passed duration:3.886222839355469e-05
+10:46:19.223 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["Base32Tests", "rejectsInvalidInput()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.223 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsInvalidInput() passed after 0.001 seconds.
+
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.223 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "roundTripsArbitraryBytes()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc00805080>traits:<XCTTraits: 0xc04427420>
+10:46:19.223 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["Base32Tests", "roundTripsArbitraryBytes()"]>
+10:46:19.223 xcodebuild[46365:63401533] Nothing to delete
+✔ Test matchesCommonBrands() passed after 0.001 seconds.
+◇ Test ignoresUnknownNamesAndShortAliases() started.
+✔ Test ignoresUnknownNamesAndShortAliases() passed after 0.001 seconds.
+◇ Test everyBrandHasBundledGlyph() started.
+10:46:19.224 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "roundTripsArbitraryBytes()"]> didFinishWithStatus:passed duration:9.894371032714844e-05
+10:46:19.224 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["Base32Tests", "roundTripsArbitraryBytes()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.224 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test roundTripsArbitraryBytes() passed after 0.001 seconds.
+
+10:46:19.224 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.224 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "encodesKnownSecret()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814400>traits:<XCTTraits: 0xc030bd350>
+10:46:19.224 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["Base32Tests", "encodesKnownSecret()"]>
+10:46:19.224 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.224 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["Base32Tests", "encodesKnownSecret()"]> didFinishWithStatus:passed duration:2.312660217285156e-05
+10:46:19.224 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["Base32Tests", "encodesKnownSecret()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.224 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test encodesKnownSecret() passed after 0.001 seconds.
+
+10:46:19.224 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.224 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["Base32Tests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:4 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.0002989768981933594 totalDuration:0.003715991973876953
+10:46:19.224 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["BrandCatalogTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444c480>
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "matchesCommonBrands()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299ba0>traits:<XCTTraits: 0xc0444c510>
+10:46:19.225 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BrandCatalogTests", "matchesCommonBrands()"]>
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "matchesCommonBrands()"]> didFinishWithStatus:passed duration:0.0006387233734130859
+10:46:19.225 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BrandCatalogTests", "matchesCommonBrands()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "ignoresUnknownNamesAndShortAliases()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299c80>traits:<XCTTraits: 0xc0444c5d0>
+10:46:19.225 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BrandCatalogTests", "ignoresUnknownNamesAndShortAliases()"]>
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "ignoresUnknownNamesAndShortAliases()"]> didFinishWithStatus:passed duration:0.0006508827209472656
+10:46:19.225 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BrandCatalogTests", "ignoresUnknownNamesAndShortAliases()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "everyBrandHasBundledGlyph()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02bec1e0>traits:<XCTTraits: 0xc044279c0>
+10:46:19.225 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BrandCatalogTests", "everyBrandHasBundledGlyph()"]>
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.225 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.226 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.226 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test matchesCommonBrands() passed after 0.001 seconds.
+
+10:46:19.227 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.227 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.227 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test ignoresUnknownNamesAndShortAliases() passed after 0.001 seconds.
+
+10:46:19.227 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.228 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.228 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.228 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.228 xcodebuild[46365:63401533] Nothing to delete
+✔ Test everyBrandHasBundledGlyph() passed after 0.033 seconds.
+10:46:19.255 xcodebuild[46365:63401533] Nothing to delete
+◇ Test monogramUsesFirstCharacter() started.
+✔ Test monogramUsesFirstCharacter() passed after 0.001 seconds.
+✔ Suite BrandCatalogTests passed after 0.035 seconds.
+◇ Suite FileImportTests started.
+◇ Test importsAegisPlaintext() started.
+10:46:19.255 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "everyBrandHasBundledGlyph()"]> didFinishWithStatus:passed duration:0.03357172012329102
+10:46:19.256 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BrandCatalogTests", "everyBrandHasBundledGlyph()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "monogramUsesFirstCharacter()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a420>traits:<XCTTraits: 0xc0444c1e0>
+10:46:19.256 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["BrandCatalogTests", "monogramUsesFirstCharacter()"]>
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["BrandCatalogTests", "monogramUsesFirstCharacter()"]> didFinishWithStatus:passed duration:3.695487976074219e-05
+10:46:19.256 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["BrandCatalogTests", "monogramUsesFirstCharacter()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["BrandCatalogTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:4 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.03489828109741211 totalDuration:0.0354468822479248
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["FileImportTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444cae0>
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importsAegisPlaintext()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc011f8c00>traits:<XCTTraits: 0xc036565b0>
+10:46:19.256 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "importsAegisPlaintext()"]>
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test everyBrandHasBundledGlyph() passed after 0.033 seconds.
+
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test monogramUsesFirstCharacter() passed after 0.001 seconds.
+
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.256 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.257 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.257 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.257 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.257 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.257 xcodebuild[46365:63401533] Nothing to delete
+✔ Test importsAegisPlaintext() passed after 0.003 seconds.
+10:46:19.258 xcodebuild[46365:63401533] Nothing to delete
+◇ Test rejectsEncryptedAegis() started.
+10:46:19.259 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.259 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importsAegisPlaintext()"]> didFinishWithStatus:passed duration:0.003468036651611328
+10:46:19.259 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "importsAegisPlaintext()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.259 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test importsAegisPlaintext() passed after 0.003 seconds.
+
+10:46:19.259 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.259 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedAegis()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814b40>traits:<XCTTraits: 0xc030bd3b0>
+10:46:19.259 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedAegis()"]>
+10:46:19.259 xcodebuild[46365:63401533] Nothing to delete
+✔ Test rejectsEncryptedAegis() passed after 0.003 seconds.
+◇ Test importsTwoFASPlaintext() started.
+10:46:19.263 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.263 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedAegis()"]> didFinishWithStatus:passed duration:0.003769159317016602
+10:46:19.263 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedAegis()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.263 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.263 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsEncryptedAegis() passed after 0.003 seconds.
+
+10:46:19.263 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.263 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importsTwoFASPlaintext()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a460>traits:<XCTTraits: 0xc0444c1e0>
+10:46:19.263 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "importsTwoFASPlaintext()"]>
+10:46:19.263 xcodebuild[46365:63401533] Nothing to delete
+✔ Test importsTwoFASPlaintext() passed after 0.001 seconds.
+◇ Test rejectsEncryptedTwoFAS() started.
+✔ Test rejectsEncryptedTwoFAS() passed after 0.001 seconds.
+◇ Test importServiceRoutesFiles() started.
+10:46:19.265 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.265 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importsTwoFASPlaintext()"]> didFinishWithStatus:passed duration:0.001733064651489258
+10:46:19.265 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "importsTwoFASPlaintext()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.265 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.265 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test importsTwoFASPlaintext() passed after 0.001 seconds.
+
+10:46:19.265 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.265 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.265 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.265 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedTwoFAS()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299800>traits:<XCTTraits: 0xc0444c8a0>
+10:46:19.265 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedTwoFAS()"]>
+10:46:19.265 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.265 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedTwoFAS()"]> didFinishWithStatus:passed duration:5.507469177246094e-05
+10:46:19.265 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "rejectsEncryptedTwoFAS()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.266 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsEncryptedTwoFAS() passed after 0.001 seconds.
+
+10:46:19.266 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.266 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importServiceRoutesFiles()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc010eb940>traits:<XCTTraits: 0xc036565b0>
+10:46:19.266 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "importServiceRoutesFiles()"]>
+10:46:19.266 xcodebuild[46365:63401533] Nothing to delete
+✔ Test importServiceRoutesFiles() passed after 0.002 seconds.
+10:46:19.267 xcodebuild[46365:63401533] Nothing to delete
+◇ Test importServiceHandlesEncryptedBackupPassphrase() started.
+10:46:19.268 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importServiceRoutesFiles()"]> didFinishWithStatus:passed duration:0.002727031707763672
+10:46:19.268 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "importServiceRoutesFiles()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.268 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.268 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importServiceHandlesEncryptedBackupPassphrase()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc010e86c0>traits:<XCTTraits: 0xc036545a0>
+10:46:19.268 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "importServiceHandlesEncryptedBackupPassphrase()"]>
+10:46:19.268 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.268 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test importServiceRoutesFiles() passed after 0.002 seconds.
+
+10:46:19.268 xcodebuild[46365:63401533] Nothing to delete
+✔ Test importServiceHandlesEncryptedBackupPassphrase() passed after 0.001 seconds.
+◇ Test parsesMultipleURILines() started.
+✔ Test parsesMultipleURILines() passed after 0.001 seconds.
+◇ Test rejectsTextWithoutTokens() started.
+✔ Test rejectsTextWithoutTokens() passed after 0.001 seconds.
+◇ Test importServiceImportsMigrationURLText() started.
+10:46:19.268 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importServiceHandlesEncryptedBackupPassphrase()"]> didFinishWithStatus:passed duration:0.000675201416015625
+10:46:19.269 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "importServiceHandlesEncryptedBackupPassphrase()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "parsesMultipleURILines()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc010ebbe0>traits:<XCTTraits: 0xc03657780>
+10:46:19.269 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "parsesMultipleURILines()"]>
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "parsesMultipleURILines()"]> didFinishWithStatus:passed duration:0.0001420974731445312
+10:46:19.269 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "parsesMultipleURILines()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "rejectsTextWithoutTokens()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc010e8ba0>traits:<XCTTraits: 0xc036553b0>
+10:46:19.269 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "rejectsTextWithoutTokens()"]>
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "rejectsTextWithoutTokens()"]> didFinishWithStatus:passed duration:0.0001127719879150391
+10:46:19.269 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "rejectsTextWithoutTokens()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test importServiceHandlesEncryptedBackupPassphrase() passed after 0.001 seconds.
+
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.269 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesMultipleURILines() passed after 0.001 seconds.
+
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsTextWithoutTokens() passed after 0.001 seconds.
+
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importServiceImportsMigrationURLText()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc010e9000>traits:<XCTTraits: 0xc03655c20>
+10:46:19.270 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["FileImportTests", "importServiceImportsMigrationURLText()"]>
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.270 xcodebuild[46365:63401533] Nothing to delete
+✔ Test importServiceImportsMigrationURLText() passed after 0.003 seconds.
+10:46:19.272 xcodebuild[46365:63401533] Nothing to delete
+✔ Suite FileImportTests passed after 0.017 seconds.
+◇ Suite GoogleAuthenticatorImportTests started.
+◇ Test parsesTOTPAndHOTPParameters() started.
+10:46:19.272 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["FileImportTests", "importServiceImportsMigrationURLText()"]> didFinishWithStatus:passed duration:0.003648042678833008
+10:46:19.272 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["FileImportTests", "importServiceImportsMigrationURLText()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.272 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.272 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test importServiceImportsMigrationURLText() passed after 0.003 seconds.
+
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["FileImportTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:9 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.01633048057556152 totalDuration:0.01744413375854492
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+✔ Test parsesTOTPAndHOTPParameters() passed after 0.001 seconds.
+◇ Test parsesMigrationURL() started.
+✔ Test parsesMigrationURL() passed after 0.001 seconds.
+◇ Test rejectsTruncatedPayload() started.
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["GoogleAuthenticatorImportTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444c390>
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesTOTPAndHOTPParameters()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129ada0>traits:<XCTTraits: 0xc0444c240>
+10:46:19.273 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesTOTPAndHOTPParameters()"]>
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesTOTPAndHOTPParameters()"]> didFinishWithStatus:passed duration:0.0001208782196044922
+10:46:19.273 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesTOTPAndHOTPParameters()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.273 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesTOTPAndHOTPParameters() passed after 0.001 seconds.
+
+10:46:19.273 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.273 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesMigrationURL()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129af80>traits:<XCTTraits: 0xc0444ca50>
+10:46:19.273 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesMigrationURL()"]>
+10:46:19.274 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.274 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesMigrationURL()"]> didFinishWithStatus:passed duration:6.29425048828125e-05
+10:46:19.274 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "parsesMigrationURL()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.274 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesMigrationURL() passed after 0.001 seconds.
+
+10:46:19.274 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.274 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "rejectsTruncatedPayload()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129b020>traits:<XCTTraits: 0xc0444c6f0>
+10:46:19.274 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "rejectsTruncatedPayload()"]>
+10:46:19.274 xcodebuild[46365:63401533] Nothing to delete
+✔ Test rejectsTruncatedPayload() passed after 0.003 seconds.
+◇ Test ignoresUnknownFields() started.
+✔ Test ignoresUnknownFields() passed after 0.001 seconds.
+◇ Test flagsMD5Entries() started.
+✔ Test flagsMD5Entries() passed after 0.001 seconds.
+✔ Suite GoogleAuthenticatorImportTests passed after 0.003 seconds.
+◇ Suite HOTPTests started.
+◇ Test matchesRFC4226Vectors() started.
+✔ Test matchesRFC4226Vectors() passed after 0.001 seconds.
+◇ Test supportsEightDigits() started.
+✔ Test supportsEightDigits() passed after 0.001 seconds.
+10:46:19.276 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "rejectsTruncatedPayload()"]> didFinishWithStatus:passed duration:0.003123044967651367
+10:46:19.277 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "rejectsTruncatedPayload()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsTruncatedPayload() passed after 0.003 seconds.
+
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "ignoresUnknownFields()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814dc0>traits:<XCTTraits: 0xc030bd920>
+10:46:19.277 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "ignoresUnknownFields()"]>
+10:46:19.277 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.277 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "ignoresUnknownFields()"]> didFinishWithStatus:passed duration:7.295608520507812e-05
+10:46:19.277 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "ignoresUnknownFields()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.277 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test ignoresUnknownFields() passed after 0.001 seconds.
+
+10:46:19.278 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.278 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.278 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.278 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.278 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "flagsMD5Entries()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814ce0>traits:<XCTTraits: 0xc030bd410>
+10:46:19.278 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "flagsMD5Entries()"]>
+10:46:19.278 xcodebuild[46365:63401533] Nothing to delete
+◇ Test rejectsUnsupportedDigitCount() started.
+✔ Test rejectsUnsupportedDigitCount() passed after 0.001 seconds.
+✔ Suite HOTPTests passed after 0.001 seconds.
+◇ Suite IconImageProcessorTests started.
+◇ Test downsizesAndCompressesIcon() started.
+10:46:19.278 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "flagsMD5Entries()"]> didFinishWithStatus:passed duration:4.482269287109375e-05
+10:46:19.278 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["GoogleAuthenticatorImportTests", "flagsMD5Entries()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.278 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test flagsMD5Entries() passed after 0.001 seconds.
+
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["GoogleAuthenticatorImportTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:5 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.003424644470214844 totalDuration:0.003983736038208008
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["HOTPTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc03655530>
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["HOTPTests", "matchesRFC4226Vectors()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013cc5a0>traits:<XCTTraits: 0xc03654570>
+10:46:19.279 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["HOTPTests", "matchesRFC4226Vectors()"]>
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["HOTPTests", "matchesRFC4226Vectors()"]> didFinishWithStatus:passed duration:7.891654968261719e-05
+10:46:19.279 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["HOTPTests", "matchesRFC4226Vectors()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.279 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test matchesRFC4226Vectors() passed after 0.001 seconds.
+
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["HOTPTests", "supportsEightDigits()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814cc0>traits:<XCTTraits: 0xc030bd530>
+10:46:19.279 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["HOTPTests", "supportsEightDigits()"]>
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["HOTPTests", "supportsEightDigits()"]> didFinishWithStatus:passed duration:2.09808349609375e-05
+10:46:19.279 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["HOTPTests", "supportsEightDigits()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["HOTPTests", "rejectsUnsupportedDigitCount()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814f60>traits:<XCTTraits: 0xc030bd6b0>
+10:46:19.279 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["HOTPTests", "rejectsUnsupportedDigitCount()"]>
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["HOTPTests", "rejectsUnsupportedDigitCount()"]> didFinishWithStatus:passed duration:1.287460327148438e-05
+10:46:19.279 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["HOTPTests", "rejectsUnsupportedDigitCount()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["HOTPTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:3 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.0001127719879150391 totalDuration:0.0003423690795898438
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["IconImageProcessorTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444ce10>
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["IconImageProcessorTests", "downsizesAndCompressesIcon()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129b280>traits:<XCTTraits: 0xc0444ce40>
+10:46:19.279 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["IconImageProcessorTests", "downsizesAndCompressesIcon()"]>
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.279 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test supportsEightDigits() passed after 0.001 seconds.
+
+10:46:19.279 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsUnsupportedDigitCount() passed after 0.001 seconds.
+
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.280 xcodebuild[46365:63401533] Nothing to delete
+✔ Test downsizesAndCompressesIcon() passed after 0.050 seconds.
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["IconImageProcessorTests", "downsizesAndCompressesIcon()"]> didFinishWithStatus:passed duration:0.05022406578063965
+10:46:19.328 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["IconImageProcessorTests", "downsizesAndCompressesIcon()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+◇ Test rejectsInvalidData() started.
+✔ Test rejectsInvalidData() passed after 0.001 seconds.
+✔ Suite IconImageProcessorTests passed after 0.050 seconds.
+◇ Suite KeychainProbeTests started.
+◇ Test probeSynchronizableSupport() started.
+10:46:19.328 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["IconImageProcessorTests", "rejectsInvalidData()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814be0>traits:<XCTTraits: 0xc030bd410>
+10:46:19.328 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["IconImageProcessorTests", "rejectsInvalidData()"]>
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["IconImageProcessorTests", "rejectsInvalidData()"]> didFinishWithStatus:passed duration:3.314018249511719e-05
+10:46:19.328 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["IconImageProcessorTests", "rejectsInvalidData()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["IconImageProcessorTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:2 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.05025720596313477 totalDuration:0.05062389373779297
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["KeychainProbeTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444c1b0>
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["KeychainProbeTests", "probeSynchronizableSupport()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129ab00>traits:<XCTTraits: 0xc0444cea0>
+10:46:19.328 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["KeychainProbeTests", "probeSynchronizableSupport()"]>
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.328 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test downsizesAndCompressesIcon() passed after 0.050 seconds.
+
+10:46:19.328 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsInvalidData() passed after 0.001 seconds.
+
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.329 xcodebuild[46365:63401533] Nothing to delete
+PROBE plain=0 sync=0
+10:46:19.331 xcodebuild[46365:63401533] Nothing to delete
+✔ Test probeSynchronizableSupport() passed after 0.006 seconds.
+✔ Suite KeychainProbeTests passed after 0.006 seconds.
+10:46:19.334 xcodebuild[46365:63401533] Nothing to delete
+◇ Suite KeychainRepositoryTests started.
+◇ Test addsLoadsUpdatesAndDeletesSynchronizableItems() started.
+10:46:19.334 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.334 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.334 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["KeychainProbeTests", "probeSynchronizableSupport()"]> didFinishWithStatus:passed duration:0.006427288055419922
+10:46:19.334 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["KeychainProbeTests", "probeSynchronizableSupport()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.334 xcodebuild[46365:63401533] Finishing test with new console chunk PROBE plain=0 sync=0
+✔ Test probeSynchronizableSupport() passed after 0.006 seconds.
+
+10:46:19.334 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.334 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["KeychainProbeTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:1 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.006427288055419922 totalDuration:0.006590843200683594
+10:46:19.334 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.334 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.334 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["KeychainRepositoryTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc030bd5f0>
+10:46:19.335 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.335 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "addsLoadsUpdatesAndDeletesSynchronizableItems()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814ba0>traits:<XCTTraits: 0xc030bd710>
+10:46:19.335 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["KeychainRepositoryTests", "addsLoadsUpdatesAndDeletesSynchronizableItems()"]>
+10:46:19.335 xcodebuild[46365:63401533] Nothing to delete
+✔ Test addsLoadsUpdatesAndDeletesSynchronizableItems() passed after 0.005 seconds.
+10:46:19.339 xcodebuild[46365:63401533] Nothing to delete
+◇ Test keepsTokensIsolatedPerService() started.
+10:46:19.339 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "addsLoadsUpdatesAndDeletesSynchronizableItems()"]> didFinishWithStatus:passed duration:0.005100011825561523
+10:46:19.339 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["KeychainRepositoryTests", "addsLoadsUpdatesAndDeletesSynchronizableItems()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.339 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.339 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "keepsTokensIsolatedPerService()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013ccac0>traits:<XCTTraits: 0xc036557a0>
+10:46:19.339 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["KeychainRepositoryTests", "keepsTokensIsolatedPerService()"]>
+10:46:19.339 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.339 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test addsLoadsUpdatesAndDeletesSynchronizableItems() passed after 0.005 seconds.
+
+10:46:19.339 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.340 xcodebuild[46365:63401533] Nothing to delete
+✔ Test keepsTokensIsolatedPerService() passed after 0.028 seconds.
+◇ Test storesCustomIconPayload() started.
+10:46:19.368 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.368 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.368 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "keepsTokensIsolatedPerService()"]> didFinishWithStatus:passed duration:0.02850699424743652
+10:46:19.368 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["KeychainRepositoryTests", "keepsTokensIsolatedPerService()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.368 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test keepsTokensIsolatedPerService() passed after 0.028 seconds.
+
+10:46:19.368 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.368 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "storesCustomIconPayload()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814ca0>traits:<XCTTraits: 0xc030bd800>
+10:46:19.368 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["KeychainRepositoryTests", "storesCustomIconPayload()"]>
+10:46:19.368 xcodebuild[46365:63401533] Nothing to delete
+✔ Test storesCustomIconPayload() passed after 0.004 seconds.
+10:46:19.372 xcodebuild[46365:63401533] Nothing to delete
+◇ Test skipsCorruptPayloads() started.
+10:46:19.372 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.372 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "storesCustomIconPayload()"]> didFinishWithStatus:passed duration:0.004046201705932617
+10:46:19.372 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["KeychainRepositoryTests", "storesCustomIconPayload()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.372 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test storesCustomIconPayload() passed after 0.004 seconds.
+
+10:46:19.372 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.372 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "skipsCorruptPayloads()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a4c0>traits:<XCTTraits: 0xc0444d080>
+10:46:19.372 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["KeychainRepositoryTests", "skipsCorruptPayloads()"]>
+10:46:19.372 xcodebuild[46365:63401533] Nothing to delete
+2026-11-17 10:46:19.378463+0800 OTP[46374:63401984] [Keychain] Discarding unreadable token: DecodingError.dataCorrupted: Data was corrupted. Debug description: The given data was not valid JSON.. Underlying error: Error Domain=NSCocoaErrorDomain Code=3840 "Unexpected character 'o' in expected null value around line 1, column 2." UserInfo={NSDebugDescription=Unexpected character 'o' in expected null value around line 1, column 2., NSJSONSerializationErrorIndex=1}
+10:46:19.379 xcodebuild[46365:63401533] Nothing to delete
+✔ Test skipsCorruptPayloads() passed after 0.009 seconds.
+✔ Suite KeychainRepositoryTests passed after 0.047 seconds.
+◇ Suite LockSuggestionTests started.
+◇ Test asksAfterEnoughTokens() started.
+10:46:19.382 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["KeychainRepositoryTests", "skipsCorruptPayloads()"]> didFinishWithStatus:passed duration:0.009606122970581055
+10:46:19.382 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["KeychainRepositoryTests", "skipsCorruptPayloads()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.382 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.382 xcodebuild[46365:63401533] Finishing test with new console chunk 2026-11-17 10:46:19.378463+0800 OTP[46374:63401984] [Keychain] Discarding unreadable token: DecodingError.dataCorrupted: Data was corrupted. Debug description: The given data was not valid JSON.. Underlying error: Error Domain=NSCocoaErrorDomain Code=3840 "Unexpected character 'o' in expected null value around line 1, column 2." UserInfo={NSDebugDescription=Unexpected character 'o' in expected null value around line 1, column 2., NSJSONSerializationErrorIndex=1}
+✔ Test skipsCorruptPayloads() passed after 0.009 seconds.
+
+10:46:19.382 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.382 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.382 xcodebuild[46365:63401533] Nothing to delete
+✔ Test asksAfterEnoughTokens() passed after 0.001 seconds.
+◇ Test asksAfterEnoughDays() started.
+✔ Test asksAfterEnoughDays() passed after 0.001 seconds.
+◇ Test staysQuietWhenAlreadyAnswered() started.
+✔ Test staysQuietWhenAlreadyAnswered() passed after 0.001 seconds.
+◇ Test waitsForFirstTokenAndTime() started.
+✔ Test waitsForFirstTokenAndTime() passed after 0.001 seconds.
+✔ Suite LockSuggestionTests passed after 0.001 seconds.
+◇ Suite OTPAuthURITests started.
+◇ Test parsesStandardTOTP() started.
+✔ Test parsesStandardTOTP() passed after 0.001 seconds.
+◇ Test parsesLabelIssuerWithoutParameter() started.
+10:46:19.383 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["KeychainRepositoryTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:4 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.04725933074951172 totalDuration:0.0478360652923584
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["LockSuggestionTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc044276f0>
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.383 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughTokens()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013cd3e0>traits:<XCTTraits: 0xc04427660>
+10:46:19.383 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughTokens()"]>
+10:46:19.384 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.384 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughTokens()"]> didFinishWithStatus:passed duration:3.075599670410156e-05
+10:46:19.384 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughTokens()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.384 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test asksAfterEnoughTokens() passed after 0.001 seconds.
+
+10:46:19.384 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.384 xcodebuild[46365:63401533] Nothing to delete
+✔ Test parsesLabelIssuerWithoutParameter() passed after 0.001 seconds.
+◇ Test parsesAccountOnlyLabel() started.
+✔ Test parsesAccountOnlyLabel() passed after 0.001 seconds.
+◇ Test parsesHOTPWithCounter() started.
+✔ Test parsesHOTPWithCounter() passed after 0.001 seconds.
+◇ Test rejectsMalformedValues() started.
+10:46:19.385 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughDays()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814c00>traits:<XCTTraits: 0xc030bd710>
+10:46:19.385 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughDays()"]>
+10:46:19.385 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.385 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughDays()"]> didFinishWithStatus:passed duration:1.382827758789062e-05
+10:46:19.385 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["LockSuggestionTests", "asksAfterEnoughDays()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.385 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test asksAfterEnoughDays() passed after 0.001 seconds.
+
+10:46:19.385 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.385 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "staysQuietWhenAlreadyAnswered()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc028145a0>traits:<XCTTraits: 0xc030bd770>
+10:46:19.385 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["LockSuggestionTests", "staysQuietWhenAlreadyAnswered()"]>
+10:46:19.385 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.385 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "staysQuietWhenAlreadyAnswered()"]> didFinishWithStatus:passed duration:2.503395080566406e-05
+10:46:19.385 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["LockSuggestionTests", "staysQuietWhenAlreadyAnswered()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.385 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test staysQuietWhenAlreadyAnswered() passed after 0.001 seconds.
+
+10:46:19.385 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.385 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "waitsForFirstTokenAndTime()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013cc520>traits:<XCTTraits: 0xc04457b40>
+10:46:19.385 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["LockSuggestionTests", "waitsForFirstTokenAndTime()"]>
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["LockSuggestionTests", "waitsForFirstTokenAndTime()"]> didFinishWithStatus:passed duration:2.002716064453125e-05
+10:46:19.386 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["LockSuggestionTests", "waitsForFirstTokenAndTime()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.386 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test waitsForFirstTokenAndTime() passed after 0.001 seconds.
+
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["LockSuggestionTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:4 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:8.96453857421875e-05 totalDuration:0.0003790855407714844
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["OTPAuthURITests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc04456ca0>
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesStandardTOTP()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc028149e0>traits:<XCTTraits: 0xc0444d080>
+10:46:19.386 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPAuthURITests", "parsesStandardTOTP()"]>
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesStandardTOTP()"]> didFinishWithStatus:passed duration:0.0001039505004882812
+10:46:19.386 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesStandardTOTP()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.386 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesStandardTOTP() passed after 0.001 seconds.
+
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesLabelIssuerWithoutParameter()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129b1a0>traits:<XCTTraits: 0xc0444cfc0>
+10:46:19.386 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPAuthURITests", "parsesLabelIssuerWithoutParameter()"]>
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesLabelIssuerWithoutParameter()"]> didFinishWithStatus:passed duration:0.0001139640808105469
+10:46:19.386 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesLabelIssuerWithoutParameter()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.386 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesLabelIssuerWithoutParameter() passed after 0.001 seconds.
+
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.386 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesAccountOnlyLabel()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a160>traits:<XCTTraits: 0xc0444cea0>
+10:46:19.386 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPAuthURITests", "parsesAccountOnlyLabel()"]>
+10:46:19.386 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesAccountOnlyLabel()"]> didFinishWithStatus:passed duration:6.818771362304688e-05
+10:46:19.387 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesAccountOnlyLabel()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.387 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesAccountOnlyLabel() passed after 0.001 seconds.
+
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesHOTPWithCounter()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013cd660>traits:<XCTTraits: 0xc04454390>
+10:46:19.387 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPAuthURITests", "parsesHOTPWithCounter()"]>
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesHOTPWithCounter()"]> didFinishWithStatus:passed duration:8.487701416015625e-05
+10:46:19.387 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPAuthURITests", "parsesHOTPWithCounter()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.387 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test parsesHOTPWithCounter() passed after 0.001 seconds.
+
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.387 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "rejectsMalformedValues()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013cd7e0>traits:<XCTTraits: 0xc036555c0>
+10:46:19.387 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPAuthURITests", "rejectsMalformedValues()"]>
+10:46:19.387 xcodebuild[46365:63401533] Nothing to delete
+✔ Test rejectsMalformedValues() passed after 0.004 seconds.
+10:46:19.388 xcodebuild[46365:63401533] Nothing to delete
+◇ Test serializesAndRoundTrips() started.
+10:46:19.388 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.388 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "rejectsMalformedValues()"]> didFinishWithStatus:passed duration:0.004516124725341797
+10:46:19.388 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPAuthURITests", "rejectsMalformedValues()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.388 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsMalformedValues() passed after 0.004 seconds.
+
+10:46:19.388 xcodebuild[46365:63401533] Nothing to delete
+✔ Test serializesAndRoundTrips() passed after 0.001 seconds.
+✔ Suite OTPAuthURITests passed after 0.005 seconds.
+◇ Suite OTPTokenCodableTests started.
+◇ Test roundTripsThroughJSON() started.
+✔ Test roundTripsThroughJSON() passed after 0.001 seconds.
+◇ Test roundTripsCustomIcon() started.
+✔ Test roundTripsCustomIcon() passed after 0.001 seconds.
+◇ Test writesSchemaFields() started.
+✔ Test writesSchemaFields() passed after 0.001 seconds.
+10:46:19.388 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "serializesAndRoundTrips()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a0e0>traits:<XCTTraits: 0xc0444cfc0>
+10:46:19.389 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPAuthURITests", "serializesAndRoundTrips()"]>
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPAuthURITests", "serializesAndRoundTrips()"]> didFinishWithStatus:passed duration:9.703636169433594e-05
+10:46:19.389 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPAuthURITests", "serializesAndRoundTrips()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.389 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test serializesAndRoundTrips() passed after 0.001 seconds.
+
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["OTPAuthURITests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:6 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.004984140396118164 totalDuration:0.006033897399902344
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["OTPTokenCodableTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444c8a0>
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.389 xcodebuild[46365:63401533] Nothing to delete
+◇ Test ignoresUnknownFields() started.
+✔ Test ignoresUnknownFields() passed after 0.001 seconds.
+◇ Test rejectsNewerVersion() started.
+✔ Test rejectsNewerVersion() passed after 0.001 seconds.
+◇ Test rejectsInvalidSecret() started.
+✔ Test rejectsInvalidSecret() passed after 0.001 seconds.
+✔ Suite OTPTokenCodableTests passed after 0.001 seconds.
+◇ Suite QRCodeRendererTests started.
+◇ Test rendersQRCodeImage() started.
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsThroughJSON()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129b1a0>traits:<XCTTraits: 0xc0444cf30>
+10:46:19.390 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsThroughJSON()"]>
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsThroughJSON()"]> didFinishWithStatus:passed duration:9.107589721679688e-05
+10:46:19.390 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsThroughJSON()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.390 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test roundTripsThroughJSON() passed after 0.001 seconds.
+
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsCustomIcon()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814400>traits:<XCTTraits: 0xc0444d470>
+10:46:19.390 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsCustomIcon()"]>
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsCustomIcon()"]> didFinishWithStatus:passed duration:0.0001330375671386719
+10:46:19.390 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPTokenCodableTests", "roundTripsCustomIcon()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.390 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test roundTripsCustomIcon() passed after 0.001 seconds.
+
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "writesSchemaFields()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc028150a0>traits:<XCTTraits: 0xc030bd6e0>
+10:46:19.390 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPTokenCodableTests", "writesSchemaFields()"]>
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "writesSchemaFields()"]> didFinishWithStatus:passed duration:9.274482727050781e-05
+10:46:19.390 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPTokenCodableTests", "writesSchemaFields()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "ignoresUnknownFields()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299ee0>traits:<XCTTraits: 0xc0444ced0>
+10:46:19.390 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPTokenCodableTests", "ignoresUnknownFields()"]>
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "ignoresUnknownFields()"]> didFinishWithStatus:passed duration:4.625320434570312e-05
+10:46:19.390 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPTokenCodableTests", "ignoresUnknownFields()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsNewerVersion()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc01299ec0>traits:<XCTTraits: 0xc0444d590>
+10:46:19.390 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsNewerVersion()"]>
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsNewerVersion()"]> didFinishWithStatus:passed duration:6.723403930664062e-05
+10:46:19.390 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsNewerVersion()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.390 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.390 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test writesSchemaFields() passed after 0.001 seconds.
+
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsInvalidSecret()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a080>traits:<XCTTraits: 0xc030bd530>
+10:46:19.391 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsInvalidSecret()"]>
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsInvalidSecret()"]> didFinishWithStatus:passed duration:3.600120544433594e-05
+10:46:19.391 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["OTPTokenCodableTests", "rejectsInvalidSecret()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test ignoresUnknownFields() passed after 0.001 seconds.
+
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsNewerVersion() passed after 0.001 seconds.
+
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test rejectsInvalidSecret() passed after 0.001 seconds.
+
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["OTPTokenCodableTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:6 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.0004663467407226562 totalDuration:0.0009682178497314453
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.391 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["QRCodeRendererTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc0444d3e0>
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["QRCodeRendererTests", "rendersQRCodeImage()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013cf020>traits:<XCTTraits: 0xc03f35890>
+10:46:19.392 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["QRCodeRendererTests", "rendersQRCodeImage()"]>
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.392 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.493 xcodebuild[46365:63401533] Nothing to delete
+2026-11-17 10:46:19.505924+0800 OTP[46374:63401980] The filter 'CIPortraitEffectSpillCorrection' is not implemented in the bundle at /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.8117.0.m4KBEg/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/CoreImage/PortraitFilters.cifilter.
+✔ Test rendersQRCodeImage() passed after 0.236 seconds.
+◇ Test uriSurvivesQRRoundTrip() started.
+✔ Test uriSurvivesQRRoundTrip() passed after 0.001 seconds.
+✔ Suite QRCodeRendererTests passed after 0.236 seconds.
+◇ Suite TOTPTests started.
+◇ Test matchesRFC6238SHA1Vectors() started.
+✔ Test matchesRFC6238SHA1Vectors() passed after 0.001 seconds.
+◇ Test matchesRFC6238SHA256Vectors() started.
+✔ Test matchesRFC6238SHA256Vectors() passed after 0.001 seconds.
+◇ Test matchesRFC6238SHA512Vectors() started.
+✔ Test matchesRFC6238SHA512Vectors() passed after 0.001 seconds.
+◇ Test computesCountersAndRemaining() started.
+10:46:19.626 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["QRCodeRendererTests", "rendersQRCodeImage()"]> didFinishWithStatus:passed duration:0.2360808849334717
+10:46:19.626 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["QRCodeRendererTests", "rendersQRCodeImage()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.626 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.626 xcodebuild[46365:63401533] Finishing test with new console chunk 2026-11-17 10:46:19.505924+0800 OTP[46374:63401980] The filter 'CIPortraitEffectSpillCorrection' is not implemented in the bundle at /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.8117.0.m4KBEg/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/CoreImage/PortraitFilters.cifilter.
+✔ Test rendersQRCodeImage() passed after 0.236 seconds.
+
+10:46:19.626 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.626 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.626 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.626 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.626 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.626 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["QRCodeRendererTests", "uriSurvivesQRRoundTrip()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc028143e0>traits:<XCTTraits: 0xc030bd140>
+10:46:19.626 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["QRCodeRendererTests", "uriSurvivesQRRoundTrip()"]>
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["QRCodeRendererTests", "uriSurvivesQRRoundTrip()"]> didFinishWithStatus:passed duration:9.107589721679688e-05
+10:46:19.627 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["QRCodeRendererTests", "uriSurvivesQRRoundTrip()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.627 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test uriSurvivesQRRoundTrip() passed after 0.001 seconds.
+
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.627 xcodebuild[46365:63401533] Nothing to delete
+✔ Test computesCountersAndRemaining() passed after 0.001 seconds.
+◇ Test groupsCodes() started.
+✔ Test groupsCodes() passed after 0.001 seconds.
+10:46:19.628 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["QRCodeRendererTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:2 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.2361719608306885 totalDuration:0.2364928722381592
+10:46:19.628 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.628 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.628 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["TOTPTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc030bd200>
+10:46:19.628 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.628 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA1Vectors()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814540>traits:<XCTTraits: 0xc030bd2c0>
+10:46:19.628 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA1Vectors()"]>
+10:46:19.629 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.629 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA1Vectors()"]> didFinishWithStatus:passed duration:7.82012939453125e-05
+10:46:19.629 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA1Vectors()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.629 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test matchesRFC6238SHA1Vectors() passed after 0.001 seconds.
+
+10:46:19.629 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.629 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA256Vectors()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02814600>traits:<XCTTraits: 0xc030bd0b0>
+10:46:19.629 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA256Vectors()"]>
+10:46:19.629 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.629 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA256Vectors()"]> didFinishWithStatus:passed duration:4.38690185546875e-05
+10:46:19.629 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA256Vectors()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.629 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test matchesRFC6238SHA256Vectors() passed after 0.001 seconds.
+
+10:46:19.629 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.629 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA512Vectors()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02815160>traits:<XCTTraits: 0xc030bced0>
+10:46:19.629 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA512Vectors()"]>
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.630 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA512Vectors()"]> didFinishWithStatus:passed duration:6.29425048828125e-05
+10:46:19.630 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TOTPTests", "matchesRFC6238SHA512Vectors()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.630 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test matchesRFC6238SHA512Vectors() passed after 0.001 seconds.
+
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.630 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "computesCountersAndRemaining()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02815280>traits:<XCTTraits: 0xc030bcf00>
+10:46:19.630 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TOTPTests", "computesCountersAndRemaining()"]>
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.630 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "computesCountersAndRemaining()"]> didFinishWithStatus:passed duration:2.09808349609375e-05
+10:46:19.630 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TOTPTests", "computesCountersAndRemaining()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.630 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "groupsCodes()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc028149e0>traits:<XCTTraits: 0xc030bd800>
+10:46:19.630 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TOTPTests", "groupsCodes()"]>
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.630 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test computesCountersAndRemaining() passed after 0.001 seconds.
+
+10:46:19.630 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.631 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.631 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TOTPTests", "groupsCodes()"]> didFinishWithStatus:passed duration:2.312660217285156e-05
+10:46:19.631 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TOTPTests", "groupsCodes()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.631 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.631 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["TOTPTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:5 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.0002291202545166016 totalDuration:0.000614166259765625
+10:46:19.631 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.631 xcodebuild[46365:63401533] Nothing to delete
+✔ Suite TOTPTests passed after 0.001 seconds.
+◇ Suite TokenListModelTests started.
+◇ Test refreshSortsPinnedThenAlphabetical() started.
+✔ Test refreshSortsPinnedThenAlphabetical() passed after 0.001 seconds.
+◇ Test detectsDuplicatesByIssuerAccountAndSecret() started.
+✔ Test detectsDuplicatesByIssuerAccountAndSecret() passed after 0.001 seconds.
+◇ Test importWritesAllSelectedTokens() started.
+✔ Test importWritesAllSelectedTokens() passed after 0.001 seconds.
+◇ Test hotpCopyAdvancesStoredCounter() started.
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["TokenListModelTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc030bccf0>
+10:46:19.632 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "refreshSortsPinnedThenAlphabetical()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc028156e0>traits:<XCTTraits: 0xc030bcf60>
+10:46:19.632 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenListModelTests", "refreshSortsPinnedThenAlphabetical()"]>
+10:46:19.632 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "refreshSortsPinnedThenAlphabetical()"]> didFinishWithStatus:passed duration:0.0007669925689697266
+10:46:19.632 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenListModelTests", "refreshSortsPinnedThenAlphabetical()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.632 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "detectsDuplicatesByIssuerAccountAndSecret()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02815720>traits:<XCTTraits: 0xc030bce10>
+10:46:19.632 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenListModelTests", "detectsDuplicatesByIssuerAccountAndSecret()"]>
+10:46:19.632 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "detectsDuplicatesByIssuerAccountAndSecret()"]> didFinishWithStatus:passed duration:0.0001170635223388672
+10:46:19.632 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenListModelTests", "detectsDuplicatesByIssuerAccountAndSecret()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.632 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "importWritesAllSelectedTokens()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02815840>traits:<XCTTraits: 0xc030bcd20>
+10:46:19.632 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenListModelTests", "importWritesAllSelectedTokens()"]>
+10:46:19.632 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.632 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "importWritesAllSelectedTokens()"]> didFinishWithStatus:passed duration:0.0002288818359375
+10:46:19.634 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenListModelTests", "importWritesAllSelectedTokens()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "hotpCopyAdvancesStoredCounter()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc02815920>traits:<XCTTraits: 0xc030bcb40>
+10:46:19.634 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenListModelTests", "hotpCopyAdvancesStoredCounter()"]>
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test groupsCodes() passed after 0.001 seconds.
+
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.634 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test refreshSortsPinnedThenAlphabetical() passed after 0.001 seconds.
+
+10:46:19.634 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test detectsDuplicatesByIssuerAccountAndSecret() passed after 0.001 seconds.
+
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test importWritesAllSelectedTokens() passed after 0.001 seconds.
+
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.635 xcodebuild[46365:63401533] Nothing to delete
+✔ Test hotpCopyAdvancesStoredCounter() passed after 0.020 seconds.
+◇ Test deletingRemovesFromStore() started.
+✔ Test deletingRemovesFromStore() passed after 0.001 seconds.
+✔ Suite TokenListModelTests passed after 0.022 seconds.
+◇ Suite TokenStoreTests started.
+◇ Test savesLoadsAndDeletes() started.
+10:46:19.649 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.649 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.649 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "hotpCopyAdvancesStoredCounter()"]> didFinishWithStatus:passed duration:0.02067208290100098
+10:46:19.649 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenListModelTests", "hotpCopyAdvancesStoredCounter()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.649 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test hotpCopyAdvancesStoredCounter() passed after 0.020 seconds.
+
+10:46:19.650 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.650 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.650 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.650 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.650 xcodebuild[46365:63401533] Nothing to delete
+✔ Test savesLoadsAndDeletes() passed after 0.001 seconds.
+◇ Test replaceAllClearsFirst() started.
+✔ Test replaceAllClearsFirst() passed after 0.001 seconds.
+◇ Test inMemorySortsPinnedFirst() started.
+10:46:19.650 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "deletingRemovesFromStore()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc0129a6c0>traits:<XCTTraits: 0xc0444cf60>
+10:46:19.650 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenListModelTests", "deletingRemovesFromStore()"]>
+10:46:19.650 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.650 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenListModelTests", "deletingRemovesFromStore()"]> didFinishWithStatus:passed duration:0.0002090930938720703
+10:46:19.651 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenListModelTests", "deletingRemovesFromStore()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.651 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test deletingRemovesFromStore() passed after 0.001 seconds.
+
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["TokenListModelTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:5 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.02199411392211914 totalDuration:0.02256393432617188
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["TokenStoreTests"]> didStartAt:2026-11-17 02:46:19 +0000 traits:<XCTTraits: 0xc03f35b00>
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 xcodebuild[46365:63401533] Nothing to delete
+✔ Test inMemorySortsPinnedFirst() passed after 0.001 seconds.
+✔ Suite TokenStoreTests passed after 0.001 seconds.
+✔ Test run with 73 tests in 16 suites passed after 0.460 seconds.
+10:46:19.652 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenStoreTests", "savesLoadsAndDeletes()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013ce560>traits:<XCTTraits: 0xc03f35e00>
+10:46:19.652 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenStoreTests", "savesLoadsAndDeletes()"]>
+10:46:19.652 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.652 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenStoreTests", "savesLoadsAndDeletes()"]> didFinishWithStatus:passed duration:4.029273986816406e-05
+10:46:19.652 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenStoreTests", "savesLoadsAndDeletes()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.652 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test savesLoadsAndDeletes() passed after 0.001 seconds.
+
+10:46:19.652 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.652 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenStoreTests", "replaceAllClearsFirst()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013ce580>traits:<XCTTraits: 0xc03f35c20>
+10:46:19.652 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenStoreTests", "replaceAllClearsFirst()"]>
+10:46:19.652 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.650 OTP[46374:63401980] Setting a new interop record handler: nil
+10:46:19.652 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenStoreTests", "replaceAllClearsFirst()"]> didFinishWithStatus:passed duration:5.984306335449219e-05
+10:46:19.652 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenStoreTests", "replaceAllClearsFirst()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.652 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test replaceAllClearsFirst() passed after 0.001 seconds.
+
+10:46:19.652 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.652 xcodebuild[46365:63401533] _XCT_testCaseDidStartWithIdentifier:<XCTTestIdentifier leaf ["TokenStoreTests", "inMemorySortsPinnedFirst()"]>testCaseRunConfiguration:<XCTestCaseRunConfiguration: 0xc013ce4e0>traits:<XCTTraits: 0xc03f37600>
+10:46:19.652 xcodebuild[46365:63401533] Test case did start: <XCTTestIdentifier leaf ["TokenStoreTests", "inMemorySortsPinnedFirst()"]>
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] _XCT_testCaseWithIdentifier:<XCTTestIdentifier leaf ["TokenStoreTests", "inMemorySortsPinnedFirst()"]> didFinishWithStatus:passed duration:2.193450927734375e-05
+10:46:19.653 xcodebuild[46365:63401533] Test case (<XCTTestIdentifier leaf ["TokenStoreTests", "inMemorySortsPinnedFirst()"]>) finished - enqueuing console chunks to delegate.
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] _XCT_testSuiteWithIdentifier:<XCTTestIdentifier container ["TokenStoreTests"]> didFinishAt:2026-11-17 02:46:19 +0000 runCount:3 skipCount:0 failureCount:0 expectedFailureCount:0 uncaughtExceptionCount:0 testDuration:0.0001220703125 totalDuration:0.0003368854522705078
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1073f5890>
+10:46:19.651 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bded880> completed after 0.469s
+10:46:19.651 OTP[46374:63401842] cleaning up XCTAsyncEnumerateWithWaiter(<XCTest.SwiftTestingExecutionExtension: 0x11be1d400>)
+10:46:19.651 OTP[46374:63401842] <XCTWaiter: 0x1073f5890> entering indefinite wait loop for expectations: `XCTAsyncEnumerateWithWaiter(<XCTTestRunSession: 0x11b6963e0>)`
+10:46:19.651 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1073f5890>
+10:46:19.651 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdeda40> completed after 0.000s
+10:46:19.651 OTP[46374:63401842] cleaning up XCTAsyncEnumerateWithWaiter(<XCTTestRunSession: 0x11b6963e0>)
+10:46:19.651 OTP[46374:63401842] -[XCTRunnerIDESession(_XCTestObservationInternal) testBundleDidFinish:], Flushing connection to IDE...
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] Finishing test with new console chunk ✔ Test inMemorySortsPinnedFirst() passed after 0.001 seconds.
+
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.651 OTP[46374:63401842] Exited test execution event loop
+10:46:19.651 OTP[46374:63401842] Creating future for 'flushing telemetry' with timeout 10.00
+10:46:19.651 OTP[46374:63401842] <XCTWaiter: 0x1070481b0> entering wait loop for 10.00s with expectations: `flushing telemetry`
+10:46:19.651 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x1070481b0>
+10:46:19.651 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdedb00> completed after 0.000s
+10:46:19.651 OTP[46374:63401842] cleaning up flushing telemetry
+10:46:19.651 OTP[46374:63401842] Creating future for 'confirming end of session with the harness' with timeout 1800.00
+10:46:19.651 OTP[46374:63401842] <XCTWaiter: 0x107048150> entering wait loop for 1800.00s with expectations: `confirming end of session with the harness`
+10:46:19.653 xcodebuild[46365:63401533] -[XCTTestRunnerSession _XCT_didFinishExecutingTestPlan]_block_invoke
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.653 OTP[46374:63401978] Creating future for 'flushing telemetry' with timeout 10.00
+10:46:19.653 OTP[46374:63401978] <XCTWaiter: 0x11c6b6430> entering wait loop for 10.00s with expectations: `flushing telemetry`
+10:46:19.653 OTP[46374:63401978] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x11c6b6430>
+10:46:19.653 OTP[46374:63401978] Wait <XCTWaiterWait: 0x11bdede40> completed after 0.000s
+10:46:19.653 OTP[46374:63401978] cleaning up flushing telemetry
+10:46:19.653 OTP[46374:63401842] Returning result XCTWaiterResultCompleted for synchronous waiter <XCTWaiter: 0x107048150>
+10:46:19.653 OTP[46374:63401842] Wait <XCTWaiterWait: 0x11bdedd00> completed after 0.002s
+10:46:19.654 OTP[46374:63401842] cleaning up confirming end of session with the harness
+10:46:19.664 xcodebuild[46365:63401598] <XCTTestRunnerSession: 0xc044655e0> lost its connection.
+10:46:19.664 xcodebuild[46365:63401595] Closing socket 33 to testmanagerd for Sim iPhone 18 Pro
+10:46:19.664 xcodebuild[46365:63401533] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> got death notice for pid 46374 (exit code: 0, signal: (null)), removing from SimulatorSessionMap
+10:46:19.665 xcodebuild[46365:63401533] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> claim LaunchSessionClaim_0xc0083c600 on simulator was relinquished, 1 claims remain.
+10:46:19.665 xcodebuild[46365:63401533] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> claim LaunchSessionClaim_0xc0083c600 on simulator was relinquished, 1 claims remain.
+10:46:19.666 xcodebuild[46365:63401533] 📱<DVTiPhoneSimulator (0xc012a2000), iPhone 18 Pro, unknown class, 27.2 (24B8117), F8ECEBE7-4236-4C66-8F70-DAF46D67FA9E> claim LaunchSessionClaim_0xc0083c600 on simulator was relinquished, 1 claims remain.
+10:46:19.666 xcodebuild[46365:63401533] Launch session expired.
+10:46:19.666 xcodebuild[46365:63401533] Lost connection to test process
+10:46:19.757 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.920 xcodebuild[46365:63401533] <XCTHTestOperationCoordinator: 0xc0083c900> finished receiving data from testing launch session
+10:46:19.921 xcodebuild[46365:63401533] <XCTHTestOperationCoordinator: 0xc0083c900>: _considerFlushingDelegateBlockQueue - nothing to flush
+10:46:19.921 xcodebuild[46365:63401533] Nothing to delete
+10:46:19.921 xcodebuild[46365:63401533] Can finish test, forceToNotWaitForAsynchronousDiagnostics is NO. Finishing...
+10:46:19.921 xcodebuild[46365:63401533] _finishWithError:(null)
+10:46:19.921 xcodebuild[46365:63401533] Current state: testRunnerLaunchSessionHasFinishedReceivingData: YES, delegateBlockQueue.count: 0
+10:46:19.921 xcodebuild[46365:63401533] <XCTHTestOperationCoordinator: 0xc0083c900>: _considerFlushingDelegateBlockQueue - nothing to flush
