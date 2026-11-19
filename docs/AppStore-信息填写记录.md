@@ -213,7 +213,7 @@ Uploaded OTP
 ## 十八、1.0.2：双语界面、支持入口与导入流程重做（2026-11-19）
 
 - 版本：**1.0.2 (17)**，`MARKETING_VERSION` 1.0.1 → 1.0.2，构建号 17；归档 `build/OTP.xcarchive`，build 16 保留为 `build/OTP-build16.xcarchive`。
-- TestFlight：build 17 已上传（2026-11-19 14:00，`Upload succeeded` / `EXPORT SUCCEEDED`），App Store Connect 处理通常 5–30 分钟。
+- TestFlight：build 17 已上传（2026-11-19 14:00，`Upload succeeded` / `EXPORT SUCCEEDED`），处理状态 **VALID**（14:04 上传完成，App Store Connect 已收录）。
 - 双语：新增 `Resources/Localizable.xcstrings`、`Core/Support/L10n.swift`、`en.lproj` / `zh-Hans.lproj`；默认跟随系统语言，设置 → 语言可手动切换并立即生效，不再重启或弹回设置页。
 - 支持入口：设置页新增评分 / 分享 / 邮件反馈（`Features/Settings/AppLinks.swift`），入口在「清空所有令牌」上方；反馈邮件自动附带版本、系统与机型。
 - 导入与令牌：`ImportFlowView`、`AddTokenSheetView`、`TokenListModel`、`TokenRowView`、`MarqueeText` 重做交互与样式，新增 `UXPolishUITests`。
