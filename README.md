@@ -25,6 +25,8 @@
 - **迁移**：Google Authenticator 迁移码、Aegis（未加密）、2FAS（未加密）、本 App 备份、任意 otpauth 链接。
 - **备份**：手动或自动备份到 iCloud Drive（`OTP/Backups`，最多 10 份），列表里一键恢复，支持增量合并、更新同项、完全替换；也可以导出 AES-256-GCM 加密的 `.otpbackup`（PBKDF2-HMAC-SHA256，210,000 次迭代）、未加密 JSON 或单条二维码。
 - **保护**：Face ID / iPhone 密码解锁（3 个令牌或使用 5 天后主动询问一次；开启时先完成一次验证，成功后才生效）、切后台遮挡、剪贴板定时过期；不可用时自动跳过锁定。
+- **支持与反馈**：设置里可以直接去 App Store 评分、把 App 分享给朋友，或用邮件反馈问题（邮件自动附上版本、系统与机型），入口在「清空所有令牌」上面。
+- **中英文界面**：默认跟随系统语言，中文系统显示简体中文，其他语言显示 English；也可以在「设置 → 语言」里手动切换，立即生效。
 - **无网络**：App 不发起任何请求，没有分析或第三方 SDK。
 
 ## 快速开始
@@ -45,6 +47,17 @@ scripts/run-simulator.sh
 ```
 
 模拟器里同样可以完整使用钥匙串（工程带 `OTP.entitlements`，用 ad-hoc 签名）。扫码需要真机摄像头；模拟器请用「从相册识别」或「粘贴链接」。
+
+上传 TestFlight：
+
+```bash
+# 1. 先把 project.yml 里的 CURRENT_PROJECT_VERSION 加一
+# 2. 归档并上传（默认读 ~/.appstoreconnect/private_keys 里的 Team API Key）
+scripts/testflight.sh
+BUILD_NUMBER=14 scripts/testflight.sh   # 也可以临时指定构建号
+```
+
+**约定：每次改完代码、测试通过后，加构建号并用 `scripts/testflight.sh` 自动传一个 TestFlight 构建。** 旧归档会保留为 `build/OTP-build<上一个构建号>.xcarchive`。
 
 ## 在真机上运行
 
@@ -141,7 +154,7 @@ OTP/
   Core/Storage/              钥匙串仓库、TokenStore actor、内存实现
   Core/Backup/               备份信封、PBKDF2 + AES-GCM、iCloud 文件存储、恢复模式
   Core/Import/               Protobuf、Google 迁移码、Aegis、2FAS、URI 列表
-  Core/Support/              ISO8601、启动配置
+  Core/Support/              L10n、ISO8601、启动配置
   Features/Tokens/           列表、行、编辑、二维码、品牌图标、添加弹窗
   Features/Import/           导入流程与预览
   Features/Scanner/          VisionKit 扫码、相册识别
@@ -149,8 +162,11 @@ OTP/
   Features/Lock/             Face ID 锁
   Features/Onboarding/       首次启动引导
   DesignSystem/              剪贴板、倒计时环、滚动文字、图标处理、二维码渲染
-  Resources/                 Info.plist、隐私清单、Assets、着色
+  Resources/                 Info.plist、隐私清单、Localizable.xcstrings、Assets、着色
 OTP/Resources/BrandIcons/   内置品牌图标（白色字形，运行时着色）
+OTP/Resources/en.lproj/     English InfoPlist.strings（相机 / Face ID 权限说明）
+OTP/Resources/zh-Hans.lproj/ 简体中文 InfoPlist.strings
+site/                       官网（index / privacy / support，中英文）
 OTPTests/                    单元测试（Swift Testing）
 OTPUITests/                  UI 测试（XCTest）
 scripts/                     bootstrap / build / test / run / screenshot / verify-totp
@@ -203,7 +219,7 @@ Release 构建不会写入任何演示数据；开发描述文件通常有效期
 - 同步依赖系统 iCloud 钥匙串；关闭时 App 仍可本机使用，但不会跨设备同步，且无法检测状态。
 - 没有 Widget、Apple Watch、分享扩展；没有手动拖拽排序（置顶 + 字母序）；品牌图标为单色字形 + 品牌色底，不是官方彩色 Logo。
 - 不支持 Steam Guard、加密的 Aegis / 2FAS 备份、MD5 算法。
-- iPad 以 iPhone 兼容模式运行；界面仅简体中文。
+- iPad 以 iPhone 兼容模式运行；界面支持简体中文与 English，但暂未提供繁体中文及其他语言。系统权限弹窗、分享面板等由 iOS 提供的界面跟随系统语言，不随 App 内语言设置变化。
 - 同一令牌多端并发编辑时可能出现「最后写入者胜出」，不提供合并。
 
 ## 设计取舍
@@ -215,9 +231,43 @@ Release 构建不会写入任何演示数据；开发描述文件通常有效期
 - 代价是同步时机由系统控制、无法读取同步状态、冲突只能整条覆盖。
 - `TokenRepository` 协议把存储与 UI 解耦：如果将来要换 CloudKit 或本地 SwiftData，只需要新增一个实现。
 
+## 语言
+
+- **跟随系统**（默认）：任何中文系统使用简体中文，其他语言一律回退到 English，不会出现「非中文系统却只有中文」的情况。
+- **手动切换**：设置 → 语言 → 简体中文 / English，立即生效并保存在本机。
+- 界面文案由 `OTP/Resources/Localizable.xcstrings` 提供。中文是源语言（字符串本身即 key），英文是翻译；视图里的 `Text` / `Button` / `Label` 等使用 SwiftUI 的 `LocalizedStringKey`，而错误、Toast、枚举显示名等非视图字符串走 `L10n.t` / `L10n.format`。
+- 截图或 UI 测试可用启动参数 `-appLanguage en` / `-appLanguage zh-Hans` 临时覆盖语言（走 `UserDefaults` 的 argument domain，不会写入偏好）。
+- 系统权限弹窗、分享面板、文件选择器等系统界面跟随 iOS 语言设置，这是系统行为，App 无法覆盖。
+
+## 官网
+
+`site/` 是与 Liteshot 官网保持同一套布局的静态站点，包含：
+
+- `index.html`：产品首页
+- `privacy.html`：隐私政策（App Store 隐私政策 URL）
+- `support.html`：支持与常见问题（App Store 支持 URL）
+
+页面支持中英文切换（右上角「中文 / EN」，默认跟随浏览器语言，选择记在 localStorage）。本地预览：
+
+```bash
+cd site
+python3 -m http.server 8000
+# http://127.0.0.1:8000/
+```
+
+站点通过 GitHub Pages 发布（`.github/workflows/pages.yml`，推送 `main` 分支的 `site/**` 自动部署；仓库首次使用时在 Settings → Pages → Source 选 GitHub Actions）：
+
+- 首页：<https://redcarl.github.io/OTP/>
+- 隐私政策：<https://redcarl.github.io/OTP/privacy.html>
+- 支持：<https://redcarl.github.io/OTP/support.html>
+
+App Store Connect 的技术支持 / 营销 / 隐私政策 URL 已按上面填写。`otp.carljoy.cn` 是备案用的产品信息展示域名，后续可以镜像同一份 `site/`，但 App Store 链接不依赖它。
+
+备案号在通过后补到 `site/index.html` 和两个文档页的页脚（文件里已留注释）。App Store 下载按钮目前是「即将上架」状态；App ID 为 `6835475936`，上架后把 `site/index.html` 里的 disabled span 换成 `https://apps.apple.com/app/id6835475936` 即可。
+
 ## 隐私
 
-App 不联网、不收集任何数据、不包含第三方 SDK。备份文件由用户自行保存与分享；二维码和明文备份都包含密钥，请谨慎处理。
+App 不联网、不收集任何数据、不包含第三方 SDK。备份文件由用户自行保存与分享；二维码和明文备份都包含密钥，请谨慎处理。官网隐私政策：<https://redcarl.github.io/OTP/privacy.html>。
 
 ## 许可
 

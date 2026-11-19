@@ -11,15 +11,20 @@ final class TokenListModel {
     private(set) var tokens: [OTPToken] = []
     private(set) var codes: [UUID: String] = [:]
     private(set) var skippedCount = 0
-    private(set) var now = Date()
     private(set) var isLoading = false
     private(set) var lastRefreshedAt: Date?
-    private(set) var copiedTokenID: UUID?
     private(set) var copySignal = 0
 
     var searchText = ""
     var errorMessage: String?
     var toastMessage: String?
+
+    /// Last TOTP window each token was ticked for. Observation-ignored: this is
+    /// bookkeeping, not view state, and writing it must not invalidate views.
+    @ObservationIgnored private var windowIndex: [UUID: UInt64] = [:]
+    /// Pre-lowered search haystacks, so filtering does not rebuild strings for
+    /// every token on every keystroke.
+    @ObservationIgnored private var searchHaystacks: [UUID: String] = [:]
 
     init(store: TokenStore? = nil) {
         self.store = store ?? TokenStore(
@@ -32,19 +37,14 @@ final class TokenListModel {
     var filteredTokens: [OTPToken] {
         let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         guard !query.isEmpty else { return tokens }
-        return tokens.filter { $0.searchText.contains(query) }
+        return tokens.filter { token in
+            let haystack = searchHaystacks[token.id] ?? token.searchText
+            return haystack.contains(query)
+        }
     }
 
     func code(for token: OTPToken) -> String? {
         codes[token.id]
-    }
-
-    func remaining(for token: OTPToken) -> Int {
-        TOTP.remaining(at: now, period: token.period)
-    }
-
-    func progress(for token: OTPToken) -> Double {
-        TOTP.progress(at: now, period: token.period)
     }
 
     // MARK: - Lifecycle
@@ -60,9 +60,38 @@ final class TokenListModel {
             while !Task.isCancelled {
                 guard let self else { return }
                 self.tick()
-                try? await Task.sleep(nanoseconds: 500_000_000)
+                let delay = self.delayUntilNextWindowBoundary()
+                try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
             }
         }
+    }
+
+    /// Sleeps until the next TOTP window boundary instead of polling, so the
+    /// app wakes roughly once per period instead of four times a second.
+    private func delayUntilNextWindowBoundary() -> TimeInterval {
+        let instant = Date().timeIntervalSince1970
+        var shortest: TimeInterval?
+        for token in tokens where token.kind == .totp {
+            let period = Double(max(1, token.period))
+            let remaining = period - instant.truncatingRemainder(dividingBy: period)
+            if remaining < (shortest ?? .greatestFiniteMagnitude) {
+                shortest = remaining
+            }
+        }
+        // No time-based tokens: nothing to refresh until the set changes.
+        guard let shortest else { return 60 }
+        // Wake just past the boundary; never spin.
+        return min(max(shortest + 0.05, 0.1), 60)
+    }
+
+    /// The ticker sleeps for the shortest period it knew about; after the token
+    /// set changes, wake it so a newly added token is not stale for a whole
+    /// sleeping window.
+    private func rescheduleTicker() {
+        guard tickerTask != nil else { return }
+        tickerTask?.cancel()
+        tickerTask = nil
+        startTicker()
     }
 
     func stopTicker() {
@@ -70,9 +99,12 @@ final class TokenListModel {
         tickerTask = nil
     }
 
+    /// Polls a few times per second but only publishes `codes` when a token's
+    /// TOTP window actually rolls over. The per-row countdown keeps its own
+    /// clock (see `TokenRowView`), so publishing a fresh `now` here would only
+    /// re-render the whole list twice a second for values that did not change.
     private func tick() {
-        now = Date()
-        recomputeCodes()
+        refreshCodesIfWindowChanged()
     }
 
     // MARK: - Loading
@@ -85,21 +117,39 @@ final class TokenListModel {
             tokens = Self.sorted(result.tokens)
             skippedCount = result.skippedCount
             lastRefreshedAt = Date()
+            rebuildSearchIndex()
             recomputeCodes()
+            rescheduleTicker()
         } catch {
             errorMessage = error.localizedDescription
         }
     }
 
+    /// Indexes the lowercased issuer/account of every token once per load, and
+    /// drops bookkeeping for tokens that no longer exist.
+    private func rebuildSearchIndex() {
+        var index: [UUID: String] = [:]
+        index.reserveCapacity(tokens.count)
+        for token in tokens {
+            index[token.id] = token.searchText
+        }
+        searchHaystacks = index
+        let liveIDs = Set(index.keys)
+        windowIndex = windowIndex.filter { liveIDs.contains($0.key) }
+    }
+
+    /// Full recompute, used after loads and mutations.
     private func recomputeCodes() {
+        let instant = Date()
         var refreshed: [UUID: String] = [:]
         refreshed.reserveCapacity(tokens.count)
         for token in tokens {
             switch token.kind {
             case .totp:
+                windowIndex[token.id] = TOTP.counter(at: instant, period: token.period)
                 refreshed[token.id] = TOTP.code(
                     secret: token.secret,
-                    at: now,
+                    at: instant,
                     period: token.period,
                     digits: token.digits,
                     algorithm: token.algorithm
@@ -111,6 +161,30 @@ final class TokenListModel {
             }
         }
         if refreshed != codes {
+            codes = refreshed
+        }
+    }
+
+    /// Recomputes only the tokens whose window rolled over since the last tick.
+    private func refreshCodesIfWindowChanged() {
+        guard !tokens.isEmpty else { return }
+        let instant = Date()
+        var refreshed = codes
+        var changed = false
+        for token in tokens where token.kind == .totp {
+            let window = TOTP.counter(at: instant, period: token.period)
+            guard windowIndex[token.id] != window || codes[token.id] == nil else { continue }
+            windowIndex[token.id] = window
+            refreshed[token.id] = TOTP.code(
+                secret: token.secret,
+                at: instant,
+                period: token.period,
+                digits: token.digits,
+                algorithm: token.algorithm
+            )
+            changed = true
+        }
+        if changed, refreshed != codes {
             codes = refreshed
         }
     }
@@ -143,7 +217,7 @@ final class TokenListModel {
         do {
             try await store.delete(id: token.id)
             await refresh()
-            showToast("已删除 \(token.displayIssuer)")
+            showToast(L10n.format("已删除 %@", token.displayIssuer))
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -186,14 +260,23 @@ final class TokenListModel {
         return imported
     }
 
-    func isDuplicate(_ token: OTPToken) -> Bool {
+    /// Stable identity of a token for duplicate detection: secret plus the
+    /// normalized issuer/account.
+    nonisolated static func fingerprint(_ token: OTPToken) -> String {
         let issuer = token.issuer.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let account = token.accountName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        return tokens.contains { existing in
-            existing.secret == token.secret
-                && existing.issuer.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() == issuer
-                && existing.accountName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() == account
-        }
+        return "\(token.secret.base64EncodedString())|\(issuer)|\(account)"
+    }
+
+    /// One pass over the stored tokens, for import screens that would otherwise
+    /// run an O(n²) comparison on the main actor.
+    func duplicateFingerprints() -> Set<String> {
+        Set(tokens.map(Self.fingerprint))
+    }
+
+    func isDuplicate(_ token: OTPToken) -> Bool {
+        let fingerprint = Self.fingerprint(token)
+        return tokens.contains { Self.fingerprint($0) == fingerprint }
     }
 
     func togglePin(_ token: OTPToken) async {
@@ -224,9 +307,8 @@ final class TokenListModel {
     private func deliver(_ code: String, for token: OTPToken) {
         let expiresIn = Self.clipboardExpiryEnabled ? 30.0 : nil
         Clipboard.copy(code, expiresIn: expiresIn)
-        copiedTokenID = token.id
         copySignal += 1
-        showToast(expiresIn == nil ? "已复制" : "已复制 · 30 秒后清除")
+        showToast(expiresIn == nil ? L10n.t("已复制") : L10n.t("已复制 · 30 秒后清除"))
     }
 
     private static var clipboardExpiryEnabled: Bool {
@@ -243,9 +325,8 @@ final class TokenListModel {
         guard !code.isEmpty else { return }
         codes[token.id] = code
         Clipboard.copy(code, expiresIn: Self.clipboardExpiryEnabled ? 30.0 : nil)
-        copiedTokenID = token.id
         copySignal += 1
-        showToast("已生成并复制 \(OTPCodeFormatter.grouped(code))")
+        showToast(L10n.format("已生成并复制 %@", OTPCodeFormatter.grouped(code)))
 
         var advanced = token
         advanced.counter = token.counter &+ 1
@@ -268,8 +349,8 @@ final class TokenListModel {
             OTPToken(issuer: "GitHub", accountName: "alice@example.com", secret: Base32.decode("JBSWY3DPEHPK3PXP") ?? Data()),
             OTPToken(issuer: "Google", accountName: "alice@gmail.com", secret: Base32.decode("GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ") ?? Data(), pinned: true),
             OTPToken(issuer: "AWS", accountName: "admin", secret: Base32.decode("MFRGGZDFMZTWQ2LKNNWG23TP") ?? Data(), kind: .hotp, digits: 6),
-            OTPToken(issuer: "内网服务", accountName: "ops@intra", secret: Base32.decode("MZXW6YTBOI") ?? Data()),
-            OTPToken(issuer: "企业单点登录", accountName: "long.name@example.com", secret: Base32.decode("GEZDGNBVGY3TQOJQ") ?? Data()),
+            OTPToken(issuer: L10n.t("内网服务"), accountName: "ops@intra", secret: Base32.decode("MZXW6YTBOI") ?? Data()),
+            OTPToken(issuer: L10n.t("企业单点登录"), accountName: "long.name@example.com", secret: Base32.decode("GEZDGNBVGY3TQOJQ") ?? Data()),
         ]
         for sample in samples {
             try? await store.save(sample)

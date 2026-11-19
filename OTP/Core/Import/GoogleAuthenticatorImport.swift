@@ -7,11 +7,11 @@ enum GoogleAuthenticatorImport {
         let trimmed = urlString.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let components = URLComponents(string: trimmed),
               components.scheme?.lowercased() == "otpauth-migration" else {
-            throw ImportError.malformed("这不是 Google Authenticator 迁移链接")
+            throw ImportError.malformed(L10n.t("这不是 Google Authenticator 迁移链接"))
         }
         guard let encoded = components.queryItems?.first(where: { $0.name == "data" })?.value,
               let payload = decodeBase64(encoded), !payload.isEmpty else {
-            throw ImportError.malformed("迁移链接缺少有效的 data 参数")
+            throw ImportError.malformed(L10n.t("迁移链接缺少有效的 data 参数"))
         }
         return try parse(payload: payload)
     }
@@ -31,7 +31,7 @@ enum GoogleAuthenticatorImport {
         }
 
         guard !candidates.isEmpty else {
-            throw ImportError.malformed("迁移数据里没有令牌")
+            throw ImportError.malformed(L10n.t("迁移数据里没有令牌"))
         }
         return candidates
     }
@@ -81,10 +81,10 @@ enum GoogleAuthenticatorImport {
 
     private static func makeCandidate(from parameters: Parameters) -> ImportCandidate {
         guard !parameters.secret.isEmpty else {
-            return ImportCandidate(error: "条目缺少密钥")
+            return ImportCandidate(error: L10n.t("条目缺少密钥"))
         }
         guard parameters.algorithm != 4 else {
-            return ImportCandidate(error: "Google Authenticator 中的 MD5 条目暂不支持")
+            return ImportCandidate(error: L10n.t("Google Authenticator 中的 MD5 条目暂不支持"))
         }
 
         let algorithm: OTPAlgorithm

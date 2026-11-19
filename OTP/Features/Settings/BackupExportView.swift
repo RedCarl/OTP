@@ -10,7 +10,7 @@ struct BackupExportView: View {
     @State private var passphrase = ""
     @State private var confirmation = ""
     @State private var document: OTPBackupDocument?
-    @State private var suggestedName = "OTP-备份"
+    @State private var suggestedName = L10n.t("OTP-备份")
     @State private var isExporterPresented = false
     @State private var isWorking = false
     @State private var errorMessage: String?
@@ -27,7 +27,7 @@ struct BackupExportView: View {
                 Section {
                     Toggle("使用密码加密", isOn: $useEncryption)
                 } footer: {
-                    Text(useEncryption ? "忘记密码将无法恢复。" : "备份文件包含明文密钥。")
+                    Text(useEncryption ? L10n.t("忘记密码将无法恢复。") : L10n.t("备份文件包含明文密钥。"))
                 }
 
                 if useEncryption {
@@ -52,7 +52,7 @@ struct BackupExportView: View {
                             if isWorking {
                                 ProgressView()
                             } else {
-                                Text(useEncryption ? "生成加密备份" : "生成明文备份")
+                                Text(useEncryption ? L10n.t("生成加密备份") : L10n.t("生成明文备份"))
                             }
                             Spacer()
                         }
@@ -78,7 +78,7 @@ struct BackupExportView: View {
                 switch result {
                 case .success:
                     lastBackupAt = Date().timeIntervalSince1970
-                    model.showToast("备份已导出")
+                    model.showToast(L10n.t("备份已导出"))
                     dismiss()
                 case .failure(let error):
                     errorMessage = error.localizedDescription

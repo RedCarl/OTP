@@ -1,0 +1,2586 @@
+{
+  "sourceLanguage": "zh-Hans",
+  "strings": {
+    "%@ · 共 %lld 项": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Format: %@ · Items: %lld"
+          }
+        }
+      }
+    },
+    "%@ 令牌二维码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ token QR code"
+          }
+        }
+      }
+    },
+    "%lld 个令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tokens: %lld"
+          }
+        }
+      }
+    },
+    "%lld 个令牌无法显示": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unreadable tokens: %lld"
+          }
+        }
+      }
+    },
+    "%lld 位": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld digits"
+          }
+        }
+      }
+    },
+    "%lld 项无法识别，已跳过": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped unreadable items: %lld"
+          }
+        }
+      }
+    },
+    "2FAS 备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2FAS backup"
+          }
+        }
+      }
+    },
+    "2FAS 备份已加密，请先在 2FAS 中导出未加密备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This 2FAS backup is encrypted. Export an unencrypted backup from 2FAS first."
+          }
+        }
+      }
+    },
+    "2FAS 备份格式无法解析": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't parse the 2FAS backup."
+          }
+        }
+      }
+    },
+    "Aegis 备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aegis backup"
+          }
+        }
+      }
+    },
+    "Aegis 备份已加密，请先在 Aegis 中导出未加密备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This Aegis backup is encrypted. Export an unencrypted backup from Aegis first."
+          }
+        }
+      }
+    },
+    "Aegis 备份格式无法解析": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't parse the Aegis backup."
+          }
+        }
+      }
+    },
+    "Base32 密钥": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base32 secret"
+          }
+        }
+      }
+    },
+    "Face ID 与剪贴板保护": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID and clipboard protection"
+          }
+        }
+      }
+    },
+    "Google Authenticator 中的 MD5 条目暂不支持": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MD5 entries from Google Authenticator aren't supported yet."
+          }
+        }
+      }
+    },
+    "Google Authenticator 迁移码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Authenticator migration code"
+          }
+        }
+      }
+    },
+    "OTP 备份文件": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTP backup file"
+          }
+        }
+      }
+    },
+    "OTP 已锁定": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTP is locked"
+          }
+        }
+      }
+    },
+    "OTP-备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTP-Backup"
+          }
+        }
+      }
+    },
+    "OTP-备份-%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTP-Backup-%@"
+          }
+        }
+      }
+    },
+    "iCloud 备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Backup"
+          }
+        }
+      }
+    },
+    "iCloud 钥匙串": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Keychain"
+          }
+        }
+      }
+    },
+    "iCloud 钥匙串同步": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Keychain sync"
+          }
+        }
+      }
+    },
+    "iPhone 密码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone Passcode"
+          }
+        }
+      }
+    },
+    "otpauth 链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "otpauth links"
+          }
+        }
+      }
+    },
+    "上次备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last backup"
+          }
+        }
+      }
+    },
+    "不支持的令牌类型：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported token type: %@"
+          }
+        }
+      }
+    },
+    "不支持的哈希算法：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported hash algorithm: %@"
+          }
+        }
+      }
+    },
+    "不支持的条目类型：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported entry type: %@"
+          }
+        }
+      }
+    },
+    "不支持的算法：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported algorithm: %@"
+          }
+        }
+      }
+    },
+    "两次输入的密码不一致": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The passwords don't match."
+          }
+        }
+      }
+    },
+    "从 Google Authenticator 导入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import from Google Authenticator"
+          }
+        }
+      }
+    },
+    "从剪贴板粘贴密钥": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste secret from clipboard"
+          }
+        }
+      }
+    },
+    "从文件导入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import from Files"
+          }
+        }
+      }
+    },
+    "从未备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never"
+          }
+        }
+      }
+    },
+    "从相册识别": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan from Photos"
+          }
+        }
+      }
+    },
+    "令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tokens"
+          }
+        }
+      }
+    },
+    "令牌二维码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token QR Code"
+          }
+        }
+      }
+    },
+    "令牌数据损坏：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token data is corrupted: %@"
+          }
+        }
+      }
+    },
+    "令牌数据无法编码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't encode the token data."
+          }
+        }
+      }
+    },
+    "令牌数量": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tokens"
+          }
+        }
+      }
+    },
+    "以后再说": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not now"
+          }
+        }
+      }
+    },
+    "企业单点登录": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Corporate SSO"
+          }
+        }
+      }
+    },
+    "位数：%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digits: %lld"
+          }
+        }
+      }
+    },
+    "使用 %@ 解锁": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock with %@"
+          }
+        }
+      }
+    },
+    "使用 %@ 解锁 OTP，别人拿到手机也看不到验证码。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock OTP with %@ so nobody can see your codes if they pick up your phone."
+          }
+        }
+      }
+    },
+    "使用名称首字": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First letter of the name"
+          }
+        }
+      }
+    },
+    "使用密码加密": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypt with a password"
+          }
+        }
+      }
+    },
+    "保存": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "关闭": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "内网服务": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Internal Service"
+          }
+        }
+      }
+    },
+    "再输入一次": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter it again"
+          }
+        }
+      }
+    },
+    "出错了": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong"
+          }
+        }
+      }
+    },
+    "分享二维码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share QR code"
+          }
+        }
+      }
+    },
+    "删除": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "删除 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete %@"
+          }
+        }
+      }
+    },
+    "删除当前所有令牌，恢复为备份中的内容。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete every current token and replace them with the backup."
+          }
+        }
+      }
+    },
+    "删除这个令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this token"
+          }
+        }
+      }
+    },
+    "删除这个令牌？": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this token?"
+          }
+        }
+      }
+    },
+    "刷新": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh"
+          }
+        }
+      }
+    },
+    "刷新周期必须在 1 到 3600 秒之间（当前 %lld）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The period must be between 1 and 3600 seconds (currently %lld)."
+          }
+        }
+      }
+    },
+    "刷新周期：%lld 秒": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Period: %lld s"
+          }
+        }
+      }
+    },
+    "剩余 %lld 秒": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sec left"
+          }
+        }
+      }
+    },
+    "加密处理失败": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encryption failed."
+          }
+        }
+      }
+    },
+    "加密备份请先导出未加密版本。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For encrypted backups, export an unencrypted copy first."
+          }
+        }
+      }
+    },
+    "包含密钥，请勿分享。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contains the secret. Don't share it."
+          }
+        }
+      }
+    },
+    "取消": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "取消置顶": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unpin"
+          }
+        }
+      }
+    },
+    "只添加当前没有的令牌，已有令牌保持不动。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add only tokens you don't have yet; existing tokens stay as they are."
+          }
+        }
+      }
+    },
+    "可以返回后从相册选择二维码图片，或直接粘贴 otpauth 链接。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go back and choose a QR image from Photos, or paste an otpauth link instead."
+          }
+        }
+      }
+    },
+    "可保存到 iCloud Drive 或分享。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save to iCloud Drive or share it."
+          }
+        }
+      }
+    },
+    "同一条目用备份内容更新，并补充缺失的令牌。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update matching tokens from the backup and add any missing ones."
+          }
+        }
+      }
+    },
+    "名称与账号": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name and account"
+          }
+        }
+      }
+    },
+    "名称，如 GitHub": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name, e.g. GitHub"
+          }
+        }
+      }
+    },
+    "后台隐藏内容": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide content in background"
+          }
+        }
+      }
+    },
+    "哔哩哔哩": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilibili"
+          }
+        }
+      }
+    },
+    "图片里没有二维码。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No QR code found in this image."
+          }
+        }
+      }
+    },
+    "基于时间": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time-based"
+          }
+        }
+      }
+    },
+    "基于计数器": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Counter-based"
+          }
+        }
+      }
+    },
+    "基于计数器，点按生成验证码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Counter-based; tap to generate a code."
+          }
+        }
+      }
+    },
+    "填写名称或账号。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a name or account."
+          }
+        }
+      }
+    },
+    "增量合并": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merge"
+          }
+        }
+      }
+    },
+    "备份、Aegis、2FAS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup, Aegis, 2FAS"
+          }
+        }
+      }
+    },
+    "备份失败": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup failed"
+          }
+        }
+      }
+    },
+    "备份密码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup password"
+          }
+        }
+      }
+    },
+    "备份密码至少需要 %lld 位字符": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The backup password needs at least %lld characters."
+          }
+        }
+      }
+    },
+    "备份密码（至少 8 位）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup password (8+ characters)"
+          }
+        }
+      }
+    },
+    "备份已加密": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup is encrypted"
+          }
+        }
+      }
+    },
+    "备份已导出": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup exported"
+          }
+        }
+      }
+    },
+    "备份文件包含明文密钥。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The backup file contains plaintext secrets."
+          }
+        }
+      }
+    },
+    "备份文件来自更新版本（v%lld），请升级 App 后再导入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This backup comes from a newer version (v%lld). Update the app before importing it."
+          }
+        }
+      }
+    },
+    "备份时间": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup time"
+          }
+        }
+      }
+    },
+    "备份记录": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backups"
+          }
+        }
+      }
+    },
+    "复制": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        }
+      }
+    },
+    "复制令牌链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy token links"
+          }
+        }
+      }
+    },
+    "复制后清空剪贴板": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear clipboard after copying"
+          }
+        }
+      }
+    },
+    "复制明文链接？": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy plaintext links?"
+          }
+        }
+      }
+    },
+    "复制验证码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy code"
+          }
+        }
+      }
+    },
+    "大小": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size"
+          }
+        }
+      }
+    },
+    "好": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "完全替换": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replace All"
+          }
+        }
+      }
+    },
+    "完成": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "密码错误，或备份文件已损坏": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wrong password, or the backup file is damaged."
+          }
+        }
+      }
+    },
+    "密钥": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Secret"
+          }
+        }
+      }
+    },
+    "密钥不是合法的 Base32 字符串": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The secret isn't valid Base32."
+          }
+        }
+      }
+    },
+    "密钥格式不正确。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The secret format is incorrect."
+          }
+        }
+      }
+    },
+    "导入 %lld 项": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import selected (%lld)"
+          }
+        }
+      }
+    },
+    "导入令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Tokens"
+          }
+        }
+      }
+    },
+    "导入数据": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Data"
+          }
+        }
+      }
+    },
+    "导出备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export Backup"
+          }
+        }
+      }
+    },
+    "导出失败": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export failed"
+          }
+        }
+      }
+    },
+    "已上传的图片": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uploaded image"
+          }
+        }
+      }
+    },
+    "已删除 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleted %@"
+          }
+        }
+      }
+    },
+    "已删除备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup deleted"
+          }
+        }
+      }
+    },
+    "已备份到 iCloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backed up to iCloud"
+          }
+        }
+      }
+    },
+    "已备份到本机": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backed up on this device"
+          }
+        }
+      }
+    },
+    "已复制": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied"
+          }
+        }
+      }
+    },
+    "已复制 %lld 个链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Links copied: %lld"
+          }
+        }
+      }
+    },
+    "已复制 · 30 秒后清除": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied · clears in 30s"
+          }
+        }
+      }
+    },
+    "已存在": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Already added"
+          }
+        }
+      }
+    },
+    "已存在的项默认不勾选。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Existing items are unchecked by default."
+          }
+        }
+      }
+    },
+    "已导入 %lld 个令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tokens imported: %lld"
+          }
+        }
+      }
+    },
+    "已开启 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ enabled"
+          }
+        }
+      }
+    },
+    "已恢复 %lld 个令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tokens restored: %lld"
+          }
+        }
+      }
+    },
+    "已恢复：新增 %lld，更新 %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restored — added: %lld, updated: %lld"
+          }
+        }
+      }
+    },
+    "已恢复：新增 %lld，更新 %lld，跳过 %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restored — added: %lld, updated: %lld, skipped: %lld"
+          }
+        }
+      }
+    },
+    "已清空": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleared"
+          }
+        }
+      }
+    },
+    "已生成并复制 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Generated and copied %@"
+          }
+        }
+      }
+    },
+    "已跳过 %lld 个无法识别的 2FAS 条目": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped %lld unrecognized 2FAS entries."
+          }
+        }
+      }
+    },
+    "已跳过 %lld 个无法识别的 Aegis 条目": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped %lld unrecognized Aegis entries."
+          }
+        }
+      }
+    },
+    "开启": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn On"
+          }
+        }
+      }
+    },
+    "开启解锁保护": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable app lock"
+          }
+        }
+      }
+    },
+    "开始使用": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get Started"
+          }
+        }
+      }
+    },
+    "当前所有令牌会被删除，无法撤销。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All current tokens will be deleted. This can't be undone."
+          }
+        }
+      }
+    },
+    "当前验证码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current code"
+          }
+        }
+      }
+    },
+    "微信": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WeChat"
+          }
+        }
+      }
+    },
+    "忘记密码将无法恢复。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you forget the password, the backup can't be recovered."
+          }
+        }
+      }
+    },
+    "恢复": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore"
+          }
+        }
+      }
+    },
+    "恢复备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Backup"
+          }
+        }
+      }
+    },
+    "恢复方式": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Mode"
+          }
+        }
+      }
+    },
+    "恢复自动图标": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use automatic icon"
+          }
+        }
+      }
+    },
+    "所有设备上的令牌都会被删除，无法撤销。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tokens on every device will be deleted. This can't be undone."
+          }
+        }
+      }
+    },
+    "所有设备都会删除，无法撤销。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This deletes the token on every device. It can't be undone."
+          }
+        }
+      }
+    },
+    "手动输入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter manually"
+          }
+        }
+      }
+    },
+    "打开系统设置": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        }
+      }
+    },
+    "扫描二维码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR Code"
+          }
+        }
+      }
+    },
+    "扫码或文件导入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan or import a file"
+          }
+        }
+      }
+    },
+    "扫码或迁移码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR code or migration code"
+          }
+        }
+      }
+    },
+    "扫码添加": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan to Add"
+          }
+        }
+      }
+    },
+    "按住 1.5 秒，进度走满后松手清空": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold for 1.5 seconds, then release when the bar is full."
+          }
+        }
+      }
+    },
+    "按住清空": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold to Clear"
+          }
+        }
+      }
+    },
+    "搜索名称或账号": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search name or account"
+          }
+        }
+      }
+    },
+    "支付宝": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alipay"
+          }
+        }
+      }
+    },
+    "文本": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        }
+      }
+    },
+    "无法启动相机，请检查相机权限后重试。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't start the camera. Check camera permission and try again."
+          }
+        }
+      }
+    },
+    "无法开启解锁保护": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't enable app lock"
+          }
+        }
+      }
+    },
+    "无法恢复": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Failed"
+          }
+        }
+      }
+    },
+    "无法识别的条目": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unrecognized entry"
+          }
+        }
+      }
+    },
+    "无法识别的链接，应以 otpauth:// 开头": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unrecognized link; it should start with otpauth://"
+          }
+        }
+      }
+    },
+    "无法识别这个文件，请选择 OTP 备份、Aegis/2FAS 导出或包含 otpauth 链接的文本": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't recognize this file. Choose an OTP backup, an Aegis/2FAS export, or a text file containing otpauth links."
+          }
+        }
+      }
+    },
+    "无法读取图片。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't read the image."
+          }
+        }
+      }
+    },
+    "显示二维码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show QR Code"
+          }
+        }
+      }
+    },
+    "更新同项": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update Matching"
+          }
+        }
+      }
+    },
+    "未命名": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untitled"
+          }
+        }
+      }
+    },
+    "未开启": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enabled"
+          }
+        }
+      }
+    },
+    "未知错误": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown error"
+          }
+        }
+      }
+    },
+    "本机": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device"
+          }
+        }
+      }
+    },
+    "条目缺少信息": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This entry is missing information."
+          }
+        }
+      }
+    },
+    "条目缺少合法密钥": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This entry has no valid secret."
+          }
+        }
+      }
+    },
+    "条目缺少密钥": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This entry is missing its secret."
+          }
+        }
+      }
+    },
+    "松手清空": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Release to Clear"
+          }
+        }
+      }
+    },
+    "正在清空…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clearing…"
+          }
+        }
+      }
+    },
+    "没有令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No tokens"
+          }
+        }
+      }
+    },
+    "没有可备份的令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There are no tokens to back up."
+          }
+        }
+      }
+    },
+    "没有找到令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No tokens found"
+          }
+        }
+      }
+    },
+    "没有找到可导入的令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No importable tokens found."
+          }
+        }
+      }
+    },
+    "添加令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Token"
+          }
+        }
+      }
+    },
+    "清空所有令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear All Tokens"
+          }
+        }
+      }
+    },
+    "清空所有令牌？": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear all tokens?"
+          }
+        }
+      }
+    },
+    "清除搜索": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear search"
+          }
+        }
+      }
+    },
+    "点击生成": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to generate"
+          }
+        }
+      }
+    },
+    "生成加密备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create Encrypted Backup"
+          }
+        }
+      }
+    },
+    "生成明文备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create Plaintext Backup"
+          }
+        }
+      }
+    },
+    "相机权限已关闭": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera access is off"
+          }
+        }
+      }
+    },
+    "确认导入": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm Import"
+          }
+        }
+      }
+    },
+    "立即备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back Up Now"
+          }
+        }
+      }
+    },
+    "端到端加密，自动同步到其他设备。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End-to-end encrypted and synced to your other devices."
+          }
+        }
+      }
+    },
+    "简体中文": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "简体中文"
+          }
+        }
+      }
+    },
+    "算法": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algorithm"
+          }
+        }
+      }
+    },
+    "类型": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type"
+          }
+        }
+      }
+    },
+    "粘贴": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste"
+          }
+        }
+      }
+    },
+    "粘贴 otpauth 链接，每行一条": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste otpauth links, one per line"
+          }
+        }
+      }
+    },
+    "粘贴链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste Link"
+          }
+        }
+      }
+    },
+    "给令牌加一道锁？": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a lock to your tokens?"
+          }
+        }
+      }
+    },
+    "继续按住": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep holding"
+          }
+        }
+      }
+    },
+    "编辑": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        }
+      }
+    },
+    "缺少密钥（secret）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missing secret."
+          }
+        }
+      }
+    },
+    "置顶": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pin"
+          }
+        }
+      }
+    },
+    "自动图标": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic icon"
+          }
+        }
+      }
+    },
+    "自动备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic backup"
+          }
+        }
+      }
+    },
+    "自定义图标": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom icon"
+          }
+        }
+      }
+    },
+    "解密看看": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decrypt"
+          }
+        }
+      }
+    },
+    "解析": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parse"
+          }
+        }
+      }
+    },
+    "解析失败": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't parse"
+          }
+        }
+      }
+    },
+    "解锁 OTP 令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock OTP tokens"
+          }
+        }
+      }
+    },
+    "解锁后查看验证码。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock to view your codes."
+          }
+        }
+      }
+    },
+    "计数器不合法：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid counter: %@"
+          }
+        }
+      }
+    },
+    "计数器：%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Counter: %lld"
+          }
+        }
+      }
+    },
+    "设备已锁定，解锁后请重试": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The device is locked. Unlock it and try again."
+          }
+        }
+      }
+    },
+    "设置": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "该令牌来自更新版本（v%lld），当前版本无法读取": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This token comes from a newer version (v%lld) and can't be read by this version."
+          }
+        }
+      }
+    },
+    "语言": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        }
+      }
+    },
+    "请先在系统设置里为这台设备设置锁屏密码。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set a device passcode in Settings first."
+          }
+        }
+      }
+    },
+    "请到系统设置里允许 OTP 使用相机，或返回改用相册图片 / 粘贴链接。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow OTP to use the camera in Settings, or go back and use a photo or a pasted link."
+          }
+        }
+      }
+    },
+    "账号，如 me@example.com": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account, e.g. me@example.com"
+          }
+        }
+      }
+    },
+    "跟随系统": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow System"
+          }
+        }
+      }
+    },
+    "轻点复制验证码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to copy the code"
+          }
+        }
+      }
+    },
+    "输入备份密码。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter the backup password."
+          }
+        }
+      }
+    },
+    "迁移数据包含不支持的字段类型": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration data contains an unsupported field type."
+          }
+        }
+      }
+    },
+    "迁移数据包含过长的 varint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration data contains an overlong varint."
+          }
+        }
+      }
+    },
+    "迁移数据包含非法字段编号": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration data contains an invalid field number."
+          }
+        }
+      }
+    },
+    "迁移数据被截断": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration data is truncated."
+          }
+        }
+      }
+    },
+    "迁移数据里没有令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration data contains no tokens."
+          }
+        }
+      }
+    },
+    "迁移数据长度越界": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration data length is out of bounds."
+          }
+        }
+      }
+    },
+    "迁移链接缺少有效的 data 参数": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The migration link is missing a valid data parameter."
+          }
+        }
+      }
+    },
+    "返回": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        }
+      }
+    },
+    "还没有备份": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No backups yet"
+          }
+        }
+      }
+    },
+    "这不是 Google Authenticator 迁移链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This isn't a Google Authenticator migration link."
+          }
+        }
+      }
+    },
+    "这不是 OTP 备份文件": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This isn't an OTP backup file."
+          }
+        }
+      }
+    },
+    "这不是一个 otpauth:// 链接": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This isn't an otpauth:// link."
+          }
+        }
+      }
+    },
+    "这个备份已加密，请输入备份密码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This backup is encrypted. Enter its password."
+          }
+        }
+      }
+    },
+    "这台设备暂时无法使用相机扫码": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device can't scan with the camera right now."
+          }
+        }
+      }
+    },
+    "选一张二维码图片": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a QR code image"
+          }
+        }
+      }
+    },
+    "选择图片": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Image"
+          }
+        }
+      }
+    },
+    "选择文件": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose File"
+          }
+        }
+      }
+    },
+    "钥匙串不可用：签名缺少钥匙串权限": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keychain unavailable: the app signature is missing the Keychain entitlement."
+          }
+        }
+      }
+    },
+    "钥匙串操作失败（%lld）：%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keychain operation failed (%lld): %@"
+          }
+        }
+      }
+    },
+    "钥匙串空间不足，请先导出备份并清理旧令牌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keychain storage is full. Export a backup and remove old tokens first."
+          }
+        }
+      }
+    },
+    "链接包含密钥，请谨慎粘贴。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These links contain secrets. Paste them carefully."
+          }
+        }
+      }
+    },
+    "预览": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        }
+      }
+    },
+    "验证码 %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code %@"
+          }
+        }
+      }
+    },
+    "验证码位数必须在 6 到 8 之间（当前 %lld）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code length must be between 6 and 8 digits (currently %lld)."
+          }
+        }
+      }
+    },
+    "验证码，跟着 iCloud 走": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your codes, carried by iCloud"
+          }
+        }
+      }
+    },
+    "高级选项": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Advanced"
+          }
+        }
+      }
+    },
+    "去应用商店评分": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate on the App Store"
+          }
+        }
+      }
+    },
+    "分享应用": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share App"
+          }
+        }
+      }
+    },
+    "意见反馈（邮件）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback (Email)"
+          }
+        }
+      }
+    },
+    "OTP · 两步验证": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTP · Two-Factor Authentication"
+          }
+        }
+      }
+    },
+    "推荐一个不联网的验证码 App：OTP，验证码只存在 iCloud 钥匙串里，端到端加密同步。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try OTP, an authenticator that never goes online — codes live in iCloud Keychain with end-to-end encrypted sync."
+          }
+        }
+      }
+    },
+    "OTP 意见反馈（%@）": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OTP feedback (%@)"
+          }
+        }
+      }
+    },
+    "请在这里描述你遇到的问题或建议：": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Describe the issue or suggestion here:"
+          }
+        }
+      }
+    },
+    "应用版本": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App version"
+          }
+        }
+      }
+    },
+    "系统版本": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System version"
+          }
+        }
+      }
+    },
+    "设备型号": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device model"
+          }
+        }
+      }
+    },
+    "无法完成操作": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t complete that"
+          }
+        }
+      }
+    },
+    "无法打开 App Store，请稍后再试。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t open the App Store. Please try again later."
+          }
+        }
+      }
+    },
+    "无法生成反馈邮件。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t create the feedback email."
+          }
+        }
+      }
+    },
+    "没有可用的邮件 App。请手动发送到 %@。": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No mail app is available. Please email %@ instead."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

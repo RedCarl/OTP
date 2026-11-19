@@ -72,13 +72,13 @@ struct QRScannerView: View {
                 .font(.system(size: 44))
                 .foregroundStyle(.white.opacity(0.7))
             Text(cameraPermission == .denied || cameraPermission == .restricted
-                 ? "相机权限已关闭"
-                 : "这台设备暂时无法使用相机扫码")
+                 ? L10n.t("相机权限已关闭")
+                 : L10n.t("这台设备暂时无法使用相机扫码"))
                 .font(.headline)
                 .foregroundStyle(.white)
             Text(cameraPermission == .denied || cameraPermission == .restricted
-                 ? "请到系统设置里允许 OTP 使用相机，或返回改用相册图片 / 粘贴链接。"
-                 : "可以返回后从相册选择二维码图片，或直接粘贴 otpauth 链接。")
+                 ? L10n.t("请到系统设置里允许 OTP 使用相机，或返回改用相册图片 / 粘贴链接。")
+                 : L10n.t("可以返回后从相册选择二维码图片，或直接粘贴 otpauth 链接。"))
                 .font(.subheadline)
                 .foregroundStyle(.white.opacity(0.7))
                 .multilineTextAlignment(.center)
@@ -182,7 +182,7 @@ private final class ScannerHostController: UIViewController, DataScannerViewCont
             try scanner.startScanning()
             isRunning = true
         } catch {
-            onFailure?("无法启动相机，请检查相机权限后重试。")
+            onFailure?(L10n.t("无法启动相机，请检查相机权限后重试。"))
         }
     }
 

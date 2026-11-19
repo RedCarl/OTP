@@ -81,10 +81,10 @@ struct HoldToClearButton: View {
     }
 
     private var title: String {
-        if isClearing { return "正在清空…" }
-        if isFull { return "松手清空" }
-        if isPressing { return "继续按住" }
-        return "按住清空"
+        if isClearing { return L10n.t("正在清空…") }
+        if isFull { return L10n.t("松手清空") }
+        if isPressing { return L10n.t("继续按住") }
+        return L10n.t("按住清空")
     }
 
     private func beginHold() {

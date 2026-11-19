@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "用于扫描 OTP 二维码，导入令牌。";
+"NSFaceIDUsageDescription" = "用于解锁 App，保护你的令牌。";

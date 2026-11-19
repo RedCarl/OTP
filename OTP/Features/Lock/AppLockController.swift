@@ -25,10 +25,17 @@ final class AppLockController {
         LAContext().canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
     }
 
-    static var methodName: String {
+    /// Cached: creating an `LAContext` is not free and both accessors are read
+    /// from view bodies (lock screen, settings). The biometry type cannot change
+    /// while the app is running.
+    private static let biometryType: LABiometryType = {
         let context = LAContext()
         _ = context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
-        switch context.biometryType {
+        return context.biometryType
+    }()
+
+    static var methodName: String {
+        switch biometryType {
         case .faceID:
             return "Face ID"
         case .touchID:
@@ -36,17 +43,17 @@ final class AppLockController {
         case .opticID:
             return "Optic ID"
         default:
-            return "iPhone 密码"
+            return L10n.t("iPhone 密码")
         }
     }
 
     static var methodIcon: String {
-        switch methodName {
-        case "Face ID":
+        switch biometryType {
+        case .faceID:
             return "faceid"
-        case "Touch ID":
+        case .touchID:
             return "touchid"
-        case "Optic ID":
+        case .opticID:
             return "opticid"
         default:
             return "lock.fill"
@@ -56,7 +63,7 @@ final class AppLockController {
     /// Shared authentication used both for unlocking and for enabling the feature.
     static func authenticate(reason: String) async -> Bool {
         let context = LAContext()
-        context.localizedCancelTitle = "取消"
+        context.localizedCancelTitle = L10n.t("取消")
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
             return false
@@ -88,7 +95,7 @@ final class AppLockController {
         isAuthenticating = true
 
         let context = LAContext()
-        context.localizedCancelTitle = "取消"
+        context.localizedCancelTitle = L10n.t("取消")
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
             // No biometrics / passcode configured: never trap the user.
@@ -100,7 +107,7 @@ final class AppLockController {
         do {
             let success = try await context.evaluatePolicy(
                 .deviceOwnerAuthentication,
-                localizedReason: "解锁 OTP 令牌"
+                localizedReason: L10n.t("解锁 OTP 令牌")
             )
             if success {
                 // The system Face ID sheet is still dismissing here. Keep the

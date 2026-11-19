@@ -8,7 +8,7 @@ final class ScreenshotUITests: XCTestCase {
     func testCaptureScreens() throws {
         let service = "cn.carljoy.otp.screens.v4"
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service, "-demoService", service, "-seedDemo"]
+        app.launchArguments = ["-uiTestService", service, "-demoService", service, "-seedDemo", "-appLanguage", "zh-Hans"]
         app.launch()
 
         let row = app.descendants(matching: .any)["token.row"].firstMatch
@@ -18,6 +18,11 @@ final class ScreenshotUITests: XCTestCase {
         app.tabBars.buttons["设置"].tap()
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
         attach(name: "02-settings")
+
+        // The support rows (rate / share / feedback) sit below the fold.
+        app.swipeUp()
+        Thread.sleep(forTimeInterval: 0.6)
+        attach(name: "02b-settings-support")
 
         app.tabBars.buttons["令牌"].tap()
         let plus = app.buttons["tokens.add"]

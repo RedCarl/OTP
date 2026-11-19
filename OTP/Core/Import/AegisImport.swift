@@ -7,7 +7,7 @@ enum AegisImport {
         do {
             document = try JSONDecoder().decode(Document.self, from: data)
         } catch {
-            throw ImportError.malformed("Aegis 备份格式无法解析")
+            throw ImportError.malformed(L10n.t("Aegis 备份格式无法解析"))
         }
 
         if let slots = document.header?.slots, !slots.isEmpty, document.db?.entries == nil {
@@ -29,20 +29,20 @@ enum AegisImport {
 
         var warnings: [String] = []
         if skipped > 0 {
-            warnings.append("已跳过 \(skipped) 个无法识别的 Aegis 条目")
+            warnings.append(L10n.format("已跳过 %lld 个无法识别的 Aegis 条目", skipped))
         }
         return ImportOutcome(format: .aegis, candidates: candidates, warnings: warnings)
     }
 
     private static func candidate(from entry: Document.DB.Entry) -> ImportCandidate? {
-        guard let info = entry.info else { return ImportCandidate(error: "条目缺少信息") }
+        guard let info = entry.info else { return ImportCandidate(error: L10n.t("条目缺少信息")) }
         guard let secretText = info.secret, let secret = Base32.decode(secretText), !secret.isEmpty else {
-            return ImportCandidate(error: "条目缺少合法密钥")
+            return ImportCandidate(error: L10n.t("条目缺少合法密钥"))
         }
 
         let type = (entry.type ?? "totp").lowercased()
         guard type == "totp" || type == "hotp" else {
-            return ImportCandidate(error: "不支持的条目类型：\(type)")
+            return ImportCandidate(error: L10n.format("不支持的条目类型：%@", type))
         }
         let algorithmName = (info.algo ?? "SHA1").uppercased()
         let algorithm: OTPAlgorithm
@@ -50,7 +50,7 @@ enum AegisImport {
         case "SHA1": algorithm = .sha1
         case "SHA256": algorithm = .sha256
         case "SHA512": algorithm = .sha512
-        default: return ImportCandidate(error: "不支持的算法：\(algorithmName)")
+        default: return ImportCandidate(error: L10n.format("不支持的算法：%@", algorithmName))
         }
 
         let token = OTPToken(

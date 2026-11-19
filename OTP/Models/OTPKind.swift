@@ -6,8 +6,8 @@ enum OTPKind: String, Codable, CaseIterable, Sendable {
 
     var displayName: String {
         switch self {
-        case .totp: "基于时间"
-        case .hotp: "基于计数器"
+        case .totp: L10n.t("基于时间")
+        case .hotp: L10n.t("基于计数器")
         }
     }
 }

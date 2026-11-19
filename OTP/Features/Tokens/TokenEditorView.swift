@@ -5,6 +5,9 @@ struct TokenEditorView: View {
     let model: TokenListModel
     private let existing: OTPToken?
     private let onSaved: (() -> Void)?
+    /// 直接嵌在「添加令牌」卡片里（手动输入），不再自己套一层 sheet。
+    private let embedded: Bool
+    private let onExit: (() -> Void)?
 
     @Environment(\.dismiss) private var dismiss
 
@@ -23,10 +26,18 @@ struct TokenEditorView: View {
     @State private var showIconPicker = false
     @State private var iconPhotoItem: PhotosPickerItem?
 
-    init(model: TokenListModel, token: OTPToken?, onSaved: (() -> Void)? = nil) {
+    init(
+        model: TokenListModel,
+        token: OTPToken?,
+        onSaved: (() -> Void)? = nil,
+        embedded: Bool = false,
+        onExit: (() -> Void)? = nil
+    ) {
         self.model = model
         self.existing = token
         self.onSaved = onSaved
+        self.embedded = embedded
+        self.onExit = onExit
         _iconData = State(initialValue: token?.iconData)
         _issuer = State(initialValue: token?.issuer ?? "")
         _accountName = State(initialValue: token?.accountName ?? "")
@@ -47,11 +58,11 @@ struct TokenEditorView: View {
     }
 
     private var iconHint: String {
-        if iconData != nil { return "已上传的图片" }
+        if iconData != nil { return L10n.t("已上传的图片") }
         if let brand = BrandCatalog.brand(issuer: trimmedIssuer, account: trimmedAccount) {
-            return brand.title
+            return L10n.t(brand.title)
         }
-        return "使用名称首字"
+        return L10n.t("使用名称首字")
     }
 
     private var trimmedIssuer: String { issuer.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -70,8 +81,17 @@ struct TokenEditorView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            Form {
+        if embedded {
+            editor
+        } else {
+            NavigationStack {
+                editor
+            }
+        }
+    }
+
+    private var editor: some View {
+        Form {
                 Section {
                     HStack(spacing: 12) {
                         IconPreviewView(
@@ -81,7 +101,7 @@ struct TokenEditorView: View {
                             size: 44
                         )
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(iconData == nil ? "自动图标" : "自定义图标")
+                            Text(iconData == nil ? L10n.t("自动图标") : L10n.t("自定义图标"))
                             Text(iconHint)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
@@ -168,11 +188,11 @@ struct TokenEditorView: View {
                                 Text(algorithm.displayName).tag(algorithm)
                             }
                         }
-                        Stepper("位数：\(digits)", value: $digits, in: 6...8)
+                        Stepper(L10n.format("位数：%lld", digits), value: $digits, in: 6...8)
                         if kind == .totp {
-                            Stepper("刷新周期：\(period) 秒", value: $period, in: 15...120, step: 15)
+                            Stepper(L10n.format("刷新周期：%lld 秒", period), value: $period, in: 15...120, step: 15)
                         } else {
-                            Stepper("计数器：\(counter)", value: $counter, in: 0...UInt64.max)
+                            Stepper(L10n.format("计数器：%lld", Int(counter)), value: $counter, in: 0...UInt64.max)
                         }
                     }
                 }
@@ -189,18 +209,28 @@ struct TokenEditorView: View {
             .onChange(of: iconPhotoItem) { _, item in
                 guard let item else { return }
                 Task {
-                    if let data = try? await item.loadTransferable(type: Data.self),
-                       let jpeg = IconImageProcessor.squareJPEG(from: data) {
-                        iconData = jpeg
+                    if let data = try? await item.loadTransferable(type: Data.self) {
+                        // Center-crop + re-encode can take tens of milliseconds on
+                        // a full-size photo, so keep it off the main actor.
+                        let jpeg = await Task.detached(priority: .userInitiated) {
+                            IconImageProcessor.squareJPEG(from: data)
+                        }.value
+                        if let jpeg {
+                            iconData = jpeg
+                        }
                     }
                     iconPhotoItem = nil
                 }
             }
-            .navigationTitle("")
+            .navigationTitle(embedded ? L10n.t("手动输入") : "")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("取消") { dismiss() }
+                    if embedded {
+                        Button(L10n.t("返回")) { onExit?() }
+                    } else {
+                        Button("取消") { dismiss() }
+                    }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("保存") {
@@ -222,7 +252,6 @@ struct TokenEditorView: View {
             } message: {
                 Text("所有设备都会删除，无法撤销。")
             }
-        }
     }
 
     @ViewBuilder

@@ -8,7 +8,7 @@ final class AddTokenUITests: XCTestCase {
     func testAddTokenCopiesCodeAndPersists() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service]
+        app.launchArguments = ["-uiTestService", service, "-appLanguage", "zh-Hans"]
         app.launch()
 
         XCTAssertTrue(app.staticTexts["没有令牌"].waitForExistence(timeout: 20))
@@ -56,7 +56,7 @@ final class AddTokenUITests: XCTestCase {
     func testSearchFiltersTokens() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launchArguments = ["-uiTestService", service, "-seedDemo", "-appLanguage", "zh-Hans"]
         app.launch()
 
         let rows = app.descendants(matching: .any).matching(identifier: "token.row")
@@ -74,10 +74,21 @@ final class AddTokenUITests: XCTestCase {
         XCTAssertTrue(rows.element(boundBy: 1).waitForExistence(timeout: 5))
     }
 
+    /// Swipes the settings form up until the element is on screen.
+    @discardableResult
+    private func scrollTo(_ element: XCUIElement, in app: XCUIApplication, maxSwipes: Int = 5) -> Bool {
+        var swipes = 0
+        while !element.exists && swipes < maxSwipes {
+            app.swipeUp()
+            swipes += 1
+        }
+        return element.waitForExistence(timeout: 5)
+    }
+
     func testHoldToClearRemovesAllTokens() throws {
         let service = "com.redcarl.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launchArguments = ["-uiTestService", service, "-seedDemo", "-appLanguage", "zh-Hans"]
         app.launch()
 
         XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
@@ -85,8 +96,17 @@ final class AddTokenUITests: XCTestCase {
         app.tabBars.buttons["设置"].tap()
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
 
+        // The support rows (rate / share / feedback) sit above the clear row, so
+        // the destructive row starts below the fold on a phone-sized screen.
+        let rateRow = app.buttons["settings.rateApp"]
+        let shareRow = app.buttons["settings.shareApp"]
+        let feedbackRow = app.buttons["settings.feedback"]
+        XCTAssertTrue(scrollTo(rateRow, in: app), "rating row should exist above the clear row")
+        XCTAssertTrue(scrollTo(shareRow, in: app))
+        XCTAssertTrue(scrollTo(feedbackRow, in: app))
+
         let clearRow = app.buttons["settings.clearRow"]
-        XCTAssertTrue(clearRow.waitForExistence(timeout: 10))
+        XCTAssertTrue(scrollTo(clearRow, in: app))
         clearRow.tap()
 
         XCTAssertTrue(app.staticTexts["清空所有令牌？"].waitForExistence(timeout: 5))
@@ -111,7 +131,7 @@ final class AddTokenUITests: XCTestCase {
     func testICloudBackupCreatesAndListsEntry() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launchArguments = ["-uiTestService", service, "-seedDemo", "-appLanguage", "zh-Hans"]
         app.launch()
 
         XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
@@ -151,7 +171,7 @@ final class AddTokenUITests: XCTestCase {
     func testBackupExportValidation() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service, "-seedDemo"]
+        app.launchArguments = ["-uiTestService", service, "-seedDemo", "-appLanguage", "zh-Hans"]
         app.launch()
 
         XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
@@ -178,7 +198,7 @@ final class AddTokenUITests: XCTestCase {
     func testPasteLinkImport() throws {
         let service = "cn.carljoy.otp.uitest." + UUID().uuidString
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTestService", service]
+        app.launchArguments = ["-uiTestService", service, "-appLanguage", "zh-Hans"]
         app.launch()
 
         XCTAssertTrue(app.staticTexts["没有令牌"].waitForExistence(timeout: 20))
@@ -202,5 +222,85 @@ final class AddTokenUITests: XCTestCase {
         let row = app.descendants(matching: .any)["token.row"].firstMatch
         XCTAssertTrue(row.waitForExistence(timeout: 10))
         XCTAssertTrue(row.label.contains("GitHub"))
+    }
+
+    func testLanguageSwitchUpdatesInterface() throws {
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service, "-seedDemo", "-appLanguage", "zh-Hans"]
+        app.launch()
+
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
+        app.tabBars.buttons["设置"].tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
+
+        let languageRow = app.buttons["settings.language"]
+        XCTAssertTrue(languageRow.waitForExistence(timeout: 10))
+        languageRow.tap()
+
+        // 选完语言留在选择页，界面当场换成英文。
+        let english = app.descendants(matching: .any)["settings.language.row.en"].firstMatch
+        XCTAssertTrue(english.waitForExistence(timeout: 10))
+        english.tap()
+        XCTAssertTrue(app.navigationBars["Language"].waitForExistence(timeout: 10))
+
+        // 返回后设置页与标签栏也都是英文。
+        app.navigationBars["Language"].buttons.firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.tabBars.buttons["Tokens"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["settings.language"].waitForExistence(timeout: 10))
+
+        // 再切回简体中文，同样停在语言页并即时刷新。
+        app.buttons["settings.language"].tap()
+        let chinese = app.descendants(matching: .any)["settings.language.row.zh-Hans"].firstMatch
+        XCTAssertTrue(chinese.waitForExistence(timeout: 10))
+        chinese.tap()
+        XCTAssertTrue(app.navigationBars["语言"].waitForExistence(timeout: 10))
+        app.navigationBars["语言"].buttons.firstMatch.tap()
+
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.tabBars.buttons["令牌"].waitForExistence(timeout: 10))
+    }
+
+    func testChineseOverrideOnEnglishSystem() throws {
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-uiTestService", service,
+            "-seedDemo",
+            "-appLanguage", "zh-Hans",
+            "-AppleLanguages", "(en)",
+            "-AppleLocale", "en_US",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
+        XCTAssertTrue(app.tabBars.buttons["令牌"].exists)
+        XCTAssertTrue(app.tabBars.buttons["设置"].exists)
+        // 系统是英文、App 强制中文时，标签栏文案也应该是中文。
+        XCTAssertFalse(app.tabBars.buttons["Tokens"].exists)
+        XCTAssertFalse(app.tabBars.buttons["Settings"].exists)
+
+        app.tabBars.buttons["设置"].tap()
+        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["settings.language"].exists)
+    }
+
+    func testEnglishAlertLocalization() throws {
+        let service = "cn.carljoy.otp.uitest." + UUID().uuidString
+        let app = XCUIApplication()
+        app.launchArguments = ["-uiTestService", service, "-seedDemo", "-appLanguage", "en"]
+        app.launch()
+
+        XCTAssertTrue(app.descendants(matching: .any)["token.row"].firstMatch.waitForExistence(timeout: 25))
+        app.tabBars.buttons["Settings"].tap()
+        XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 10))
+        app.buttons["Copy token links"].tap()
+
+        let alert = app.alerts["Copy plaintext links?"]
+        XCTAssertTrue(alert.waitForExistence(timeout: 10))
+        XCTAssertTrue(alert.buttons["Copy"].exists)
+        XCTAssertTrue(alert.buttons["Cancel"].exists)
+        alert.buttons["Cancel"].tap()
     }
 }

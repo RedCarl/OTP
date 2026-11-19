@@ -1,39 +1,41 @@
 import SwiftUI
 
 /// A single-line label that scrolls horizontally only when it overflows.
+///
+/// The scroll is driven by `phaseAnimator`: each phase change starts a Core
+/// Animation on `offset`, so SwiftUI evaluates the body a handful of times per
+/// cycle instead of 30 times a second (which is what a `TimelineView` per list
+/// row cost before).
 struct MarqueeText: View {
     let text: String
     var font: Font = .headline
     var height: CGFloat = 21
     var speed: CGFloat = 26
+    var pause: TimeInterval = 1.6
 
     @State private var textWidth: CGFloat = 0
     @State private var containerWidth: CGFloat = 0
-    @State private var startDate = Date()
 
     private var overflow: CGFloat {
         max(0, textWidth - containerWidth)
+    }
+
+    private var scrollDuration: TimeInterval {
+        max(3.5, Double(overflow) / Double(speed))
     }
 
     var body: some View {
         GeometryReader { geometry in
             Group {
                 if overflow < 1 {
-                    Text(text)
-                        .font(font)
-                        .lineLimit(1)
-                        .fixedSize(horizontal: true, vertical: false)
-                        .background(GeometryReader { proxy in
-                            Color.clear.preference(key: MarqueeWidthKey.self, value: proxy.size.width)
-                        })
+                    measuredLabel
                 } else {
-                    TimelineView(.periodic(from: .now, by: 1.0 / 30.0)) { context in
-                        Text(text)
-                            .font(font)
-                            .lineLimit(1)
-                            .fixedSize(horizontal: true, vertical: false)
-                            .offset(x: offset(at: max(0, context.date.timeIntervalSince(startDate))))
-                    }
+                    measuredLabel
+                        .phaseAnimator(MarqueePhase.allCases) { content, phase in
+                            content.offset(x: -overflow * phase.travel)
+                        } animation: { phase in
+                            .linear(duration: phase.isScrolling ? scrollDuration : pause)
+                        }
                 }
             }
             .onPreferenceChange(MarqueeWidthKey.self) { width in
@@ -43,7 +45,6 @@ struct MarqueeText: View {
             }
             .onAppear {
                 containerWidth = geometry.size.width
-                startDate = Date()
             }
             .onChange(of: geometry.size.width) { _, width in
                 containerWidth = width
@@ -53,21 +54,38 @@ struct MarqueeText: View {
         .clipped()
     }
 
-    private func offset(at elapsed: TimeInterval) -> CGFloat {
-        let distance = overflow
-        guard distance >= 1 else { return 0 }
-        let duration = max(3.5, Double(distance) / Double(speed))
-        let pause = 1.6
-        let cycle = duration + pause * 2
-        let phase = elapsed.truncatingRemainder(dividingBy: cycle)
+    private var label: some View {
+        Text(text)
+            .font(font)
+            .lineLimit(1)
+            .fixedSize(horizontal: true, vertical: false)
+    }
 
-        if phase < pause {
-            return 0
+    private var measuredLabel: some View {
+        label.background(
+            GeometryReader { proxy in
+                Color.clear.preference(key: MarqueeWidthKey.self, value: proxy.size.width)
+            }
+        )
+    }
+}
+
+/// The marquee cycle: pause, scroll left, hold, scroll back.
+private enum MarqueePhase: CaseIterable {
+    case rest
+    case forward
+    case hold
+    case back
+
+    var travel: CGFloat {
+        switch self {
+        case .rest, .back: 0
+        case .forward, .hold: 1
         }
-        if phase < pause + duration {
-            return -distance * CGFloat((phase - pause) / duration)
-        }
-        return -distance
+    }
+
+    var isScrolling: Bool {
+        self == .forward || self == .back
     }
 }
 

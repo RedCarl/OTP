@@ -9,20 +9,20 @@ enum RestoreMode: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .merge: return "增量合并"
-        case .update: return "更新同项"
-        case .replace: return "完全替换"
+        case .merge: return L10n.t("增量合并")
+        case .update: return L10n.t("更新同项")
+        case .replace: return L10n.t("完全替换")
         }
     }
 
     var subtitle: String {
         switch self {
         case .merge:
-            return "只添加当前没有的令牌，已有令牌保持不动。"
+            return L10n.t("只添加当前没有的令牌，已有令牌保持不动。")
         case .update:
-            return "同一条目用备份内容更新，并补充缺失的令牌。"
+            return L10n.t("同一条目用备份内容更新，并补充缺失的令牌。")
         case .replace:
-            return "删除当前所有令牌，恢复为备份中的内容。"
+            return L10n.t("删除当前所有令牌，恢复为备份中的内容。")
         }
     }
 

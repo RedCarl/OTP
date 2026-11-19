@@ -101,9 +101,9 @@ struct BackupCenterView: View {
                 .frame(width: 26)
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(item.createdAt.formatted(date: .abbreviated, time: .shortened))
+                Text(L10n.date(item.createdAt, dateStyle: .abbreviated, timeStyle: .shortened))
                     .foregroundStyle(.primary)
-                Text("\(sizeText(item.byteCount)) · \(item.isICloud ? "iCloud" : "本机")")
+                Text("\(sizeText(item.byteCount)) · " + (item.isICloud ? "iCloud" : L10n.t("本机")))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -146,7 +146,7 @@ struct BackupCenterView: View {
                 forKey: BackupAutomation.fingerprintKey
             )
             await reload()
-            model.showToast(usingICloud ? "已备份到 iCloud" : "已备份到本机")
+            model.showToast(usingICloud ? L10n.t("已备份到 iCloud") : L10n.t("已备份到本机"))
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -156,7 +156,7 @@ struct BackupCenterView: View {
         do {
             try await store.delete(item)
             await reload()
-            model.showToast("已删除备份")
+            model.showToast(L10n.t("已删除备份"))
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -184,7 +184,7 @@ struct RestoreBackupView: View {
         NavigationStack {
             Form {
                 Section {
-                    LabeledContent("备份时间", value: item.createdAt.formatted(date: .numeric, time: .shortened))
+                    LabeledContent("备份时间", value: L10n.date(item.createdAt, dateStyle: .numeric, timeStyle: .shortened))
                     LabeledContent("令牌数量", value: isLoading ? "…" : "\(tokens.count)")
                     LabeledContent("大小", value: ByteCountFormatter.string(fromByteCount: Int64(item.byteCount), countStyle: .file))
                 }
@@ -302,11 +302,16 @@ struct RestoreBackupView: View {
 
     private func summaryText(_ summary: RestoreSummary) -> String {
         if mode == .replace {
-            return "已恢复 \(summary.added) 个令牌"
+            return L10n.format("已恢复 %lld 个令牌", summary.added)
         }
         if summary.skipped > 0 {
-            return "已恢复：新增 \(summary.added)，更新 \(summary.updated)，跳过 \(summary.skipped)"
+            return L10n.format(
+                "已恢复：新增 %lld，更新 %lld，跳过 %lld",
+                summary.added,
+                summary.updated,
+                summary.skipped
+            )
         }
-        return "已恢复：新增 \(summary.added)，更新 \(summary.updated)"
+        return L10n.format("已恢复：新增 %lld，更新 %lld", summary.added, summary.updated)
     }
 }

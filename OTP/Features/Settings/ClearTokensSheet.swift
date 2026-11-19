@@ -39,7 +39,7 @@ struct ClearTokensSheet: View {
                             await model.deleteAll()
                             isClearing = false
                             onDismiss()
-                            model.showToast("已清空")
+                            model.showToast(L10n.t("已清空"))
                         }
                     }
 

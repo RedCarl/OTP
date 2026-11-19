@@ -7,6 +7,11 @@ struct BrandIcon: Identifiable, Hashable, Sendable {
     let darkGlyph: Bool
     let aliases: [String]
     let domains: [String]
+    /// `aliases` pre-split into lowercase words, plus their rejoined form.
+    /// `brand(issuer:account:)` runs for every icon body, so doing this work at
+    /// table construction removes ~40 lowercased/split/filter passes per call.
+    let aliasWords: [[String]]
+    let aliasJoined: [String]
 
     init(
         id: String,
@@ -22,6 +27,9 @@ struct BrandIcon: Identifiable, Hashable, Sendable {
         self.darkGlyph = darkGlyph
         self.aliases = aliases
         self.domains = domains
+        let splitAliases = aliases.map(BrandCatalog.words)
+        self.aliasWords = splitAliases
+        self.aliasJoined = splitAliases.map { $0.joined() }
     }
 }
 
@@ -78,13 +86,13 @@ enum BrandCatalog {
         let issuerJoined = issuerWords.joined()
 
         for brand in all {
-            for alias in brand.aliases {
-                let aliasWords = words(alias)
+            for index in brand.aliasWords.indices {
+                let aliasWords = brand.aliasWords[index]
                 guard !aliasWords.isEmpty else { continue }
                 if containsWindow(issuerWords, aliasWords) {
                     return brand
                 }
-                let aliasJoined = aliasWords.joined()
+                let aliasJoined = brand.aliasJoined[index]
                 if aliasJoined.count >= 3 && issuerJoined.contains(aliasJoined) {
                     return brand
                 }
@@ -99,8 +107,8 @@ enum BrandCatalog {
 
         let accountWords = words(account)
         for brand in all {
-            for alias in brand.aliases where alias.count >= 3 {
-                let aliasWords = words(alias)
+            for index in brand.aliases.indices where brand.aliases[index].count >= 3 {
+                let aliasWords = brand.aliasWords[index]
                 guard !aliasWords.isEmpty else { continue }
                 if containsWindow(accountWords, aliasWords) {
                     return brand
@@ -117,10 +125,22 @@ enum BrandCatalog {
             .filter { !$0.isEmpty }
     }
 
+    /// Compares element-wise: the old version allocated a temporary `Array`
+    /// slice for every window it tested.
     private static func containsWindow(_ haystack: [String], _ needle: [String]) -> Bool {
         guard !needle.isEmpty, needle.count <= haystack.count else { return false }
-        for start in 0...(haystack.count - needle.count) {
-            if Array(haystack[start..<(start + needle.count)]) == needle {
+        let lastStart = haystack.count - needle.count
+        for start in 0...lastStart {
+            var index = 0
+            var matched = true
+            while index < needle.count {
+                if haystack[start + index] != needle[index] {
+                    matched = false
+                    break
+                }
+                index += 1
+            }
+            if matched {
                 return true
             }
         }

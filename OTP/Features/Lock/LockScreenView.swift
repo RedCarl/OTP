@@ -32,7 +32,7 @@ struct LockScreenView: View {
                         onUnlock()
                     } label: {
                         Label(
-                            "使用 \(AppLockController.methodName) 解锁",
+                            L10n.format("使用 %@ 解锁", AppLockController.methodName),
                             systemImage: AppLockController.methodIcon
                         )
                         .padding(.horizontal, 8)

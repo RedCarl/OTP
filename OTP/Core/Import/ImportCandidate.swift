@@ -10,12 +10,12 @@ enum ImportFormat: String, Sendable {
 
     var displayName: String {
         switch self {
-        case .otpAuthURI: "otpauth 链接"
-        case .googleMigration: "Google Authenticator 迁移码"
-        case .backup: "OTP 备份文件"
-        case .aegis: "Aegis 备份"
-        case .twoFAS: "2FAS 备份"
-        case .text: "文本"
+        case .otpAuthURI: L10n.t("otpauth 链接")
+        case .googleMigration: L10n.t("Google Authenticator 迁移码")
+        case .backup: L10n.t("OTP 备份文件")
+        case .aegis: L10n.t("Aegis 备份")
+        case .twoFAS: L10n.t("2FAS 备份")
+        case .text: L10n.t("文本")
         }
     }
 }
@@ -41,7 +41,7 @@ struct ImportCandidate: Identifiable, Sendable {
 
     var title: String {
         if let token { return token.displayIssuer }
-        return "无法识别的条目"
+        return L10n.t("无法识别的条目")
     }
 
     var subtitle: String {
@@ -74,13 +74,13 @@ enum ImportError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .noRecognizableTokens:
-            "没有找到可导入的令牌"
+            L10n.t("没有找到可导入的令牌")
         case .unsupportedFile:
-            "无法识别这个文件，请选择 OTP 备份、Aegis/2FAS 导出或包含 otpauth 链接的文本"
+            L10n.t("无法识别这个文件，请选择 OTP 备份、Aegis/2FAS 导出或包含 otpauth 链接的文本")
         case .encryptedAegis:
-            "Aegis 备份已加密，请先在 Aegis 中导出未加密备份"
+            L10n.t("Aegis 备份已加密，请先在 Aegis 中导出未加密备份")
         case .encryptedTwoFAS:
-            "2FAS 备份已加密，请先在 2FAS 中导出未加密备份"
+            L10n.t("2FAS 备份已加密，请先在 2FAS 中导出未加密备份")
         case .malformed(let reason):
             reason
         }

@@ -17,7 +17,7 @@ struct ProtobufReader {
         var shift: UInt64 = 0
         while true {
             guard index < bytes.count else {
-                throw ImportError.malformed("迁移数据被截断")
+                throw ImportError.malformed(L10n.t("迁移数据被截断"))
             }
             let byte = bytes[index]
             index += 1
@@ -25,7 +25,7 @@ struct ProtobufReader {
             if byte & 0x80 == 0 { return result }
             shift += 7
             guard shift <= 63 else {
-                throw ImportError.malformed("迁移数据包含过长的 varint")
+                throw ImportError.malformed(L10n.t("迁移数据包含过长的 varint"))
             }
         }
     }
@@ -35,7 +35,7 @@ struct ProtobufReader {
         let field = Int(tag >> 3)
         let wireType = Int(tag & 0x07)
         guard field > 0 else {
-            throw ImportError.malformed("迁移数据包含非法字段编号")
+            throw ImportError.malformed(L10n.t("迁移数据包含非法字段编号"))
         }
         return (field, wireType)
     }
@@ -43,7 +43,7 @@ struct ProtobufReader {
     mutating func readBytes() throws -> Data {
         let length = try readVarint()
         guard length <= UInt64(bytes.count - index) else {
-            throw ImportError.malformed("迁移数据长度越界")
+            throw ImportError.malformed(L10n.t("迁移数据长度越界"))
         }
         let start = index
         index += Int(length)
@@ -66,13 +66,13 @@ struct ProtobufReader {
         case 5:
             try advance(4)
         default:
-            throw ImportError.malformed("迁移数据包含不支持的字段类型")
+            throw ImportError.malformed(L10n.t("迁移数据包含不支持的字段类型"))
         }
     }
 
     private mutating func advance(_ count: Int) throws {
         guard count <= bytes.count - index else {
-            throw ImportError.malformed("迁移数据被截断")
+            throw ImportError.malformed(L10n.t("迁移数据被截断"))
         }
         index += count
     }

@@ -21,7 +21,7 @@ enum URIImportParser {
                     candidates.append(ImportCandidate(error: error.localizedDescription))
                 }
             } else {
-                candidates.append(ImportCandidate(error: "无法识别的链接，应以 otpauth:// 开头"))
+                candidates.append(ImportCandidate(error: L10n.t("无法识别的链接，应以 otpauth:// 开头")))
             }
         }
         return candidates

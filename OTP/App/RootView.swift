@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 enum AppTab: Hashable {
     case tokens
@@ -40,20 +41,8 @@ struct RootView: View {
                     .tag(AppTab.settings)
             }
 
-            if let toast = model.toastMessage {
-                VStack {
-                    Text(toast)
-                        .font(.footnote.weight(.medium))
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 9)
-                        .background(.regularMaterial, in: Capsule())
-                        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
-                        .padding(.top, 6)
-                    Spacer()
-                }
-                .transition(.move(edge: .top).combined(with: .opacity))
+            ToastOverlay(model: model)
                 .zIndex(3)
-            }
 
             if showClearConfirm {
                 ClearTokensSheet(model: model) {
@@ -77,8 +66,8 @@ struct RootView: View {
                     .zIndex(6)
             }
         }
+        .environment(\.locale, L10n.locale)
         .animation(.easeInOut(duration: 0.25), value: scenePhase != .active)
-        .animation(.snappy(duration: 0.25), value: model.toastMessage)
         .animation(.easeInOut(duration: 0.2), value: showClearConfirm)
         .task {
             if firstLaunchAt == 0 {
@@ -87,7 +76,11 @@ struct RootView: View {
             await model.start()
             if !AppConfiguration.isAutomatedRun {
                 let tokens = model.tokens
-                Task { await BackupAutomation.backupIfNeeded(tokens: tokens) }
+                // Fingerprinting + export are pure CPU/IO; keep them off the
+                // main actor so launch is not held up.
+                Task.detached(priority: .utility) {
+                    await BackupAutomation.backupIfNeeded(tokens: tokens)
+                }
             }
             #if DEBUG
             if AppConfiguration.shouldSeedDemoTokens {
@@ -114,19 +107,27 @@ struct RootView: View {
                     showImportAfterOnboarding = true
                 }
             }
+            .environment(\.locale, L10n.locale)
             .interactiveDismissDisabled()
         }
         .sheet(isPresented: $showImportAfterOnboarding) {
             ImportFlowView(model: model, mode: .pick, onImported: { selectedTab = .tokens })
+                .environment(\.locale, L10n.locale)
         }
         .sheet(isPresented: $showAddSheet) {
             AddTokenSheetView(model: model) {
                 showAddSheet = false
                 selectedTab = .tokens
             }
+            .environment(\.locale, L10n.locale)
         }
         .onChange(of: lock.isLocked) { _, locked in
-            guard locked else { return }
+            guard locked else {
+                // Nothing on screen needs a clock while the cover is up.
+                model.startTicker()
+                return
+            }
+            model.stopTicker()
             Task {
                 // Let the lock screen finish appearing before the system prompt.
                 try? await Task.sleep(for: .milliseconds(350))
@@ -148,7 +149,7 @@ struct RootView: View {
             case .background:
                 model.stopTicker()
                 let tokens = model.tokens
-                Task {
+                Task.detached(priority: .utility) {
                     await BackupAutomation.backupIfNeeded(tokens: tokens)
                 }
             default:
@@ -159,9 +160,9 @@ struct RootView: View {
             Button("开启") {
                 lockPromptShown = true
                 Task {
-                    if await AppLockController.authenticate(reason: "开启 Face ID 解锁") {
+                    if await AppLockController.authenticate(reason: L10n.t("开启解锁保护")) {
                         UserDefaults.standard.set(true, forKey: "appLockEnabled")
-                        model.showToast("已开启 Face ID")
+                        model.showToast(L10n.format("已开启 %@", AppLockController.methodName))
                     }
                 }
             }
@@ -169,7 +170,7 @@ struct RootView: View {
                 lockPromptShown = true
             }
         } message: {
-            Text("使用 \(AppLockController.methodName) 解锁 OTP，别人拿到手机也看不到验证码。")
+            Text(L10n.format("使用 %@ 解锁 OTP，别人拿到手机也看不到验证码。", AppLockController.methodName))
         }
     }
 
@@ -186,6 +187,31 @@ struct RootView: View {
             return
         }
         showLockSuggestion = true
+    }
+}
+
+/// Owns the toast so a toast appearing only re-evaluates this overlay instead of
+/// the whole root tree (the animation modifier also stays scoped to it).
+private struct ToastOverlay: View {
+    let model: TokenListModel
+
+    var body: some View {
+        VStack {
+            if let toast = model.toastMessage {
+                Text(toast)
+                    .font(.footnote.weight(.medium))
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 9)
+                    .background(.regularMaterial, in: Capsule())
+                    .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+                    .padding(.top, 6)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
+            Spacer()
+        }
+        .animation(.snappy(duration: 0.25), value: model.toastMessage)
+        // Purely informational: never swallow taps meant for the list.
+        .allowsHitTesting(false)
     }
 }
 

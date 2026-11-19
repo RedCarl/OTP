@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN"
+      data-title-zh="支持 · OTP"
+      data-title-en="Support · OTP"
+      data-desc-zh="OTP 使用支持与常见问题：iCloud 钥匙串同步、备份恢复、Face ID、导入与语言切换。"
+      data-desc-en="OTP support and FAQ: iCloud Keychain sync, backup and restore, Face ID, importing, and language switching.">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>支持 · OTP</title>
+<meta name="description" content="OTP 使用支持与常见问题：iCloud 钥匙串同步、备份恢复、Face ID、导入与语言切换。" />
+<link rel="icon" href="assets/icon.png" type="image/png" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="canonical" href="https://redcarl.github.io/OTP/support.html" />
+</head>
+
+<body class="doc">
+<main>
+  <div class="topbar">
+    <a class="back" href="index.html"><span data-zh>← 返回 OTP</span><span data-en hidden>← Back to OTP</span></a>
+    <div class="lang" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <!-- ========== 中文 ========== -->
+  <section data-zh>
+    <h1>支持</h1>
+    <p class="updated">遇到问题先看下面几条，没解决就写信给我。</p>
+
+    <div class="card">
+      <p><strong>联系邮箱：</strong><a href="mailto:carl030101@icloud.com">carl030101@icloud.com</a></p>
+      <p style="margin-bottom:0">写信时附上 iOS 版本、OTP 版本（App Store 页面能看到）和复现步骤，会快很多。</p>
+    </div>
+
+    <h2>令牌存在哪？会同步吗？</h2>
+    <p>每个令牌都是 iCloud 钥匙串里的一条同步条目，由 Apple 端到端加密。要跨设备同步，需要所有设备满足：</p>
+    <ul>
+      <li>登录同一个 Apple ID，并开启双重认证</li>
+      <li>在「设置 → 你的名字 → iCloud → 密码与钥匙串」里开启 iCloud 钥匙串</li>
+      <li>设备设置了锁屏密码</li>
+    </ul>
+    <p>同步时机由系统决定，App 无法读取同步状态。回到前台或下拉刷新会重新读本机钥匙串。</p>
+
+    <h2>换了新 iPhone，令牌没有立刻出现？</h2>
+    <p>先确认上面的 iCloud 钥匙串开关都已打开，然后在列表下拉刷新；如果仍然没有，等几分钟再试。系统会自行安排同步。也可以用「设置 → iCloud 备份」里的备份恢复。</p>
+
+    <h2>怎么备份和恢复？</h2>
+    <p>打开「设置 → iCloud 备份」，可以立即备份、开启自动备份，并在下方列表里点某条备份恢复。恢复有三种方式：</p>
+    <ul>
+      <li><strong>增量合并：</strong>只添加当前没有的令牌，已有令牌保持不动。</li>
+      <li><strong>更新同项：</strong>同一条目用备份内容更新，并补充缺失的令牌。</li>
+      <li><strong>完全替换：</strong>先自动保存一份当前状态作安全副本，再删除当前令牌并用备份替换。</li>
+    </ul>
+    <p>备份保存在你本人的 iCloud 云盘 <code>OTP/Backups</code>，最多保留 10 份。也可以「导出备份」生成加密的 <code>.otpbackup</code> 文件，通过 AirDrop、微信或文件 App 保存。</p>
+
+    <h2>忘记备份密码了怎么办？</h2>
+    <p>导出的 <code>.otpbackup</code> 密码不会保存在设备上，忘记后无法恢复。iCloud 云盘里的自动备份使用 iCloud 钥匙串中的随机密钥，不需要密码。</p>
+
+    <h2>Face ID 没有弹出来 / App 没锁？</h2>
+    <p>App 锁是可选的。首次添加 3 个令牌或使用 5 天后，App 会主动询问一次；也可以在「设置 → Face ID（或 Touch ID）」里手动开启。开启时会先验证一次身份。设备没有设置锁屏密码或生物识别不可用时，App 会跳过锁定，避免把人挡在外面。</p>
+
+    <h2>扫码没有反应？</h2>
+    <p>需要「相机」权限。首次扫码时系统会询问；如果之前拒绝过，请到「设置 → OTP → 相机」打开。也可以返回后从相册选择二维码图片，或直接粘贴 <code>otpauth://</code> 链接。</p>
+
+    <h2>支持从哪些认证器导入？</h2>
+    <p>支持任意 <code>otpauth://</code> 链接、Google Authenticator 迁移码、未加密的 Aegis 与 2FAS 导出、本 App 的备份文件，以及包含 otpauth 链接的文本。暂不支持 Steam Guard、加密的 Aegis / 2FAS 备份和 MD5 算法。</p>
+
+    <h2>怎么切换语言？</h2>
+    <p>打开「设置 → 语言」，可选「跟随系统」「简体中文」「English」。选择后界面立即切换。跟随系统时，中文系统显示简体中文，其他语言显示 English。系统权限弹窗和分享面板由 iOS 提供，语言跟随系统设置。</p>
+
+    <h2>数据会被上传吗？</h2>
+    <p>不会。App 没有自建服务端，不收集数据，也不包含第三方 SDK。iCloud 同步与备份都在你自己的 Apple 账户下完成。详见 <a href="privacy.html">隐私政策</a>。</p>
+  </section>
+
+  <!-- ========== English ========== -->
+  <section data-en hidden>
+    <h1>Support</h1>
+    <p class="updated">Check the items below first. If that doesn't solve it, send me an email.</p>
+
+    <div class="card">
+      <p><strong>Email:</strong> <a href="mailto:carl030101@icloud.com">carl030101@icloud.com</a></p>
+      <p style="margin-bottom:0">Include your iOS version, the OTP version (shown on the App Store page), and the steps to reproduce — it makes things much faster.</p>
+    </div>
+
+    <h2>Where are tokens stored? Do they sync?</h2>
+    <p>Each token is a synchronizable item in iCloud Keychain, end-to-end encrypted by Apple. For cross-device sync, every device needs:</p>
+    <ul>
+      <li>The same Apple ID with two-factor authentication turned on</li>
+      <li>iCloud Keychain enabled in Settings → your name → iCloud → Passwords and Keychain</li>
+      <li>A device passcode set</li>
+    </ul>
+    <p>Sync timing is controlled by the system, and the app cannot read sync status. Returning to the foreground or pulling to refresh re-reads the local Keychain.</p>
+
+    <h2>I switched to a new iPhone and my tokens aren't there yet</h2>
+    <p>Confirm the iCloud Keychain switches above are on, then pull down to refresh the list. If they still don't appear, wait a few minutes — the system schedules sync itself. You can also restore from a backup under Settings → iCloud Backup.</p>
+
+    <h2>How do backups and restores work?</h2>
+    <p>Open Settings → iCloud Backup to back up now, turn on automatic backups, and restore from any entry in the list. There are three restore modes:</p>
+    <ul>
+      <li><strong>Merge:</strong> add only tokens you don't have yet; existing tokens stay as they are.</li>
+      <li><strong>Update Matching:</strong> update matching tokens from the backup and add any missing ones.</li>
+      <li><strong>Replace All:</strong> save a safety copy of the current state first, then delete the current tokens and replace them with the backup.</li>
+    </ul>
+    <p>Backups live in <code>OTP/Backups</code> in your own iCloud Drive and are capped at 10. You can also export an encrypted <code>.otpbackup</code> file and save it via AirDrop, Messages, or the Files app.</p>
+
+    <h2>I forgot my backup password</h2>
+    <p>The password for an exported <code>.otpbackup</code> is never stored on the device, so it cannot be recovered. Automatic backups in iCloud Drive use a random key in iCloud Keychain and don't need a password.</p>
+
+    <h2>Face ID doesn't appear / the app isn't locked</h2>
+    <p>App lock is optional. The app offers it once you have 3 tokens or after 5 days of use; you can also turn it on under Settings → Face ID (or Touch ID). Enabling it verifies you first. If the device has no passcode or biometrics are unavailable, the app skips the lock so you are never shut out.</p>
+
+    <h2>Scanning doesn't work</h2>
+    <p>The camera permission is required. iOS asks the first time you scan; if you denied it earlier, enable it in Settings → OTP → Camera. You can also go back and choose a QR image from Photos, or paste an <code>otpauth://</code> link.</p>
+
+    <h2>Which authenticators can I import from?</h2>
+    <p>Any <code>otpauth://</code> link, Google Authenticator migration codes, unencrypted Aegis and 2FAS exports, this app's backups, and text files containing otpauth links. Steam Guard, encrypted Aegis / 2FAS backups, and MD5 are not supported yet.</p>
+
+    <h2>How do I change the language?</h2>
+    <p>Open Settings → Language and choose Follow System, 简体中文, or English. The interface switches immediately. When following the system, Chinese systems show Simplified Chinese and everything else shows English. System permission prompts and share sheets are provided by iOS and follow the system language.</p>
+
+    <h2>Is anything uploaded?</h2>
+    <p>No. The app has no developer server, collects no data, and includes no third-party SDKs. iCloud sync and backups happen entirely under your own Apple account. See the <a href="privacy.html">privacy policy</a>.</p>
+  </section>
+
+  <footer>
+    <!-- 备案通过后在这里补备案号：<a href="https://beian.miit.gov.cn/">鄂ICP备…号-…</a> -->
+    <span data-zh>© 2026 孙磊 · otp令牌</span>
+    <span data-en hidden>© 2026 Sun Lei · OTP</span>
+  </footer>
+</main>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

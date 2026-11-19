@@ -53,7 +53,7 @@ struct OTPToken: Identifiable, Hashable, Sendable {
         let trimmedIssuer = issuer.trimmingCharacters(in: .whitespacesAndNewlines)
         if !trimmedIssuer.isEmpty { return trimmedIssuer }
         let trimmedAccount = accountName.trimmingCharacters(in: .whitespacesAndNewlines)
-        return trimmedAccount.isEmpty ? "未命名" : trimmedAccount
+        return trimmedAccount.isEmpty ? L10n.t("未命名") : trimmedAccount
     }
 
     var displayAccount: String {

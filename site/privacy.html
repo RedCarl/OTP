@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN"
+      data-title-zh="隐私政策 · OTP"
+      data-title-en="Privacy Policy · OTP"
+      data-desc-zh="OTP 隐私政策：不联网、不收集数据。令牌保存在 iCloud 钥匙串，由 Apple 端到端加密。"
+      data-desc-en="OTP privacy policy: no network requests and no data collection. Tokens stay in iCloud Keychain, end-to-end encrypted by Apple.">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>隐私政策 · OTP</title>
+<meta name="description" content="OTP 隐私政策：不联网、不收集数据。令牌保存在 iCloud 钥匙串，由 Apple 端到端加密。" />
+<link rel="icon" href="assets/icon.png" type="image/png" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="canonical" href="https://redcarl.github.io/OTP/privacy.html" />
+</head>
+
+<body class="doc">
+<main>
+  <div class="topbar">
+    <a class="back" href="index.html"><span data-zh>← 返回 OTP</span><span data-en hidden>← Back to OTP</span></a>
+    <div class="lang" role="group" aria-label="Language / 语言">
+      <button type="button" data-set-lang="zh" aria-pressed="true">中文</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <!-- ========== 中文 ========== -->
+  <section data-zh>
+    <h1>隐私政策</h1>
+    <p class="updated">最后更新：2026-11-18</p>
+
+    <div class="card">
+      <p><strong>一句话：OTP 不设账号、不收集任何数据，也不与开发者服务器通信。</strong>令牌保存在你自己的 iCloud 钥匙串里，由 Apple 端到端加密；备份写入你自己的 iCloud 云盘。</p>
+    </div>
+
+    <h2>我们不收集什么</h2>
+    <ul>
+      <li>不收集姓名、邮箱、手机号、账号或任何设备标识</li>
+      <li>不包含统计、分析、崩溃上报、广告或推送 SDK</li>
+      <li>不设自建服务端，不与开发者服务器通信</li>
+      <li>不读取、上传或分析你的令牌密钥与验证码</li>
+      <li>不申请通讯录、定位、麦克风等与功能无关的权限</li>
+    </ul>
+
+    <h2>数据如何被处理</h2>
+    <p>每个令牌是 iCloud 钥匙串里的一条同步条目，由 iOS 的 Security 框架加密存储；App 只在内存里保留一份只读快照，没有本地数据库。同步由系统完成，开发者无法读取同步内容。</p>
+    <p>验证码使用 RFC 4226 / RFC 6238 标准在本机计算，不经过网络。复制验证码后，剪贴板默认在 30 秒后清空，可在设置中关闭。</p>
+    <p>备份有两种：自动或手动写入 iCloud 云盘 <code>OTP/Backups</code>，使用保存在 iCloud 钥匙串里的随机密钥加密；导出为 <code>.otpbackup</code> 文件时，使用你设置的密码，通过 PBKDF2-HMAC-SHA256（210,000 次迭代）派生密钥，再以 AES-256-GCM 加密。备份密码不会保存在设备上，忘记后无法恢复。</p>
+
+    <h2>数据存在哪里</h2>
+    <p><strong>iCloud 钥匙串：</strong>令牌作为同步条目保存在你本人的 Apple 账户下，属于 Apple 的端到端加密存储，开发者和其他第三方都无法读取。</p>
+    <p><strong>iCloud 云盘：</strong>备份文件保存在你本人的 iCloud 云盘 <code>OTP/Backups</code> 目录，是否同步、同步到哪些设备由你的 iCloud 设置决定。</p>
+    <p><strong>本机：</strong>界面偏好（是否开启解锁、上次备份时间、语言等）保存在 UserDefaults，不含密钥。</p>
+    <p>卸载 App 不会删除 iCloud 钥匙串中的令牌；只有在 App 内「清空所有令牌」才会删除，并同步到其他设备。</p>
+
+    <h2>系统权限</h2>
+    <p><strong>相机：</strong>仅用于扫描 OTP 二维码。首次扫码时由系统询问，可随时在「设置 → OTP」里关闭。</p>
+    <p><strong>面容 ID / 设备密码：</strong>仅用于解锁 App，通过系统的 LocalAuthentication 框架完成；App 不接触也不保存你的生物识别数据。</p>
+    <p><strong>照片：</strong>选择二维码图片时使用系统照片选择器，App 只能读取你主动选中的图片。</p>
+
+    <h2>第三方服务</h2>
+    <p>没有第三方 SDK，也没有广告或分析服务。App 只使用 Apple 的系统框架（SwiftUI、Security、CryptoKit、LocalAuthentication、VisionKit）。iCloud 是 Apple 提供的系统服务，数据归属于你的 Apple 账户。</p>
+
+    <h2>儿童隐私</h2>
+    <p>App 不收集任何人的数据，自然也不收集儿童的数据。</p>
+
+    <h2>政策变更</h2>
+    <p>如果隐私实践有变化，本页会更新并修改上方日期；重大变化会在 App 更新说明中提示。</p>
+
+    <h2>联系我们</h2>
+    <p>任何隐私相关问题，发邮件到 <a href="mailto:carl030101@icloud.com">carl030101@icloud.com</a>。</p>
+  </section>
+
+  <!-- ========== English ========== -->
+  <section data-en hidden>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: November 18, 2026</p>
+
+    <div class="card">
+      <p><strong>In one sentence: OTP has no account, collects no data, and talks to no developer server.</strong> Tokens live in your own iCloud Keychain, end-to-end encrypted by Apple; backups go to your own iCloud Drive.</p>
+    </div>
+
+    <h2>What we don't collect</h2>
+    <ul>
+      <li>No name, email, phone number, account, or device identifiers</li>
+      <li>No analytics, crash reporting, advertising, or push SDKs</li>
+      <li>No developer server and no communication with one</li>
+      <li>No reading, uploading, or analyzing of your token secrets or codes</li>
+      <li>No contacts, location, microphone, or other permissions unrelated to the app's features</li>
+    </ul>
+
+    <h2>How data is processed</h2>
+    <p>Each token is a synchronizable item in iCloud Keychain, encrypted at rest by iOS Security. The app keeps only a read-only snapshot in memory and has no local database. Sync is handled by the system; the developer cannot read the synced contents.</p>
+    <p>Codes are generated on-device with RFC 4226 / RFC 6238 and never sent over the network. After you copy a code, the clipboard clears itself after 30 seconds by default; you can turn that off in Settings.</p>
+    <p>Backups come in two forms. Automatic or manual backups are written to <code>OTP/Backups</code> on your iCloud Drive, encrypted with a random key stored in iCloud Keychain. Exported <code>.otpbackup</code> files use the password you choose: PBKDF2-HMAC-SHA256 (210,000 iterations) derives the key, and AES-256-GCM encrypts the payload. The password is never stored on the device, so a forgotten password cannot be recovered.</p>
+
+    <h2>Where data lives</h2>
+    <p><strong>iCloud Keychain:</strong> tokens are synchronizable items under your own Apple account, part of Apple's end-to-end encrypted storage. Neither the developer nor any third party can read them.</p>
+    <p><strong>iCloud Drive:</strong> backup files live in <code>OTP/Backups</code> in your own iCloud Drive. Whether and where they sync is controlled by your iCloud settings.</p>
+    <p><strong>On this device:</strong> UI preferences (whether app lock is on, last backup time, language, and similar) are kept in UserDefaults and contain no secrets.</p>
+    <p>Deleting the app does not remove tokens from iCloud Keychain. Only "Clear All Tokens" inside the app deletes them, and that deletion syncs to your other devices.</p>
+
+    <h2>System permissions</h2>
+    <p><strong>Camera:</strong> used only to scan OTP QR codes. iOS asks the first time you scan, and you can revoke it anytime in Settings → OTP.</p>
+    <p><strong>Face ID / device passcode:</strong> used only to unlock the app through Apple's LocalAuthentication framework. The app never sees or stores your biometric data.</p>
+    <p><strong>Photos:</strong> picking a QR image uses the system photo picker, so the app can only read the image you explicitly choose.</p>
+
+    <h2>Third-party services</h2>
+    <p>No third-party SDKs, no advertising, and no analytics. The app uses only Apple frameworks (SwiftUI, Security, CryptoKit, LocalAuthentication, VisionKit). iCloud is an Apple system service, and its data belongs to your Apple account.</p>
+
+    <h2>Children's privacy</h2>
+    <p>The app collects no data from anyone, children included.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If our privacy practices change, this page will be updated along with the date above; significant changes will be called out in the app's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>For any privacy question, email <a href="mailto:carl030101@icloud.com">carl030101@icloud.com</a>.</p>
+  </section>
+
+  <footer>
+    <!-- 备案通过后在这里补备案号：<a href="https://beian.miit.gov.cn/">鄂ICP备…号-…</a> -->
+    <span data-zh>© 2026 孙磊 · otp令牌</span>
+    <span data-en hidden>© 2026 Sun Lei · OTP</span>
+  </footer>
+</main>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

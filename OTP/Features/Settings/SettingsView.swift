@@ -4,6 +4,8 @@ struct SettingsView: View {
     let model: TokenListModel
     var onRequestClear: () -> Void
 
+    @Environment(\.openURL) private var openURL
+
     @AppStorage("appLockEnabled") private var appLockEnabled = false
     @AppStorage("lockPromptShown") private var lockPromptShown = false
     @AppStorage("clipboardExpiryEnabled") private var clipboardExpiryEnabled = true
@@ -17,6 +19,7 @@ struct SettingsView: View {
     @State private var showDeviceAuthAlert = false
     @State private var isRefreshing = false
     @State private var isEnablingLock = false
+    @State private var openFailureMessage: String?
 
     var body: some View {
         NavigationStack {
@@ -25,7 +28,7 @@ struct SettingsView: View {
                     HStack(spacing: 8) {
                         settingLabel("iCloud 钥匙串", systemImage: "icloud")
                         Spacer(minLength: 8)
-                        Text("\(model.tokens.count) 个令牌")
+                        Text(L10n.format("%lld 个令牌", model.tokens.count))
                             .foregroundStyle(.secondary)
                         Button {
                             Task {
@@ -61,6 +64,20 @@ struct SettingsView: View {
                         .accessibilityLabel("刷新")
                         .accessibilityIdentifier("settings.refresh")
                     }
+                }
+
+                Section {
+                    NavigationLink {
+                        LanguagePickerView()
+                    } label: {
+                        HStack(spacing: 8) {
+                            settingLabel("语言", systemImage: "globe")
+                            Spacer(minLength: 8)
+                            Text(L10n.selectedLanguage.displayName)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .accessibilityIdentifier("settings.language")
                 }
 
                 Section {
@@ -108,6 +125,7 @@ struct SettingsView: View {
                         settingLabel("导入数据", systemImage: "square.and.arrow.down")
                     }
                     .tint(Color.primary)
+                    .accessibilityIdentifier("settings.import")
                     Button {
                         showCopyLinksConfirmation = true
                     } label: {
@@ -123,6 +141,34 @@ struct SettingsView: View {
                     }
                 }
 
+                Section {
+                    Button {
+                        rateApp()
+                    } label: {
+                        settingLabel("去应用商店评分", systemImage: "star")
+                    }
+                    .tint(Color.primary)
+                    .accessibilityIdentifier("settings.rateApp")
+
+                    ShareLink(
+                        item: AppLinks.appStoreURL,
+                        subject: Text(L10n.t("OTP · 两步验证")),
+                        message: Text(AppLinks.shareMessage)
+                    ) {
+                        settingLabel("分享应用", systemImage: "square.and.arrow.up")
+                    }
+                    .tint(Color.primary)
+                    .accessibilityIdentifier("settings.shareApp")
+
+                    Button {
+                        sendFeedback()
+                    } label: {
+                        settingLabel("意见反馈（邮件）", systemImage: "envelope")
+                    }
+                    .tint(Color.primary)
+                    .accessibilityIdentifier("settings.feedback")
+                }
+
                 if !model.tokens.isEmpty {
                     Section {
                         Button(role: .destructive) {
@@ -135,7 +181,10 @@ struct SettingsView: View {
                 }
 
             }
-            .navigationTitle("设置")
+            // Resolved string rather than a LocalizedStringKey: the navigation
+            // bar keeps a title it received as a key, so it would stay in the
+            // previous language until the screen was recreated.
+            .navigationTitle(L10n.t("设置"))
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showBackupExport) {
                 BackupExportView(model: model)
@@ -144,7 +193,8 @@ struct SettingsView: View {
                 BackupCenterView(model: model)
             }
             .sheet(isPresented: $showImport) {
-                ImportFlowView(model: model, mode: .file)
+                // 先进导入页选来源；文件选择器在导入页里面弹，不再叠两层窗口。
+                ImportFlowView(model: model, mode: .pick)
             }
             .alert("无法开启解锁保护", isPresented: $showDeviceAuthAlert) {
                 Button("好", role: .cancel) {}
@@ -155,11 +205,21 @@ struct SettingsView: View {
                 Button("复制") {
                     let links = model.tokens.map(\.uri).joined(separator: "\n")
                     Clipboard.copy(links, expiresIn: 60)
-                    model.showToast("已复制 \(model.tokens.count) 个链接")
+                    model.showToast(L10n.format("已复制 %lld 个链接", model.tokens.count))
                 }
                 Button("取消", role: .cancel) {}
             } message: {
                 Text("链接包含密钥，请谨慎粘贴。")
+            }
+            .alert(L10n.t("无法完成操作"), isPresented: Binding(
+                get: { openFailureMessage != nil },
+                set: { presented in
+                    if !presented { openFailureMessage = nil }
+                }
+            )) {
+                Button("好", role: .cancel) {}
+            } message: {
+                Text(openFailureMessage ?? "")
             }
         }
     }
@@ -171,18 +231,41 @@ struct SettingsView: View {
             return
         }
         isEnablingLock = true
-        let success = await AppLockController.authenticate(reason: "开启 Face ID 解锁")
+        let success = await AppLockController.authenticate(reason: L10n.t("开启解锁保护"))
         isEnablingLock = false
         guard success else {
-            model.showToast("未开启")
+            model.showToast(L10n.t("未开启"))
             return
         }
         appLockEnabled = true
         lockPromptShown = true
-        model.showToast("已开启 Face ID")
+        model.showToast(L10n.format("已开启 %@", AppLockController.methodName))
     }
 
-    private func settingLabel(_ title: String, systemImage: String) -> some View {
+    /// Opens the App Store app on the review form; Safari is the fallback when
+    /// the store app cannot take the URL.
+    private func rateApp() {
+        openURL(AppLinks.writeReviewAppURL) { opened in
+            guard !opened else { return }
+            openURL(AppLinks.writeReviewURL) { fallbackOpened in
+                guard !fallbackOpened else { return }
+                openFailureMessage = L10n.t("无法打开 App Store，请稍后再试。")
+            }
+        }
+    }
+
+    private func sendFeedback() {
+        guard let url = AppLinks.feedbackURL else {
+            openFailureMessage = L10n.t("无法生成反馈邮件。")
+            return
+        }
+        openURL(url) { opened in
+            guard !opened else { return }
+            openFailureMessage = L10n.format("没有可用的邮件 App。请手动发送到 %@。", AppLinks.supportEmail)
+        }
+    }
+
+    private func settingLabel(_ title: LocalizedStringKey, systemImage: String) -> some View {
         Label {
             Text(title)
                 .foregroundStyle(.primary)
@@ -193,7 +276,7 @@ struct SettingsView: View {
     }
 
     private var lastBackupText: String {
-        guard lastBackupAt > 0 else { return "从未备份" }
-        return Date(timeIntervalSince1970: lastBackupAt).formatted(date: .numeric, time: .omitted)
+        guard lastBackupAt > 0 else { return L10n.t("从未备份") }
+        return L10n.date(Date(timeIntervalSince1970: lastBackupAt))
     }
 }

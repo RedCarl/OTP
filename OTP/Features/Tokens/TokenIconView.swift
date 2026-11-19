@@ -13,7 +13,7 @@ struct TokenIconView: View {
 
     @ViewBuilder
     private var content: some View {
-        if let iconData = token.iconData, let image = UIImage(data: iconData) {
+        if let image = IconImageCache.image(for: token) {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFill()
@@ -43,6 +43,36 @@ struct TokenIconView: View {
         Text(Monogram.letter(for: token))
             .font(.system(size: size * 0.42, weight: .semibold, design: .rounded))
             .foregroundStyle(color)
+    }
+}
+
+/// Decodes a user-supplied icon once per token revision instead of on every
+/// row body evaluation. `UIImage(data:)` takes the main thread for its parse
+/// and lazily decodes pixels at draw time; caching keeps that off repeated work.
+private enum IconImageCache {
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static let images = NSCache<NSString, UIImage>()
+    nonisolated(unsafe) private static var misses: Set<String> = []
+
+    static func image(for token: OTPToken) -> UIImage? {
+        guard let data = token.iconData else { return nil }
+        let key = "\(token.id.uuidString)#\(data.count)#\(data.hashValue)" as NSString
+
+        lock.lock()
+        let cached = images.object(forKey: key)
+        let knownMiss = misses.contains(key as String)
+        lock.unlock()
+        if let cached { return cached }
+        if knownMiss { return nil }
+
+        guard let image = UIImage(data: data) else {
+            lock.lock()
+            misses.insert(key as String)
+            lock.unlock()
+            return nil
+        }
+        images.setObject(image, forKey: key)
+        return image
     }
 }
 

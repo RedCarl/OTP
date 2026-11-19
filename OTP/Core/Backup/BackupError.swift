@@ -12,19 +12,19 @@ enum BackupError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .noTokens:
-            return "没有可备份的令牌"
+            return L10n.t("没有可备份的令牌")
         case .passphraseTooShort(let minimum):
-            return "备份密码至少需要 \(minimum) 位字符"
+            return L10n.format("备份密码至少需要 %lld 位字符", minimum)
         case .missingPassphrase:
-            return "这个备份已加密，请输入备份密码"
+            return L10n.t("这个备份已加密，请输入备份密码")
         case .wrongPassphraseOrCorrupted:
-            return "密码错误，或备份文件已损坏"
+            return L10n.t("密码错误，或备份文件已损坏")
         case .notBackupFile:
-            return "这不是 OTP 备份文件"
+            return L10n.t("这不是 OTP 备份文件")
         case .unsupportedVersion(let version):
-            return "备份文件来自更新版本（v\(version)），请升级 App 后再导入"
+            return L10n.format("备份文件来自更新版本（v%lld），请升级 App 后再导入", version)
         case .cryptoFailed:
-            return "加密处理失败"
+            return L10n.t("加密处理失败")
         }
     }
 }

@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Used to scan OTP QR codes and import tokens.";
+"NSFaceIDUsageDescription" = "Used to unlock the app and protect your tokens.";

@@ -22,7 +22,7 @@ struct QRCodeView: View {
                             .accessibilityLabel("令牌二维码")
                         ShareLink(
                             item: Image(uiImage: image),
-                            preview: SharePreview("\(token.displayIssuer) 令牌二维码", image: Image(uiImage: image))
+                            preview: SharePreview(L10n.format("%@ 令牌二维码", token.displayIssuer), image: Image(uiImage: image))
                         ) {
                             Label("分享二维码", systemImage: "square.and.arrow.up")
                         }
@@ -60,7 +60,13 @@ struct QRCodeView: View {
                 }
             }
             .task {
-                image = QRCodeRenderer.image(for: token.uri)
+                // Rasterizing the code is a few milliseconds of Core Image work;
+                // keep it off the main actor so the sheet appears immediately.
+                let uri = token.uri
+                let png = await Task.detached(priority: .userInitiated) {
+                    QRCodeRenderer.pngData(for: uri)
+                }.value
+                image = png.flatMap { UIImage(data: $0) }
             }
         }
     }

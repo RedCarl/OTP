@@ -31,9 +31,11 @@ struct TokenListView: View {
             titleVisibility: .visible,
             presenting: pendingDelete
         ) { token in
-            Button("删除 \(token.displayIssuer)", role: .destructive) {
+            Button(role: .destructive) {
                 pendingDelete = nil
                 Task { await model.delete(token) }
+            } label: {
+                Text(L10n.format("删除 %@", token.displayIssuer))
             }
             Button("取消", role: .cancel) { pendingDelete = nil }
         } message: { _ in
@@ -71,36 +73,36 @@ struct TokenListView: View {
 
     @ViewBuilder
     private var content: some View {
+        // Computed once: the filtering pass used to run twice per body update.
+        let shown = model.filteredTokens
         if model.tokens.isEmpty {
             emptyState
-        } else if model.filteredTokens.isEmpty {
+        } else if shown.isEmpty {
             noResultsState
         } else {
-            tokenList
+            tokenList(shown)
         }
     }
 
     // MARK: - List
 
-    private var tokenList: some View {
+    private func tokenList(_ shown: [OTPToken]) -> some View {
         List {
             if model.skippedCount > 0 {
                 Section {
-                    Label("\(model.skippedCount) 个令牌无法显示", systemImage: "exclamationmark.triangle")
+                    Label(L10n.format("%lld 个令牌无法显示", model.skippedCount), systemImage: "exclamationmark.triangle")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
             }
 
             Section {
-                ForEach(model.filteredTokens) { token in
+                ForEach(shown) { token in
                     TokenRowView(
                         token: token,
-                        code: model.code(for: token),
-                        remaining: token.kind == .totp ? model.remaining(for: token) : 0,
-                        progress: token.kind == .totp ? model.progress(for: token) : 0,
-                        isCopied: model.copiedTokenID == token.id
+                        code: model.code(for: token)
                     )
+                    .equatable()
                     .onTapGesture {
                         Task { await model.copyCode(for: token) }
                     }
@@ -117,7 +119,7 @@ struct TokenListView: View {
                         Button {
                             Task { await model.togglePin(token) }
                         } label: {
-                            Label(token.pinned ? "取消置顶" : "置顶", systemImage: token.pinned ? "pin.slash" : "pin")
+                            Label(token.pinned ? L10n.t("取消置顶") : L10n.t("置顶"), systemImage: token.pinned ? "pin.slash" : "pin")
                         }
                         Button {
                             qrToken = token

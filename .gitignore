@@ -4,4 +4,11 @@ DerivedData/
 *.xcuserstate
 xcuserdata/
 .swiftpm/
-*.xcresultdocs/attachments/
+*.xcresult
+docs/attachments/
+
+# 本机私有材料：证书、备案采集表、打包归档都不入库
+*.cer
+*.p8
+*备案信息采集表.xlsx
+归档.zip
