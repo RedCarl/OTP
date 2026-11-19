@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>支持 · OTP令牌</title>
+<style>
+  :root {
+    --bg: #0e0f10; --fg: #f3f4f5; --muted: #a4a6ab; --faint: #7b7e84;
+    --line: rgba(255,255,255,.11); --panel: rgba(255,255,255,.04);
+    --brand: #79a9ff; --radius: 16px;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f6f6f7; --fg:#16171a; --muted:#5b5d63; --faint:#86888e;
+            --line: rgba(0,0,0,.12); --panel: rgba(255,255,255,.7); --brand:#1f6feb; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+  main { max-width: 720px; margin: 0 auto; padding: 72px 24px 96px; }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .back { font-size: 14px; color: var(--muted); }
+  h1 { font-size: 32px; letter-spacing: -.02em; margin: 24px 0 8px; }
+  .updated { color: var(--faint); font-size: 14px; margin-bottom: 40px; }
+  h2 { font-size: 18px; margin: 40px 0 12px; }
+  p, li { color: var(--muted); font-size: 16px; }
+  strong { color: var(--fg); font-weight: 600; }
+  ul { padding-left: 22px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; margin: 24px 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--faint); font-size: 14px; }
+
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← 返回 OTP令牌</a>
+  <h1>支持</h1>
+  <p class="updated">OTP令牌 · iPhone · iOS 18 及以上</p>
+
+  <h2>怎么添加一个令牌</h2>
+  <ul>
+    <li>在列表页右上角点「＋」，选「扫描二维码」，对准网站给出的 OTP 二维码</li>
+    <li>没有摄像头权限时，可以用「从相册识别」选一张二维码截图</li>
+    <li>也可以粘贴 <code>otpauth://</code> 链接，或手动输入密钥</li>
+  </ul>
+
+  <h2>换手机后令牌不见了</h2>
+  <p>令牌存在 iCloud 钥匙串里，需要满足：两台设备登录同一 Apple 账户、开启双重认证、打开「iCloud 钥匙串」（设置 → 你的名字 → iCloud → 密码与钥匙串），并设置锁屏密码。同步时机由系统决定，App 读不到状态，回到前台或下拉刷新会重新读取本机钥匙串。</p>
+
+  <h2>备份怎么用</h2>
+  <p>设置 → iCloud 备份：可以立即备份或开启自动备份，文件写在你自己 iCloud 云盘的 OTP/Backups 里，最多 10 份。恢复时可选「增量合并」「更新同项」「完全替换」，完全替换前会自动留一份安全副本。也可以导出加密的 .otpbackup 文件，密码请自己保管，忘记后无法恢复。</p>
+
+  <h2>能导入别的认证器吗</h2>
+  <p>支持 Google Authenticator 迁移二维码、Aegis 与 2FAS 的未加密导出、本 App 的备份文件，以及任何包含 otpauth 链接的文本。Steam Guard、加密的 Aegis/2FAS 备份、MD5 算法暂不支持。</p>
+
+  <h2>验证码复制后剪贴板残留</h2>
+  <p>默认复制 30 秒后自动过期，可在设置里关闭或改时长。</p>
+
+  <h2>要解锁才能用吗</h2>
+  <p>可以在设置里开启面容 ID / 设备密码解锁。开启时会先验证一次，成功后生效；设备不支持时自动跳过，不影响使用。</p>
+
+  <h2>还有问题</h2>
+  <p>发邮件到 <a href="mailto:carl030101@icloud.com">carl030101@icloud.com</a>，说明设备型号、系统版本和复现步骤。</p>
+
+  <footer>© 2026 孙磊 · OTP令牌</footer>
+</main>
+</body>
+</html>
