@@ -209,3 +209,15 @@ Uploaded OTP
 - 版本页「新功能」文案：`设置里新增三个入口：去 App Store 评分、把 OTP 分享给朋友、用邮件反馈问题（邮件会自动带上版本、系统与机型，方便定位问题）。`
 - 版本页截屏沿用 1.0 的 3 张（列表 / 备份 / 设置）：1.0.1 版本页在创建时已带截屏，未改动。
 - 工具：`scripts/testflight.sh` 改为从 `project.yml` 读取 `MARKETING_VERSION`，归档日志打印真实版本号。
+
+## 十八、1.0.2：双语界面、支持入口与导入流程重做（2026-11-19）
+
+- 版本：**1.0.2 (17)**，`MARKETING_VERSION` 1.0.1 → 1.0.2，构建号 17；归档 `build/OTP.xcarchive`，build 16 保留为 `build/OTP-build16.xcarchive`。
+- TestFlight：build 17 已上传（2026-11-19 14:00，`Upload succeeded` / `EXPORT SUCCEEDED`），App Store Connect 处理通常 5–30 分钟。
+- 双语：新增 `Resources/Localizable.xcstrings`、`Core/Support/L10n.swift`、`en.lproj` / `zh-Hans.lproj`；默认跟随系统语言，设置 → 语言可手动切换并立即生效，不再重启或弹回设置页。
+- 支持入口：设置页新增评分 / 分享 / 邮件反馈（`Features/Settings/AppLinks.swift`），入口在「清空所有令牌」上方；反馈邮件自动附带版本、系统与机型。
+- 导入与令牌：`ImportFlowView`、`AddTokenSheetView`、`TokenListModel`、`TokenRowView`、`MarqueeText` 重做交互与样式，新增 `UXPolishUITests`。
+- 站点：`site/` 换成中英双语版本（首页 / 隐私 / 支持），新增 `.github/workflows/pages.yml`；仓库根目录旧的 `index.html`、`privacy.html`、`support.html` 删除（内容已进 `site/`）。
+- 仓库：合并远端只含三张站点页的孤立历史，`.gitignore` 忽略证书、备案采集表与归档 zip。
+- 测试：`OTPTests` 全过；`OTPUITests` 17 项全过（0 失败，含 `LanguageUITests`、`SiteScreenshotUITests`、`UXPolishUITests`）。
+- 工具：新增 `scripts/testflight.sh`，从 `project.yml` 读版本号，默认使用 `~/.appstoreconnect` 的 Team API Key。
